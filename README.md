@@ -15,8 +15,10 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
 3. En la trayectoria, pon la ruta en `data-logo="…"` del puesto y añade `<img class="job-logo" …>` (es la versión móvil, copia la de Spread It).
 
 ## Animaciones
-- Pantalla de carga (solo en la primera visita de cada sesión), entrada letra a letra del nombre, parallax con el ratón y el scroll, titulares que se destapan, listas escalonadas, barra de progreso, botones magnéticos y líneas del campo que se dibujan.
-- Todo se desactiva con «reducir movimiento» del sistema.
+- **Carga**: firma «OH» con balón que se dibuja, contador tipo marcador 000→100, palabras que rotan, balón que recorre la línea de campo y salida en columnas azul y amarillo. Solo en la primera visita de cada sesión; todo en CSS.
+- **Portada**: nombre letra a letra, foto con zoom de entrada, parallax con ratón y scroll y «rayos X»: un foco que revela una versión pop-art de la foto al pasar el ratón (la imagen se carga después, sin afectar al rendimiento).
+- **Scroll**: scroll suave con inercia (ratón), titulares palabra a palabra, etiquetas que se descifran, servicios en horizontal fijados (escritorio), cinta que cambia de sentido con el scroll, firma gigante en el pie, listas escalonadas, barra de progreso y botones magnéticos.
+- Todo se desactiva con «reducir movimiento» del sistema; en móvil se quitan los efectos de ratón y el scroll horizontal.
 
 ## SEO y agentes
 - Posicionado como especialista en IA, marketing deportivo, digital retail y e-commerce (title, description, H1, JSON-LD y FAQ).
