@@ -211,16 +211,16 @@ section{position:relative}
 .wall-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:clamp(70px,9vw,130px) 0 26px}
 .wall-head h3{font-size:clamp(1.6rem,3.4vw,3rem);font-weight:900;font-stretch:112%;letter-spacing:-.03em;text-transform:uppercase;line-height:.95}
 .wall-head p{color:var(--mute-2);max-width:34ch}
-.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.club{aspect-ratio:1;border-radius:22px;background:#fff;border:1px solid var(--line-ink);display:grid;place-items:center;padding:22%;position:relative;transition:transform .4s var(--ease),background .3s}
-.club img{width:100%;height:100%;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.75;transition:filter .4s,opacity .4s}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,27vw),1fr));gap:12px}
+.club{aspect-ratio:1;border-radius:22px;background:transparent;border:1px solid var(--line-ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:16% 16% 12%;overflow:hidden;transition:transform .4s var(--ease),background .3s}
+.club img{flex:1 1 0;min-height:0;width:100%;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.7;transition:filter .4s,opacity .4s}
 .club:hover{transform:translateY(-6px) rotate(-2deg);background:var(--accent)}
 .club:hover img{filter:none;opacity:1}
-.club figcaption{position:absolute;left:12px;right:12px;bottom:10px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--mute-2)}
-.club--wide{padding:12%}
-.club--txt{padding:14px}
+.club figcaption{flex:none;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.2;color:var(--mute-2)}
+.club--wide{padding:16% 10% 12%}
+.club--txt{padding:14px;justify-content:center}
 .club--txt b{font-size:1.15rem;font-weight:900;font-stretch:118%;letter-spacing:-.02em;text-align:center;line-height:1;text-transform:uppercase}
-.club--soon{background:transparent;border-style:dashed;color:var(--mute-2);font-weight:700;font-size:.85rem;text-align:center}
+.club--soon{justify-content:center;background:transparent;border-style:dashed;color:var(--mute-2);font-weight:700;font-size:.85rem;text-align:center}
 .club--soon:hover{background:transparent;transform:none}
 
 /* ---------- SERVICIOS ---------- */
@@ -242,9 +242,11 @@ section{position:relative}
 
 /* ---------- FORMACIÓN ---------- */
 .edu-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(40px,6vw,100px)}
-.edu li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-ink)}
+.edu li{display:grid;grid-template-columns:110px 1fr 96px;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-ink)}
 .edu li:first-child{border-top:1px solid var(--line-ink)}
-.edu time{font-weight:700;font-size:.85rem;letter-spacing:.06em;padding-top:6px;font-variant-numeric:tabular-nums}
+.edu-logo{width:96px;height:56px;object-fit:contain;justify-self:end;transition:transform .4s var(--ease)}
+.edu li:hover .edu-logo{transform:scale(1.1) rotate(-3deg)}
+.edu time{align-self:start;font-weight:700;font-size:.85rem;letter-spacing:.06em;padding-top:6px;font-variant-numeric:tabular-nums}
 .edu h3{font-size:clamp(1.2rem,1.9vw,1.75rem);font-weight:800;line-height:1.08;letter-spacing:-.02em}
 .edu p{color:var(--mute-2);margin-top:4px}
 .side h3{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;color:var(--mute-2)}
@@ -259,7 +261,7 @@ section{position:relative}
 .langs li{display:grid;grid-template-columns:1fr auto;gap:6px;font-weight:600}
 .langs li span{color:var(--mute-2);font-weight:500}
 .langs li::after{content:"";grid-column:1/-1;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--ink) var(--lv),rgba(0,14,43,.1) var(--lv))}
-@media (max-width:900px){.edu-grid{grid-template-columns:1fr}.edu li{grid-template-columns:1fr;gap:4px}.edu time{padding:0}}
+@media (max-width:900px){.edu-grid{grid-template-columns:1fr}.edu li{grid-template-columns:1fr 64px;gap:4px 14px}.edu time{padding:0;grid-column:1/-1}.edu-logo{width:64px;height:44px}}
 
 /* ---------- CONTACTO ---------- */
 .contact{background:var(--accent);color:var(--ink);padding-block:clamp(90px,12vw,170px) 0;overflow:hidden}
@@ -489,21 +491,21 @@ section{position:relative}
       <span class="job-yr">2026 — <span class="now">HOY</span></span>
       <div><h3>Guest Lecturer · IA</h3><span class="job-co">Founderz</span></div>
       <p class="job-desc">Masterclass «La IA en la gestión deportiva».</p>
-      <img class="job-logo" src="assets/img/logos/founderz.webp" width="655" height="120" alt="" loading="lazy" decoding="async">
+      <img class="job-logo" src="assets/img/logos/founderz.webp" width="643" height="120" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
     <li class="job" data-logo="assets/img/logos/spreadit.webp" data-mono="Spreadit">
       <span class="job-yr">2025 — <span class="now">HOY</span></span>
       <div><h3>Project Manager</h3><span class="job-co">Spreadit · Growth Partners</span></div>
       <p class="job-desc">Gestión de proyectos para Forty Love, Ron Cihuatán y Café El Salvador.</p>
-      <img class="job-logo" src="assets/img/logos/spreadit.webp" width="200" height="200" alt="" loading="lazy" decoding="async">
+      <img class="job-logo" src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
     <li class="job" data-logo="assets/img/logos/cobaltax.webp" data-mono="Cobaltax">
       <span class="job-yr">2025 — 2026</span>
       <div><h3>Marketing Digital y E-commerce</h3><span class="job-co">Cobaltax</span></div>
       <p class="job-desc">Transformación digital y e-commerce de la compañía.</p>
-      <img class="job-logo" src="assets/img/logos/cobaltax.webp" width="426" height="200" alt="" loading="lazy" decoding="async">
+      <img class="job-logo" src="assets/img/logos/cobaltax.webp" width="443" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
     <li class="job" data-logo="" data-mono="AR Stars">
@@ -530,23 +532,27 @@ section{position:relative}
       <span class="job-yr">2019 — 2022</span>
       <div><h3>Redactor web</h3><span class="job-co">Diario UF (OneFootball)</span></div>
       <p class="job-desc">Fútbol nacional e internacional en la web y la app de OneFootball.</p>
-      <img class="job-logo" src="assets/img/logos/onefootball.webp" width="200" height="200" alt="" loading="lazy" decoding="async">
+      <img class="job-logo" src="assets/img/logos/onefootball.webp" width="229" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
   </ol>
 
   <div class="wall-head">
     <h3>Escudos que<br>he defendido</h3>
-    <p>Clubes, agencias y proyectos con los que he saltado al campo.</p>
+    <p>Clubes, agencias, proyectos y escuelas con los que he saltado al campo.</p>
   </div>
-  <ul class="wall stg" aria-label="Organizaciones con las que he trabajado">
-    <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="200" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spreadit</figcaption></figure></li>
+  <ul class="wall stg" aria-label="Organizaciones con las que he trabajado y donde he estudiado">
+    <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spreadit</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/terrassa-fc.webp" width="174" height="200" alt="" loading="lazy" decoding="async"><figcaption>Terrassa FC</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/lleida.webp" width="169" height="200" alt="" loading="lazy" decoding="async"><figcaption>Lleida</figcaption></figure></li>
     <li><figure class="club club--txt"><b>AR Stars Academy</b></figure></li>
-    <li><figure class="club club--wide"><img src="assets/img/logos/founderz.webp" width="655" height="120" alt="" loading="lazy" decoding="async"><figcaption>Founderz</figcaption></figure></li>
-    <li><figure class="club club--wide"><img src="assets/img/logos/cobaltax.webp" width="426" height="200" alt="" loading="lazy" decoding="async"><figcaption>Cobaltax</figcaption></figure></li>
-    <li><figure class="club"><img src="assets/img/logos/onefootball.webp" width="200" height="200" alt="" loading="lazy" decoding="async"><figcaption>OneFootball</figcaption></figure></li>
+    <li><figure class="club club--wide"><img src="assets/img/logos/founderz.webp" width="643" height="120" alt="" loading="lazy" decoding="async"><figcaption>Founderz</figcaption></figure></li>
+    <li><figure class="club club--wide"><img src="assets/img/logos/cobaltax.webp" width="443" height="200" alt="" loading="lazy" decoding="async"><figcaption>Cobaltax</figcaption></figure></li>
+    <li><figure class="club"><img src="assets/img/logos/onefootball.webp" width="229" height="200" alt="" loading="lazy" decoding="async"><figcaption>OneFootball</figcaption></figure></li>
+    <li><figure class="club"><img src="assets/img/logos/ub.webp" width="127" height="200" alt="" loading="lazy" decoding="async"><figcaption>UB</figcaption></figure></li>
+    <li><figure class="club club--wide"><img src="assets/img/logos/cruyff-institute.webp" width="218" height="200" alt="" loading="lazy" decoding="async"><figcaption>Cruyff Institute</figcaption></figure></li>
+    <li><figure class="club club--wide"><img src="assets/img/logos/universidad-europea.webp" width="428" height="120" alt="" loading="lazy" decoding="async"><figcaption>U. Europea</figcaption></figure></li>
+    <li><figure class="club club--wide"><img src="assets/img/logos/euncet.webp" width="488" height="200" alt="" loading="lazy" decoding="async"><figcaption>Euncet</figcaption></figure></li>
     <li><figure class="club club--soon">Próximo<br>fichaje</figure></li>
   </ul>
 </section>
@@ -568,11 +574,11 @@ section{position:relative}
   <h2 class="big rvc" id="edu-title" style="margin-bottom:clamp(40px,6vw,80px)">Pretemporada<br>permanente</h2>
   <div class="edu-grid">
     <ol class="edu stg">
-      <li><time>2026 — 27</time><div><h3>Máster en Dirección de Empresas Deportivas (MBA in Sports Management)</h3><p>Universitat de Barcelona</p></div></li>
-      <li><time>2026</time><div><h3>Máster en Inteligencia Artificial Aplicada al Deporte</h3><p>Founderz</p></div></li>
-      <li><time>2026</time><div><h3>Estrategias Eficaces en el Marketing Deportivo</h3><p>Universidad Europea</p></div></li>
-      <li><time>2026</time><div><h3>Curso en Patrocinio Deportivo</h3><p>Universitat Autònoma de Barcelona · Johan Cruyff Institute</p></div></li>
-      <li><time>2022 — 26</time><div><h3>Grado en Marketing y Comunicación Digital</h3><p>Euncet Business School</p></div></li>
+      <li><time>2026 — 27</time><div><h3>Máster en Dirección de Empresas Deportivas (MBA in Sports Management)</h3><p>Universitat de Barcelona</p></div><img class="edu-logo" src="assets/img/logos/ub.webp" width="127" height="200" alt="Universitat de Barcelona" loading="lazy" decoding="async"></li>
+      <li><time>2026</time><div><h3>Máster en Inteligencia Artificial Aplicada al Deporte</h3><p>Founderz</p></div><img class="edu-logo" src="assets/img/logos/founderz.webp" width="643" height="120" alt="Founderz" loading="lazy" decoding="async"></li>
+      <li><time>2026</time><div><h3>Estrategias Eficaces en el Marketing Deportivo</h3><p>Universidad Europea</p></div><img class="edu-logo" src="assets/img/logos/universidad-europea.webp" width="428" height="120" alt="Universidad Europea" loading="lazy" decoding="async"></li>
+      <li><time>2026</time><div><h3>Curso en Patrocinio Deportivo</h3><p>Universitat Autònoma de Barcelona · Johan Cruyff Institute</p></div><img class="edu-logo" src="assets/img/logos/cruyff-institute.webp" width="218" height="200" alt="Johan Cruyff Institute" loading="lazy" decoding="async"></li>
+      <li><time>2022 — 26</time><div><h3>Grado en Marketing y Comunicación Digital</h3><p>Euncet Business School</p></div><img class="edu-logo" src="assets/img/logos/euncet.webp" width="488" height="200" alt="Euncet Business School" loading="lazy" decoding="async"></li>
     </ol>
     <div class="side">
       <div>
