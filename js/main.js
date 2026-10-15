@@ -93,7 +93,6 @@
   const photo = d.querySelector('[data-photo]');
   const names = $$('[data-hn]');
   const hero = d.querySelector('.hero');
-  const xr = d.querySelector('[data-xray]');
   const prog = d.querySelector('[data-progress]');
   const marq = $$('.marquee p');
   const hs = d.querySelector('[data-hs]'), hsTrack = hs && hs.querySelector('.services');
@@ -121,11 +120,14 @@
       onScroll.t = setTimeout(() => marq.forEach(m => (m.style.transform = '')), 120);
     }
     lastY = y;
-    if (!reduce && y < vh * 1.2 && innerWidth > 700) {
-      photo.style.setProperty('--py', y * 0.18 + 'px');
-      if (xr) xr.style.setProperty('--py', y * 0.18 + 'px');
-      const s = Math.max(62, 125 - y / vh * 70);
-      names.forEach(n => { n.style.fontStretch = s + '%'; n.style.transform = `translate3d(0,${y * 0.35}px,0)`; });
+    if (!reduce && hero && y < vh * 2) {
+      // la foto sube desde abajo mientras el escenario está fijado
+      const p = Math.min(1, y / (vh * 0.7)), e = 1 - Math.pow(1 - p, 3);
+      hero.style.setProperty('--rev', ((1 - e) * 100).toFixed(2));
+      names.forEach(n => {
+        n.style.transform = `translate3d(0,${-e * 4}vh,0) scale(${1 - e * 0.06})`;
+        if (innerWidth > 700) n.style.fontStretch = 125 - e * 30 + '%';
+      });
     }
     if (words.length) {
       const r = man.getBoundingClientRect();
@@ -166,6 +168,32 @@
     requestAnimationFrame(loop);
   }
 
+  // Rayos X: foco que revela la versión pop-art de la foto (ratón y dedo)
+  const xray = d.querySelector('[data-xray]');
+  if (xray && !reduce) {
+    const img = new Image();
+    img.decoding = 'async';
+    // la imagen se pide con la primera interacción, sin competir con la carga inicial
+    const getX = () => {
+      if (img.src) return;
+      img.src = innerWidth > 1300 ? 'assets/img/oriol-xray-1240.avif' : 'assets/img/oriol-xray-860.avif';
+      img.onload = () => (xray.style.backgroundImage = `url(${img.src})`);
+    };
+    ['pointermove', 'touchstart', 'scroll', 'keydown'].forEach(ev => addEventListener(ev, getX, { once: true, passive: true }));
+    const spot = (x, y) => {
+      const r = xray.getBoundingClientRect();
+      xray.style.setProperty('--sx', x - r.left + 'px'); xray.style.setProperty('--sy', y - r.top + 'px');
+      xray.classList.add('on');
+    };
+    hero.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') spot(e.clientX, e.clientY); });
+    hero.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') xray.classList.remove('on'); });
+    let off;
+    const touch = e => { const t = e.touches[0]; if (!t) return; clearTimeout(off); spot(t.clientX, t.clientY); };
+    hero.addEventListener('touchstart', touch, { passive: true });
+    hero.addEventListener('touchmove', touch, { passive: true });
+    hero.addEventListener('touchend', () => { off = setTimeout(() => xray.classList.remove('on'), 900); }, { passive: true });
+  }
+
   if (!fine || reduce) return;
 
   // Scroll suave con inercia (solo ratón)
@@ -193,29 +221,11 @@
     el.addEventListener('pointerleave', () => cur.classList.remove('big'));
   });
 
-  // Rayos X: foco que revela la versión pop-art de la foto
-  const xray = d.querySelector('[data-xray]');
-  if (xray) {
-    const img = new Image();
-    img.decoding = 'async';
-    const load = () => {
-      img.src = innerWidth > 1300 ? 'assets/img/oriol-xray-1240.avif' : 'assets/img/oriol-xray-860.avif';
-      img.onload = () => (xray.style.backgroundImage = `url(${img.src})`);
-    };
-    addEventListener('load', () => setTimeout(load, 2500), { once: true });
-    hero.addEventListener('pointerenter', () => xray.classList.add('on'));
-    hero.addEventListener('pointerleave', () => xray.classList.remove('on'));
-  }
-
   // Parallax del hero con el ratón
   if (hero) hero.addEventListener('pointermove', e => {
     const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
     photo.style.setProperty('--mx', x * 18 + 'px'); photo.style.setProperty('--my', y * 10 + 'px');
-    if (xray) {
-      xray.style.setProperty('--mx', x * 18 + 'px'); xray.style.setProperty('--my', y * 10 + 'px');
-      const r = xray.getBoundingClientRect();
-      xray.style.setProperty('--sx', e.clientX - r.left + 'px'); xray.style.setProperty('--sy', e.clientY - r.top + 'px');
-    }
+    if (xray) { xray.style.setProperty('--mx', x * 18 + 'px'); xray.style.setProperty('--my', y * 10 + 'px'); }
     names.forEach(n => { n.style.setProperty('--mx', x * -30 + 'px'); n.style.setProperty('--my', y * -14 + 'px'); });
   });
 

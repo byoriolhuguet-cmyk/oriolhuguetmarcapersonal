@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<script>try{if(sessionStorage.getItem("oh"))document.documentElement.classList.add("ld-skip");sessionStorage.setItem("oh","1")}catch(e){}</script>
+<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("oh"))document.documentElement.classList.add("ld-skip");sessionStorage.setItem("oh","1")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Oriol Huguet | Especialista en IA y Marketing Deportivo · Digital Retail y E-commerce</title>
 <meta name="description" content="Oriol Huguet, especialista en IA, marketing deportivo, digital retail y e-commerce en Barcelona. Ayudo a clubes, atletas y marcas deportivas a vender y crecer con inteligencia artificial.">
@@ -75,11 +75,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 @media (max-width:600px){.brand small{display:none}.sec-head span:last-child{display:none}.big{font-size:9.2vw;font-stretch:100%}.wall-head{flex-direction:column;align-items:start}}
 
 /* ---------- HERO ---------- */
-.hero{position:relative;background:radial-gradient(55% 60% at 50% 62%,var(--brand-2) 0%,transparent 72%),var(--brand);color:var(--paper);min-height:100svh;overflow:hidden;isolation:isolate}
-.hero-stage{position:relative;height:100svh;min-height:600px}
-.hero::before,.hero::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
-.hero::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
-.hero::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
+.hero{position:relative;background:var(--brand);color:var(--paper);isolation:isolate;--rev:0}
+.js .hero{--rev:100}
+.hero-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:clip;background:radial-gradient(55% 60% at 50% 62%,var(--brand-2) 0%,transparent 72%),var(--brand)}
+.hero-scroll{height:75svh}
+.hero-stage::before,.hero-stage::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
+.hero-stage::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
+.hero-stage::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
 .hn{position:absolute;inset:clamp(84px,13vh,140px) 0 auto;z-index:1;margin:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(60px,17vw,360px);font-weight:900;font-stretch:125%;line-height:.8;letter-spacing:-.035em;text-transform:uppercase;user-select:none}
 .hn .ln{display:block;white-space:nowrap;overflow:hidden;padding:.07em .06em 0;margin-top:-.07em}
 .ch{display:inline-block;animation:up 1s calc(var(--d) + .05s + var(--i) * 55ms) var(--ease) both}
@@ -87,15 +89,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 @keyframes up{from{transform:translateY(105%) rotate(6deg)}}
 .hn--outline{z-index:3;color:transparent;-webkit-text-stroke:1.5px var(--accent);pointer-events:none}
 @keyframes stretch{from{font-stretch:62%;letter-spacing:.02em}}
-.hero-photo{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);transform:translate3d(-50%,var(--py,0),0);animation:rise 1.3s calc(var(--d) - .1s) var(--ease) both}
+.hero-photo{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);transform:translate3d(-50%,calc(var(--rev) * 1.25%),0) scale(calc(1 + var(--rev) * .0015));transform-origin:50% 100%}
 .hero-photo img{width:100%}
 @keyframes rise{from{transform:translate3d(-50%,14%,0) scale(1.12)}}
 .hero-photo,.hn{translate:var(--mx,0) var(--my,0);transition:translate .6s var(--ease)}
-.hero-foot,.kicker,.badge{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
+.kicker,.badge,.scroll-hint{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
 .nav{animation:navin 1s calc(var(--d) + .3s) var(--ease) both}
 @keyframes fadeup{from{opacity:0;transform:translateY(24px)}}
 @keyframes navin{from{opacity:0;transform:translateY(-30px)}}
-.hero-foot{position:absolute;z-index:4;inset:auto var(--pad) clamp(52px,7vh,72px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none}
+.hero-foot{position:relative;z-index:4;margin-top:-220px;height:220px;padding:0 var(--pad) clamp(52px,7vh,72px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none}
 .hero-foot>*{pointer-events:auto}
 .tagline{max-width:23ch;font-size:clamp(1rem,1.25vw,1.2rem);font-weight:600;line-height:1.25;letter-spacing:-.01em}
 .tagline strong{font-weight:800;color:var(--accent)}
@@ -103,6 +105,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .status p{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
 .status ul{display:grid;gap:4px}
 .status li span{color:var(--accent)}
+.scroll-hint{position:absolute;z-index:4;left:50%;bottom:clamp(28px,6vh,60px);translate:-50% 0;display:grid;justify-items:center;gap:10px;font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;opacity:calc(1 - (100 - var(--rev)) / 25)}
+.scroll-hint i{width:1px;height:46px;background:linear-gradient(var(--accent) 50%,rgba(255,199,44,.15) 50%);background-size:100% 200%;animation:hint 1.6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes hint{from{background-position:0 100%}to{background-position:0 -100%}}
 .kicker{position:absolute;z-index:4;left:var(--pad);right:var(--pad);top:clamp(70px,9.5vh,100px);display:none;justify-content:space-between;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
 .badge{position:absolute;z-index:4;right:var(--pad);top:44%;width:132px;height:132px;display:grid;place-items:center;text-decoration:none}
 .badge svg{position:absolute;inset:0;animation:spin 16s linear infinite}
@@ -110,13 +115,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (min-width:701px){.kicker{display:flex}}
 @media (max-width:700px){
-  .hero-stage{height:auto;min-height:0;aspect-ratio:auto;padding-top:0}
-  .hn{position:relative;inset:auto;padding-top:96px;animation:none}
-  .hero-photo{position:relative;left:auto;transform:none;width:118vw;margin:-34vw 0 0 -9vw;animation:none}
-  .hn--outline{position:absolute;top:0;left:0;right:0}
-  .hero-foot{position:relative;inset:auto;flex-direction:column;align-items:stretch;padding:22px var(--pad) 28px;background:var(--brand)}
+  .hn{inset:96px 0 auto;animation:none}
+  .hero-photo{width:128vw}
+  .hero-foot{margin-top:0;height:auto;flex-direction:column;align-items:stretch;padding:22px var(--pad) 28px;background:var(--brand)}
   .tagline{max-width:none;font-size:1.25rem}
-  .badge{top:auto;bottom:34%;width:104px;height:104px;right:12px}
+  .badge{top:auto;bottom:calc(34% + 40px);width:104px;height:104px;right:12px}
 }
 
 /* ---------- MARQUEE ---------- */
@@ -392,10 +395,10 @@ section{position:relative}
 .faq-i p{max-width:70ch;padding:0 60px 28px 0;color:var(--mute);font-size:1.05rem;animation:fadeup .6s var(--ease)}
 
 /* rayos X */
-.xray{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);aspect-ratio:1240/1181;transform:translate3d(-50%,var(--py,0),0);translate:var(--mx,0) var(--my,0);pointer-events:none;background:center bottom/100% no-repeat;-webkit-mask:radial-gradient(circle at var(--sx,50%) var(--sy,40%),#000 0,#000 var(--sr,0px),transparent calc(var(--sr,0px) + 2px));mask:radial-gradient(circle at var(--sx,50%) var(--sy,40%),#000 0,#000 var(--sr,0px),transparent calc(var(--sr,0px) + 2px));transition:--sr .5s var(--ease)}
+.xray{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);aspect-ratio:1240/1181;transform:translate3d(-50%,calc(var(--rev) * 1.25%),0) scale(calc(1 + var(--rev) * .0015));transform-origin:50% 100%;translate:var(--mx,0) var(--my,0);pointer-events:none;background:center bottom/100% no-repeat;-webkit-mask:radial-gradient(circle at var(--sx,50%) var(--sy,40%),#000 0,#000 var(--sr,0px),transparent calc(var(--sr,0px) + 2px));mask:radial-gradient(circle at var(--sx,50%) var(--sy,40%),#000 0,#000 var(--sr,0px),transparent calc(var(--sr,0px) + 2px));transition:--sr .5s var(--ease)}
 @property --sr{syntax:"<length>";inherits:false;initial-value:0px}
 .xray.on{--sr:clamp(90px,11vw,170px)}
-@media (max-width:700px){.xray{display:none}}
+@media (max-width:700px){.xray{width:128vw}}
 
 /* servicios en horizontal */
 .svc--cta{background:var(--accent);color:var(--ink);border-color:var(--accent)}
@@ -476,6 +479,7 @@ section{position:relative}
 @media (pointer:fine){.cursor{display:block}}
 
 @media (prefers-reduced-motion:reduce){
+  .js .hero{--rev:0}.hero-scroll{height:0}.scroll-hint{display:none}
   .split .wi,.giant span{transform:none!important}
   .loader{display:none}.rvc,.stg.stg>*{clip-path:none!important;opacity:1!important;transform:none!important}.langs.stg>li{--lv:var(--l)}.pitch *{stroke-dashoffset:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -546,11 +550,13 @@ section{position:relative}
     </picture>
     <div class="xray" aria-hidden="true" data-xray></div>
     <p class="hn hn--outline" aria-hidden="true" data-hn><span class="ln"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></p>
+    <p class="scroll-hint" aria-hidden="true"><span>Desliza</span><i></i></p>
     <a class="badge" data-mag href="#sobre-mi" aria-label="Retail · IA · Sports · Growth: bajar a Sobre mí">
       <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text font-size="9.6" font-weight="800" fill="#f3f5fa"><textPath href="#c" textLength="236" lengthAdjust="spacing">RETAIL · IA · SPORTS · GROWTH · </textPath></text></svg>
       <span aria-hidden="true">↓</span>
     </a>
   </div>
+  <div class="hero-scroll" aria-hidden="true"></div>
   <div class="hero-foot">
     <p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
     <div class="status">
@@ -637,10 +643,11 @@ section{position:relative}
       <img class="job-logo" src="assets/img/logos/cobaltax.webp" width="443" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
-    <li class="job" data-logo="" data-mono="AR Stars">
+    <li class="job" data-logo="assets/img/logos/ar-stars-academy.webp" data-mono="AR Stars">
       <span class="job-yr">2024 — 2026</span>
       <div><h3>Director de Marketing y Comunicación</h3><span class="job-co">AR Stars Academy</span></div>
       <p class="job-desc">Dirigí el marketing de la IBN Battuta Cup, torneo que se disputará en Tánger en 2027.</p>
+      <img class="job-logo" src="assets/img/logos/ar-stars-academy.webp" width="199" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
     <li class="job" data-logo="assets/img/logos/terrassa-fc.webp" data-mono="Terrassa FC">
@@ -674,7 +681,7 @@ section{position:relative}
     <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spreadit</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/terrassa-fc.webp" width="174" height="200" alt="" loading="lazy" decoding="async"><figcaption>Terrassa FC</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/lleida.webp" width="169" height="200" alt="" loading="lazy" decoding="async"><figcaption>Lleida</figcaption></figure></li>
-    <li><figure class="club club--txt"><b>AR Stars Academy</b></figure></li>
+    <li><figure class="club"><img src="assets/img/logos/ar-stars-academy.webp" width="199" height="200" alt="" loading="lazy" decoding="async"><figcaption>AR Stars Academy</figcaption></figure></li>
     <li><figure class="club club--wide"><img src="assets/img/logos/founderz.webp" width="643" height="120" alt="" loading="lazy" decoding="async"><figcaption>Founderz</figcaption></figure></li>
     <li><figure class="club club--wide"><img src="assets/img/logos/cobaltax.webp" width="443" height="200" alt="" loading="lazy" decoding="async"><figcaption>Cobaltax</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/onefootball.webp" width="229" height="200" alt="" loading="lazy" decoding="async"><figcaption>OneFootball</figcaption></figure></li>
