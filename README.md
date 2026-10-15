@@ -14,6 +14,14 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
    `<figure class="club"><img src="assets/img/logos/NOMBRE.webp" width="…" height="200" alt="" loading="lazy" decoding="async"><figcaption>Nombre</figcaption></figure>`.
 3. En la trayectoria, pon la ruta en `data-logo="…"` del puesto y añade `<img class="job-logo" …>` (es la versión móvil, copia la de Spread It).
 
+## Blog
+- Artículos en `content/blog/*.md` (front matter: title, slug, description, keyword, category, date, read, excerpt).
+- Para publicar uno nuevo: añade el `.md` y ejecuta `pip install markdown pillow fonttools brotli && python3 scripts/build_blog.py`. Genera `/blog/`, la página del artículo, su imagen para redes, los últimos artículos de la portada, `sitemap.xml` y la lista de `llms.txt`.
+- El blog no está en el menú de la portada: se llega desde «Leer el blog», el bloque «Últimos artículos» y el pie.
+
+## WhatsApp
+- Botón flotante en todas las páginas hacia wa.me/34611416474 con un mensaje inicial. Para cambiar el número, edita `WA_URL` en `scripts/build_blog.py` y el enlace `.wa` de `index.html`.
+
 ## Animaciones
 - **Carga**: firma «OH» con balón que se dibuja, contador tipo marcador 000→100, palabras que rotan, balón que recorre la línea de campo y salida en columnas azul y amarillo. Solo en la primera visita de cada sesión; todo en CSS.
 - **Portada**: nombre letra a letra, foto con zoom de entrada, parallax con ratón y scroll y «rayos X»: un foco que revela una versión pop-art de la foto al pasar el ratón (la imagen se carga después, sin afectar al rendimiento).
