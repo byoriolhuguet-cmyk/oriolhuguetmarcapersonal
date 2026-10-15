@@ -78,7 +78,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .hero{position:relative;background:var(--brand);color:var(--paper);isolation:isolate;--rev:0}
 .js .hero{--rev:100}
 .hero-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:clip;background:radial-gradient(55% 60% at 50% 62%,var(--brand-2) 0%,transparent 72%),var(--brand)}
-.hero-scroll{height:75svh}
+.hero-scroll{height:150svh}
 .hero-stage::before,.hero-stage::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
 .hero-stage::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
 .hero-stage::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
@@ -401,6 +401,10 @@ section{position:relative}
 @media (max-width:700px){.xray{width:128vw}}
 
 /* servicios en horizontal */
+.hs-meter{display:none;align-items:center;gap:18px;margin-top:clamp(18px,3vh,32px);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.hs-count b{color:var(--accent);font-size:1.1rem;letter-spacing:0;font-variant-numeric:tabular-nums}
+.hs-meter i{position:relative;flex:1;height:2px;background:var(--line)}
+.hs-meter i b{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
 .svc--cta{background:var(--accent);color:var(--ink);border-color:var(--accent)}
 .svc--cta a{display:flex;flex-direction:column;height:100%;text-decoration:none}
 .svc--cta .svc-n,.svc--cta p{color:var(--ink)}
@@ -408,7 +412,11 @@ section{position:relative}
 @media (min-width:1100px) and (prefers-reduced-motion:no-preference){
   .hs{--cw:min(34vw,520px);--gap:14px;--travel:calc(5 * var(--cw) + 4 * var(--gap) - 100vw + 2 * var(--pad));height:calc(100vh + var(--travel));padding-block:0}
   .hs-pin{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
-  .hs .services{display:flex;width:max-content;gap:var(--gap);transform:translate3d(calc(var(--hp,0) * var(--travel) * -1),0,0);will-change:transform}
+  .hs .services{display:flex;width:max-content;gap:var(--gap);will-change:transform}
+  .hs .svc{transform-origin:50% 100%;will-change:transform;transition:color .4s}
+  .hs .svc:hover{transform:none}
+  .hs .big{translate:0 0!important}
+  .hs-meter{display:flex!important}
   .hs .svc{width:var(--cw);min-height:min(46vh,440px)}
   .hs .big{margin-bottom:clamp(24px,4vh,48px)!important}
   .hs .sec-head{margin-bottom:clamp(20px,3vh,40px)}
@@ -698,13 +706,14 @@ section{position:relative}
   <svg class="pitch" data-pitch viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#f1efe8" stroke-width="2"><rect pathLength="1" x="40" y="40" width="1120" height="720"/><line pathLength="1" x1="600" y1="40" x2="600" y2="760"/><circle pathLength="1" cx="600" cy="400" r="100"/><rect pathLength="1" x="40" y="220" width="170" height="360"/><rect pathLength="1" x="990" y="220" width="170" height="360"/><rect pathLength="1" x="40" y="320" width="60" height="160"/><rect pathLength="1" x="1100" y="320" width="60" height="160"/><path pathLength="1" d="M210 330a90 90 0 0 1 0 140M990 330a90 90 0 0 0 0 140"/></svg>
   <div class="sec-head"><span class="label">03 — Servicios</span><span>IA · Marketing deportivo · E-commerce</span></div>
   <h2 class="big rvc" id="svc-title" style="margin-bottom:clamp(40px,6vw,80px)">Cómo te<br>ayudo a crecer</h2>
-  <ul class="services stg">
+  <ul class="services">
     <li class="svc"><span class="svc-n" aria-hidden="true">01</span><h3>Digital retail y <span style="white-space:nowrap">e-commerce</span></h3><p>Estrategia de tienda online y canal digital para marcas y clubes: catálogo, experiencia de compra y conversión.</p><ul><li>E-commerce</li><li>Retail</li><li>CRO</li></ul></li>
     <li class="svc"><span class="svc-n" aria-hidden="true">02</span><h3>Shopper marketing con IA</h3><p>Uso la inteligencia artificial para entender al aficionado que compra y activarlo en el momento justo. También lo enseño en Founderz.</p><ul><li>IA</li><li>Prompting</li><li>Datos</li></ul></li>
     <li class="svc"><span class="svc-n" aria-hidden="true">03</span><h3>Growth y marketing deportivo</h3><p>Branding, contenido y campañas que conectan con la afición y generan resultados medibles.</p><ul><li>Branding</li><li>SEO</li><li>SEM</li><li>Content</li></ul></li>
     <li class="svc"><span class="svc-n" aria-hidden="true">04</span><h3>Automatización y proyectos</h3><p>Flujos que ahorran horas: CRM, email y procesos conectados, con gestión de proyectos de principio a fin.</p><ul><li>Make</li><li>Brevo</li><li>CRM</li></ul></li>
     <li class="svc svc--cta"><a href="#contacto"><span class="svc-n" aria-hidden="true">→</span><h3>¿Empezamos tu próximo proyecto?</h3><p>Cuéntame qué necesitas y lo vemos juntos.</p></a></li>
   </ul>
+  <div class="hs-meter" aria-hidden="true"><span class="hs-count"><b data-hs-n>01</b> / 05</span><i><b data-hs-bar></b></i><span>Desliza</span></div>
   </div>
 </section>
 

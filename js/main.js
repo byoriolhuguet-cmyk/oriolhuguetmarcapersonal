@@ -99,6 +99,26 @@
   const wide = matchMedia('(min-width: 1100px)');
   const bigs = $$('.big');
   let ticking = false, lastY = scrollY, skew = 0, vel = 0, dir = 1;
+  // servicios en horizontal: posición suavizada y tarjetas que se enderezan al entrar
+  let hsTarget = 0, hsCur = 0, hsRun = false;
+  const hsCards = hs ? [...hs.querySelectorAll('.svc')] : [];
+  const hsN = d.querySelector('[data-hs-n]'), hsBar = d.querySelector('[data-hs-bar]');
+  const hsLoop = () => {
+    hsCur += (hsTarget - hsCur) * 0.14;
+    if (Math.abs(hsTarget - hsCur) < 0.0005) hsCur = hsTarget;
+    const pin = hsTrack.parentElement, cs = getComputedStyle(pin);
+    const travel = Math.max(0, hsTrack.scrollWidth - pin.clientWidth + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight));
+    hsTrack.style.transform = `translate3d(${-hsCur * travel}px,0,0)`;
+    const vw = innerWidth;
+    hsCards.forEach(c => {
+      const r = c.getBoundingClientRect(), k = Math.max(-1, Math.min(1, (r.left + r.width / 2 - vw / 2) / vw));
+      const t = Math.max(0, k - 0.15);
+      c.style.transform = `translate3d(0,${t * 60}px,0) rotate(${t * 7}deg) scale(${1 - t * 0.12})`;
+    });
+    hsN.textContent = String(Math.min(hsCards.length, 1 + Math.round(hsCur * (hsCards.length - 1)))).padStart(2, '0');
+    hsBar.style.transform = `scaleX(${hsCur})`;
+    if (hsCur !== hsTarget) requestAnimationFrame(hsLoop); else hsRun = false;
+  };
   const onScroll = () => {
     ticking = false;
     const y = scrollY, vh = innerHeight;
@@ -107,7 +127,10 @@
     vel = Math.min(30, Math.abs(y - lastY));
     if (!reduce && hs && wide.matches) {
       const r = hs.getBoundingClientRect();
-      hsTrack.style.setProperty('--hp', Math.max(0, Math.min(1, -r.top / Math.max(1, r.height - vh))).toFixed(4));
+      hsTarget = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height - vh)));
+      if (!hsRun) { hsRun = true; requestAnimationFrame(hsLoop); }
+    } else if (hsTrack && hsTrack.style.transform) {
+      hsTrack.style.transform = ''; hsCards.forEach(c => (c.style.transform = ''));
     }
     if (!reduce) bigs.forEach(bg => {
       const r = bg.getBoundingClientRect();
@@ -120,9 +143,9 @@
       onScroll.t = setTimeout(() => marq.forEach(m => (m.style.transform = '')), 120);
     }
     lastY = y;
-    if (!reduce && hero && y < vh * 2) {
-      // la foto sube desde abajo mientras el escenario está fijado
-      const p = Math.min(1, y / (vh * 0.7)), e = 1 - Math.pow(1 - p, 3);
+    if (!reduce && hero) {
+      // la foto sube desde abajo mientras el escenario está fijado; luego se queda quieta
+      const p = Math.min(1, y / (vh * 0.65)), e = 1 - Math.pow(1 - p, 3);
       hero.style.setProperty('--rev', ((1 - e) * 100).toFixed(2));
       names.forEach(n => {
         n.style.transform = `translate3d(0,${-e * 4}vh,0) scale(${1 - e * 0.06})`;
@@ -207,6 +230,8 @@
   };
   addEventListener('wheel', e => {
     if (e.ctrlKey || e.defaultPrevented) return;
+    const pad = e.wheelDeltaY ? Math.abs(e.wheelDeltaY) !== 120 && e.wheelDeltaY % 120 !== 0 : e.deltaMode === 0 && Math.abs(e.deltaY) < 50;
+    if (pad) { smooth = false; return; }
     e.preventDefault();
     if (!smooth) { target = sy = scrollY; }
     target = Math.max(0, Math.min(maxY(), target + e.deltaY * (e.deltaMode === 1 ? 40 : 1)));
