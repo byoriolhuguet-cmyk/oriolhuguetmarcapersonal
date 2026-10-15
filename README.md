@@ -23,7 +23,7 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
 - Botón flotante en todas las páginas hacia wa.me/34611416474 con un mensaje inicial. Para cambiar el número, edita `WA_URL` en `scripts/build_blog.py` y el enlace `.wa` de `index.html`.
 
 ## Animaciones
-- **Carga**: firma «OH» con balón que se dibuja, contador tipo marcador 000→100, palabras que rotan, balón que recorre la línea de campo y salida en columnas azul y amarillo. Solo en la primera visita de cada sesión; todo en CSS.
+- **Carga** (unos 4 s, solo la primera visita de cada sesión): esfera de cronómetro que se dibuja mientras pasan pictogramas de atletismo, baloncesto, tenis, ciclismo, natación y fútbol; palabras que rotan hasta «Oriol Huguet», cronómetro 00:02.80, barra de progreso y salida en apertura circular azul y amarilla. Todo en CSS.
 - **Portada**: nombre letra a letra, foto con zoom de entrada, parallax con ratón y scroll y «rayos X»: un foco que revela una versión pop-art de la foto al pasar el ratón (la imagen se carga después, sin afectar al rendimiento).
 - **Scroll**: scroll suave con inercia (ratón), titulares palabra a palabra, etiquetas que se descifran, servicios en horizontal fijados (escritorio), cinta que cambia de sentido con el scroll, firma gigante en el pie, listas escalonadas, barra de progreso y botones magnéticos.
 - Todo se desactiva con «reducir movimiento» del sistema; en móvil se quitan los efectos de ratón y el scroll horizontal.
