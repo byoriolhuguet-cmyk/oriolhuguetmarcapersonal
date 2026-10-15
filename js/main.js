@@ -52,16 +52,29 @@
     if (n && !reduce) count(n);
     io.unobserve(e.target);
   }), { rootMargin: '0px 0px -12% 0px' });
-  $$('.rv').forEach(el => io.observe(el));
+  $$('.stg').forEach(g => [...g.children].forEach((c, i) => c.style.setProperty('--k', i)));
+  $$('.rv,.rvc,.stg,[data-pitch]').forEach(el => io.observe(el));
+  // quitar el retardo escalonado tras la entrada para que el hover responda al instante
+  $$('.stg').forEach(g => g.addEventListener('transitionend', () => setTimeout(() => [...g.children].forEach(c => c.style.setProperty('--k', 0)), 400), { once: true }));
 
   // Scroll: parallax del hero + manifiesto
   const photo = d.querySelector('[data-photo]');
   const names = $$('[data-hn]');
   const hero = d.querySelector('.hero');
-  let ticking = false;
+  const prog = d.querySelector('[data-progress]');
+  const marq = $$('.marquee p');
+  let ticking = false, lastY = scrollY, skew = 0;
   const onScroll = () => {
     ticking = false;
     const y = scrollY, vh = innerHeight;
+    prog.style.transform = `scaleX(${y / Math.max(1, d.documentElement.scrollHeight - vh)})`;
+    if (!reduce) {
+      skew = Math.max(-12, Math.min(12, (y - lastY) * 0.4));
+      marq.forEach(m => (m.style.transform = `skewX(${-skew}deg)`));
+      clearTimeout(onScroll.t);
+      onScroll.t = setTimeout(() => marq.forEach(m => (m.style.transform = '')), 120);
+    }
+    lastY = y;
     if (!reduce && y < vh * 1.2 && innerWidth > 700) {
       photo.style.setProperty('--py', y * 0.18 + 'px');
       const s = Math.max(62, 125 - y / vh * 70);
@@ -95,6 +108,22 @@
   $$('a,button,.job,.club,.svc').forEach(el => {
     el.addEventListener('pointerenter', () => cur.classList.add('big'));
     el.addEventListener('pointerleave', () => cur.classList.remove('big'));
+  });
+
+  // Parallax del hero con el ratón
+  if (hero) hero.addEventListener('pointermove', e => {
+    const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    photo.style.setProperty('--mx', x * 18 + 'px'); photo.style.setProperty('--my', y * 10 + 'px');
+    names.forEach(n => { n.style.setProperty('--mx', x * -30 + 'px'); n.style.setProperty('--my', y * -14 + 'px'); });
+  });
+
+  // Botones magnéticos
+  $$('[data-mag]').forEach(el => {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.translate = `${(e.clientX - r.left - r.width / 2) * .3}px ${(e.clientY - r.top - r.height / 2) * .35}px`;
+    });
+    el.addEventListener('pointerleave', () => (el.style.translate = '0 0'));
   });
 
   // Logo que sigue al cursor en la trayectoria

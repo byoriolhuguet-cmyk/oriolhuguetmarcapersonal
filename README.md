@@ -14,7 +14,12 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
    `<figure class="club"><img src="assets/img/logos/NOMBRE.webp" width="…" height="200" alt="" loading="lazy" decoding="async"><figcaption>Nombre</figcaption></figure>`.
 3. En la trayectoria, pon la ruta en `data-logo="…"` del puesto y añade `<img class="job-logo" …>` (es la versión móvil, copia la de Spread It).
 
+## Animaciones
+- Pantalla de carga (solo en la primera visita de cada sesión), entrada letra a letra del nombre, parallax con el ratón y el scroll, titulares que se destapan, listas escalonadas, barra de progreso, botones magnéticos y líneas del campo que se dibujan.
+- Todo se desactiva con «reducir movimiento» del sistema.
+
 ## SEO y agentes
-- Datos estructurados `Person` + `ProfilePage` (experiencia, formación, credenciales, idiomas, LinkedIn).
+- Posicionado como especialista en IA, marketing deportivo, digital retail y e-commerce (title, description, H1, JSON-LD y FAQ).
+- Datos estructurados `Person` + `ProfilePage` + `FAQPage` (experiencia, formación, credenciales, idiomas, LinkedIn).
 - `llms.txt` con el perfil en texto plano para asistentes de IA, `sitemap.xml`, `robots.txt` e imagen Open Graph.
 - Si cambias el CV, actualiza también `llms.txt` y el JSON-LD.

@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("oh"))document.documentElement.classList.add("ld-skip");sessionStorage.setItem("oh","1")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Oriol Huguet — Digital Retail & E-commerce Strategist | IA y Growth en el deporte</title>
-<meta name="description" content="Oriol Huguet, Digital Retail &amp; E-commerce Strategist en Barcelona: shopper marketing y growth impulsados por IA para clubes, atletas y marcas deportivas. Guest Lecturer en Founderz.">
+<title>Oriol Huguet | Especialista en IA y Marketing Deportivo · Digital Retail y E-commerce</title>
+<meta name="description" content="Oriol Huguet, especialista en IA, marketing deportivo, digital retail y e-commerce en Barcelona. Ayudo a clubes, atletas y marcas deportivas a vender y crecer con inteligencia artificial.">
 <meta name="author" content="Oriol Huguet">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.oriolhuguet.com/">
@@ -12,8 +13,8 @@
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Oriol Huguet">
-<meta property="og:title" content="Oriol Huguet — Digital Retail & E-commerce Strategist">
-<meta property="og:description" content="AI-Driven Shopper Marketing &amp; Growth in Sports. Digital retail, e-commerce e inteligencia artificial para el deporte.">
+<meta property="og:title" content="Oriol Huguet | Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce">
+<meta property="og:description" content="Inteligencia artificial aplicada al marketing deportivo, el digital retail y el e-commerce. Clubes, atletas y marcas que venden y crecen.">
 <meta property="og:url" content="https://www.oriolhuguet.com/">
 <meta property="og:image" content="https://www.oriolhuguet.com/assets/img/og-oriol-huguet.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,6 +23,8 @@
 <meta property="profile:first_name" content="Oriol">
 <meta property="profile:last_name" content="Huguet">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oriol Huguet | Especialista en IA y Marketing Deportivo">
+<meta name="twitter:description" content="IA, marketing deportivo, digital retail y e-commerce desde Barcelona.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
@@ -34,6 +37,7 @@
 @font-face{font-family:"Archivo";src:url(assets/fonts/archivo.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
 @font-face{font-family:"Archivo Fallback";src:local("Arial");size-adjust:104%;ascent-override:88%;descent-override:22%}
 :root{
+  --d:1.5s;
   --brand:#00215e;--brand-2:#0a3a9c;--accent:#ffc72c;--ink:#000e2b;--ink-2:#06194a;--paper:#f3f5fa;--mute:#8c97b3;--mute-2:#55617f;
   --line:rgba(243,245,250,.14);--line-ink:rgba(0,14,43,.15);
   --f:"Archivo","Archivo Fallback",system-ui,sans-serif;
@@ -76,13 +80,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .hero::before,.hero::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
 .hero::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
 .hero::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
-.hn{position:absolute;inset:clamp(84px,13vh,140px) 0 auto;z-index:1;margin:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(60px,17vw,360px);font-weight:900;font-stretch:125%;line-height:.8;letter-spacing:-.035em;text-transform:uppercase;user-select:none;animation:stretch 1.4s var(--ease) both}
-.hn span{display:block;white-space:nowrap}
+.hn{position:absolute;inset:clamp(84px,13vh,140px) 0 auto;z-index:1;margin:0;display:flex;flex-direction:column;align-items:center;font-size:clamp(60px,17vw,360px);font-weight:900;font-stretch:125%;line-height:.8;letter-spacing:-.035em;text-transform:uppercase;user-select:none}
+.hn .ln{display:block;white-space:nowrap;overflow:hidden;padding:.07em .06em 0;margin-top:-.07em}
+.ch{display:inline-block;animation:up 1s calc(var(--d) + .05s + var(--i) * 55ms) var(--ease) both}
+.hn .ln+.ln .ch{animation-delay:calc(var(--d) + .3s + var(--i) * 55ms)}
+@keyframes up{from{transform:translateY(105%) rotate(6deg)}}
 .hn--outline{z-index:3;color:transparent;-webkit-text-stroke:1.5px var(--accent);pointer-events:none}
 @keyframes stretch{from{font-stretch:62%;letter-spacing:.02em}}
-.hero-photo{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);transform:translate3d(-50%,var(--py,0),0);animation:rise 1.2s .1s var(--ease) both}
+.hero-photo{position:absolute;z-index:2;left:50%;bottom:0;width:min(92vh*1.05,64vw);transform:translate3d(-50%,var(--py,0),0);animation:rise 1.3s calc(var(--d) - .1s) var(--ease) both}
 .hero-photo img{width:100%}
-@keyframes rise{from{transform:translate3d(-50%,6%,0)}}
+@keyframes rise{from{transform:translate3d(-50%,14%,0)}}
+.hero-photo,.hn{translate:var(--mx,0) var(--my,0);transition:translate .6s var(--ease)}
+.hero-foot,.kicker,.badge{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
+.nav{animation:navin 1s calc(var(--d) + .3s) var(--ease) both}
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}}
+@keyframes navin{from{opacity:0;transform:translateY(-30px)}}
 .hero-foot{position:absolute;z-index:4;inset:auto var(--pad) clamp(52px,7vh,72px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none}
 .hero-foot>*{pointer-events:auto}
 .tagline{max-width:23ch;font-size:clamp(1rem,1.25vw,1.2rem);font-weight:600;line-height:1.25;letter-spacing:-.01em}
@@ -246,7 +258,7 @@ section{position:relative}
 .langs{display:grid;gap:10px}
 .langs li{display:grid;grid-template-columns:1fr auto;gap:6px;font-weight:600}
 .langs li span{color:var(--mute-2);font-weight:500}
-.langs li::after{content:"";grid-column:1/-1;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--ink) var(--l),rgba(0,14,43,.1) var(--l))}
+.langs li::after{content:"";grid-column:1/-1;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--ink) var(--lv),rgba(0,14,43,.1) var(--lv))}
 @media (max-width:900px){.edu-grid{grid-template-columns:1fr}.edu li{grid-template-columns:1fr;gap:4px}.edu time{padding:0}}
 
 /* ---------- CONTACTO ---------- */
@@ -269,6 +281,77 @@ section{position:relative}
 .foot a:hover{text-decoration:underline}
 @media (max-width:800px){.contact-row{grid-template-columns:1fr}}
 
+/* loader */
+.ld-skip{--d:0s}
+.ld-skip .loader{display:none}
+@property --n{syntax:"<integer>";inherits:false;initial-value:0}
+.loader{position:fixed;inset:0;z-index:200;pointer-events:none;animation:ldhide 0s 2.6s forwards}
+.ld-a,.ld-b{position:absolute;inset:0}
+.ld-a{background:var(--brand);display:grid;place-items:center;animation:ldout .9s 1.45s var(--ease) forwards}
+.ld-b{background:var(--accent);transform:translateY(100%);animation:ldin .55s 1.05s var(--ease) forwards,ldout .9s 1.6s var(--ease) forwards}
+.ld-in{display:grid;justify-items:center;gap:14px;color:var(--paper)}
+.ld-mark{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--accent);color:var(--ink);font-weight:900;font-stretch:120%;font-size:1.7rem;animation:ldpop .8s var(--ease) both}
+.ld-txt{font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);animation:fadeup .8s .15s var(--ease) both}
+.ld-n{font-size:clamp(3rem,9vw,6rem);font-weight:900;font-stretch:70%;line-height:1;font-variant-numeric:tabular-nums;counter-reset:n var(--n);animation:ldcount 1s .1s cubic-bezier(.6,0,.2,1) forwards}
+.ld-n::after{content:counter(n) "%"}
+.ld-bar{position:absolute;left:0;bottom:0;height:6px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:ldbar 1s .1s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes ldcount{to{--n:100}}
+@keyframes ldbar{to{transform:scaleX(1)}}
+@keyframes ldpop{from{transform:scale(0) rotate(-90deg)}}
+@keyframes ldin{to{transform:translateY(0)}}
+@keyframes ldout{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@keyframes ldhide{to{visibility:hidden}}
+
+/* progreso */
+.progress{position:fixed;left:0;top:0;z-index:60;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+
+/* titulares que se destapan */
+.rvc{clip-path:inset(0 0 100% 0);transform:translateY(30px);transition:clip-path 1.1s var(--ease),transform 1.1s var(--ease)}
+.rvc.in{clip-path:inset(-25% -5% -25% -5%);transform:none}
+.no-js .rvc{clip-path:none;transform:none}
+
+/* escalonados */
+.stg.stg>*{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease),background .3s,color .4s;transition-delay:calc(var(--k,0) * 70ms)}
+.stg.stg.in>*{opacity:1;transform:none}
+.no-js .stg.stg>*{opacity:1;transform:none}
+.stg.stg.in>.svc:hover{transform:translateY(-8px)}
+.chips.stg.in>li:hover{transform:rotate(-3deg)}
+
+/* idiomas */
+@property --lv{syntax:"<percentage>";inherits:true;initial-value:0%}
+.langs.stg>li{--lv:0%;transition:--lv 1.4s var(--ease) .3s,opacity .8s,transform .8s}
+.langs.stg.in>li{--lv:var(--l)}
+
+/* contacto */
+.contact-big.rv span{transition:transform 1.2s var(--ease)}
+.contact-big.rv:not(.in) span:first-child{transform:translateX(-12%)}
+.contact-big.rv:not(.in) span:nth-child(2){transform:translateX(12%)}
+
+/* campo */
+.pitch *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease)}
+.pitch.in *{stroke-dashoffset:0}
+.no-js .pitch *{stroke-dashoffset:0}
+
+/* ficha flotando */
+.card-in{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{translate:0 -12px}}
+.badge:hover svg{animation-duration:4s}
+[data-mag]{transition:translate .4s var(--ease)}
+.marquee p{transition:transform .3s}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line)}
+.faq-i{border-bottom:1px solid var(--line)}
+.faq-i summary{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;cursor:pointer;list-style:none}
+.faq-i summary::-webkit-details-marker{display:none}
+.faq-i h3{font-size:clamp(1.15rem,2.2vw,1.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;transition:color .3s}
+.faq-i summary:hover h3{color:var(--accent)}
+.faq-i i{flex:none;position:relative;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);transition:transform .5s var(--ease),background .3s}
+.faq-i i::before,.faq-i i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:currentColor}
+.faq-i i::after{transform:rotate(90deg)}
+.faq-i[open] i{transform:rotate(135deg);background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.faq-i p{max-width:70ch;padding:0 60px 28px 0;color:var(--mute);font-size:1.05rem;animation:fadeup .6s var(--ease)}
+
 /* reveal */
 .rv{transform:translateY(40px);opacity:0;transition:transform 1s var(--ease),opacity 1s var(--ease)}
 .rv.in{transform:none;opacity:1}
@@ -280,6 +363,7 @@ section{position:relative}
 @media (pointer:fine){.cursor{display:block}}
 
 @media (prefers-reduced-motion:reduce){
+  .loader{display:none}.rvc,.stg.stg>*{clip-path:none!important;opacity:1!important;transform:none!important}.langs.stg>li{--lv:var(--l)}.pitch *{stroke-dashoffset:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .rv{transform:none;opacity:1}
@@ -287,22 +371,28 @@ section{position:relative}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","givenName":"Oriol","familyName":"Huguet","jobTitle":"Digital Retail & E-commerce Strategist","description":"AI-Driven Shopper Marketing & Growth in Sports. Ayuda a clubes, atletas y marcas deportivas a vender y crecer combinando digital retail, e-commerce e inteligencia artificial.","url":"https://www.oriolhuguet.com/","image":"https://www.oriolhuguet.com/assets/img/og-oriol-huguet.jpg","email":"mailto:byoriolhuguet@gmail.com","telephone":"+34611416474","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail"],
-"worksFor":[{"@type":"Organization","name":"Spreadit | Growth Partners"},{"@type":"SportsOrganization","name":"AR Stars Academy"},{"@type":"EducationalOrganization","name":"Founderz"}],
+{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","givenName":"Oriol","familyName":"Huguet","jobTitle":"Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","hasOccupation":[{"@type":"Occupation","name":"Especialista en inteligencia artificial aplicada al deporte"},{"@type":"Occupation","name":"Especialista en marketing deportivo"},{"@type":"Occupation","name":"Digital Retail & E-commerce Strategist"}],"description":"Especialista en IA, marketing deportivo, digital retail y e-commerce. Ayuda a clubes, atletas y marcas deportivas a vender y crecer con inteligencia artificial.","url":"https://www.oriolhuguet.com/","image":"https://www.oriolhuguet.com/assets/img/og-oriol-huguet.jpg","email":"mailto:byoriolhuguet@gmail.com","telephone":"+34611416474","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail"],
+"worksFor":[{"@type":"Organization","name":"Spreadit | Growth Partners"},{"@type":"EducationalOrganization","name":"Founderz"}],
 "alumniOf":[{"@type":"CollegeOrUniversity","name":"Universitat de Barcelona"},{"@type":"EducationalOrganization","name":"Founderz"},{"@type":"CollegeOrUniversity","name":"Universidad Europea"},{"@type":"CollegeOrUniversity","name":"Universitat Autònoma de Barcelona"},{"@type":"EducationalOrganization","name":"Johan Cruyff Institute"},{"@type":"CollegeOrUniversity","name":"Euncet Business School"}],
-"knowsAbout":["Digital retail","E-commerce","Shopper marketing","Growth marketing","Inteligencia artificial aplicada al deporte","Marketing deportivo","Marketing digital","Patrocinio deportivo","Gestión deportiva","Branding","SEO","SEM","Content marketing","Automatización con Make","Prompt engineering","Project management","Fútbol formativo"],
+"knowsAbout":["Inteligencia artificial aplicada al deporte","Marketing deportivo","Digital retail","E-commerce","Shopper marketing","Growth marketing","Marketing digital","Patrocinio deportivo","Gestión deportiva","Branding","SEO","SEM","Content marketing","Automatización con Make","Prompt engineering","Project management","Fútbol formativo"],
 "knowsLanguage":[{"@type":"Language","name":"Español"},{"@type":"Language","name":"Catalán"},{"@type":"Language","name":"Inglés"},{"@type":"Language","name":"Francés"}],
 "hasCredential":[{"@type":"EducationalOccupationalCredential","name":"Licencia UEFA C","recognizedBy":{"@type":"Organization","name":"Real Federación Española de Fútbol"}},{"@type":"EducationalOccupationalCredential","name":"IA Responsable y Prompt Engineering","recognizedBy":{"@type":"Organization","name":"Founderz + Microsoft"}},{"@type":"EducationalOccupationalCredential","name":"First Certificate in English (B2)","recognizedBy":{"@type":"Organization","name":"Cambridge"}}]},
-{"@type":"ProfilePage","@id":"https://www.oriolhuguet.com/#page","url":"https://www.oriolhuguet.com/","name":"Oriol Huguet — Digital Retail & E-commerce Strategist","inLanguage":"es","mainEntity":{"@id":"https://www.oriolhuguet.com/#oriol"},"dateModified":"2026-10-15"},
-{"@type":"WebSite","@id":"https://www.oriolhuguet.com/#web","url":"https://www.oriolhuguet.com/","name":"Oriol Huguet","inLanguage":"es","publisher":{"@id":"https://www.oriolhuguet.com/#oriol"}}
+{"@type":"ProfilePage","@id":"https://www.oriolhuguet.com/#page","url":"https://www.oriolhuguet.com/","name":"Oriol Huguet | Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","inLanguage":"es","mainEntity":{"@id":"https://www.oriolhuguet.com/#oriol"},"dateModified":"2026-10-15"},
+{"@type":"WebSite","@id":"https://www.oriolhuguet.com/#web","url":"https://www.oriolhuguet.com/","name":"Oriol Huguet","inLanguage":"es","publisher":{"@id":"https://www.oriolhuguet.com/#oriol"}},
+{"@type":"FAQPage","@id":"https://www.oriolhuguet.com/#faq","mainEntity":[{"@type":"Question","name":"¿Qué hace un especialista en IA y marketing deportivo?","acceptedAnswer":{"@type":"Answer","text":"Une el conocimiento del deporte con la inteligencia artificial para que clubes, atletas y marcas comuniquen mejor, automaticen tareas repetitivas y tomen decisiones con datos. En mi caso, combino marketing digital, contenido, automatización y formación en IA."}},{"@type":"Question","name":"¿Cómo puede la inteligencia artificial ayudar a un club o a una marca deportiva?","acceptedAnswer":{"@type":"Answer","text":"Con contenido más rápido y personalizado, análisis del aficionado y del comprador, automatización de CRM y email, y asistentes que ahorran horas al equipo. Lo enseño en la masterclass «La IA en la gestión deportiva» de Founderz."}},{"@type":"Question","name":"¿Trabajas en digital retail y e-commerce para marcas deportivas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Diseño la estrategia de tienda online y canal digital: catálogo, experiencia de compra, shopper marketing y conversión, apoyándome en IA para entender y activar al cliente."}},{"@type":"Question","name":"¿Dónde trabajas y cómo puedo contactarte?","acceptedAnswer":{"@type":"Answer","text":"Trabajo desde Barcelona y en remoto, en castellano, catalán e inglés. Escríbeme a byoriolhuguet@gmail.com o llámame al 611 41 64 74."}}]}
 ]}
 </script>
 </head>
 <body class="no-js">
+<div class="loader" aria-hidden="true">
+  <div class="ld-a"><div class="ld-in"><span class="ld-mark">OH</span><span class="ld-txt">IA · Marketing deportivo · Retail</span><span class="ld-n"></span></div><i class="ld-bar"></i></div>
+  <div class="ld-b"></div>
+</div>
+<div class="progress" aria-hidden="true" data-progress></div>
 <a class="skip" href="#main">Saltar al contenido</a>
 
 <header class="nav">
-  <a class="brand" href="#top"><b>OH</b><span>Oriol Huguet<small>Digital Retail & Growth</small></span></a>
+  <a class="brand" href="#top"><b>OH</b><span>Oriol Huguet<small>IA · Sports Marketing · Retail</small></span></a>
   <nav aria-label="Principal">
     <ul class="menu">
       <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -312,33 +402,33 @@ section{position:relative}
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
-  <a class="cta-pill" href="#contacto"><i aria-hidden="true"></i>Hablemos</a>
+  <a class="cta-pill" data-mag href="#contacto"><i aria-hidden="true"></i>Hablemos</a>
 </header>
 
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-stage">
-    <p class="kicker" aria-hidden="true"><span>Digital Retail & E-commerce Strategist</span><span>Barcelona — <span data-clock>BCN</span></span></p>
-    <h1 class="hn" id="hero-title" data-hn><span>Oriol</span><span>Huguet</span><span class="sr"> — Digital Retail &amp; E-commerce Strategist: shopper marketing y growth con IA en el deporte</span></h1>
+    <p class="kicker" aria-hidden="true"><span>IA · Marketing deportivo · Digital retail · E-commerce</span><span>Barcelona — <span data-clock>BCN</span></span></p>
+    <h1 class="hn" id="hero-title" data-hn><span class="sr">Oriol Huguet, especialista en IA, marketing deportivo, digital retail y e-commerce</span><span class="ln" aria-hidden="true"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln" aria-hidden="true"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></h1>
     <picture class="hero-photo" data-photo>
       <source type="image/avif" srcset="assets/img/oriol-560.avif 560w, assets/img/oriol-860.avif 860w, assets/img/oriol-1240.avif 1240w" sizes="(max-width: 700px) 118vw, 62vw">
       <source type="image/webp" srcset="assets/img/oriol-560.webp 560w, assets/img/oriol-860.webp 860w, assets/img/oriol-1240.webp 1240w" sizes="(max-width: 700px) 118vw, 62vw">
-      <img src="assets/img/oriol-860.webp" width="1240" height="1181" alt="Oriol Huguet sonriendo, con toga negra, camisa blanca y corbata" fetchpriority="high" decoding="async">
+      <img src="assets/img/oriol-860.webp" width="1240" height="1181" alt="Oriol Huguet, especialista en IA y marketing deportivo, sonriendo con toga negra, camisa blanca y corbata" fetchpriority="high" decoding="async">
     </picture>
-    <p class="hn hn--outline" aria-hidden="true" data-hn><span>Oriol</span><span>Huguet</span></p>
-    <a class="badge" href="#sobre-mi" aria-label="Retail · IA · Sports · Growth: bajar a Sobre mí">
+    <p class="hn hn--outline" aria-hidden="true" data-hn><span class="ln"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></p>
+    <a class="badge" data-mag href="#sobre-mi" aria-label="Retail · IA · Sports · Growth: bajar a Sobre mí">
       <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text font-size="9.6" font-weight="800" fill="#f3f5fa"><textPath href="#c" textLength="236" lengthAdjust="spacing">RETAIL · IA · SPORTS · GROWTH · </textPath></text></svg>
       <span aria-hidden="true">↓</span>
     </a>
   </div>
   <div class="hero-foot">
-    <p class="tagline"><strong>Digital retail y e-commerce</strong> para el deporte: shopper marketing y growth impulsados por <strong>IA</strong>.</p>
+    <p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
     <div class="status">
       <p><i aria-hidden="true"></i>En juego ahora</p>
       <ul>
         <li>Project Manager <span>@ Spreadit</span></li>
-        <li>Guest Lecturer <span>@ Founderz</span></li>
-        <li>Dir. Marketing <span>@ AR Stars Academy</span></li>
+        <li>Guest Lecturer IA <span>@ Founderz</span></li>
+        <li>MBA Sports Management <span>@ UB</span></li>
       </ul>
     </div>
   </div>
@@ -352,13 +442,13 @@ section{position:relative}
 </div>
 
 <section class="sec wrap" id="sobre-mi" aria-labelledby="about-title">
-  <div class="sec-head"><h2 class="label" id="about-title">01 — Sobre mí</h2><span>Del banquillo al e-commerce</span></div>
+  <div class="sec-head"><h2 class="label" id="about-title">01 — Sobre mí</h2><span>IA · Marketing deportivo · Retail</span></div>
   <div class="about-grid">
     <div>
       <p class="manifesto" data-words>Llevo desde 2019 viviendo el fútbol desde dentro: redactando para <em>OneFootball</em>, entrenando cantera con licencia <em>UEFA C</em> y creando contenido para el <em>Terrassa FC</em>. Hoy uno ese conocimiento del deporte con el <em>digital retail</em>, el <em>e-commerce</em> y la <em>inteligencia artificial</em> para que clubes, atletas y marcas vendan más, comuniquen con autenticidad y midan lo que importa.</p>
-      <p class="about-sub">Graduado en Marketing y Comunicación Digital, cursando el MBA en Dirección de Empresas Deportivas de la Universitat de Barcelona y formado en IA aplicada al deporte y patrocinio deportivo (Johan Cruyff Institute). Ahora dirijo el marketing de la IBN Battuta Cup, que se disputará en Tánger en 2027.</p>
+      <p class="about-sub">Graduado en Marketing y Comunicación Digital, cursando el MBA en Dirección de Empresas Deportivas de la Universitat de Barcelona y formado en IA aplicada al deporte y patrocinio deportivo (Johan Cruyff Institute). Entre 2024 y 2026 dirigí el marketing y la comunicación de AR Stars Academy, incluida la IBN Battuta Cup de Tánger (2027).</p>
       <div class="about-links">
-        <a class="btn btn--accent" href="#contacto">Trabajemos juntos <span aria-hidden="true">→</span></a>
+        <a class="btn btn--accent" data-mag href="#contacto">Trabajemos juntos <span aria-hidden="true">→</span></a>
         <a class="btn" href="https://www.linkedin.com/in/oriol-huguet-digital-retail" rel="me noopener" target="_blank">LinkedIn <span aria-hidden="true">↗</span></a>
       </div>
     </div>
@@ -387,14 +477,14 @@ section{position:relative}
     <li class="rv"><b data-count="7">7</b><span>temporadas trabajando dentro del fútbol</span></li>
     <li class="rv"><b data-count="5">5</b><span>programas de formación en deporte, IA y marketing</span></li>
     <li class="rv"><b data-count="4">4</b><span>idiomas: castellano, catalán, inglés y francés</span></li>
-    <li class="rv"><b data-count="2027">2027</b><span>IBN Battuta Cup en Tánger, con mi marketing</span></li>
+    <li class="rv"><b data-count="2027">2027</b><span>IBN Battuta Cup de Tánger: dirigí su marketing</span></li>
   </ul>
 </section>
 
 <section class="sec wrap light" id="trayectoria" aria-labelledby="career-title">
   <div class="sec-head"><span class="label">02 — Trayectoria</span><span>2019 → hoy</span></div>
-  <h2 class="big career-title" id="career-title">Mi <em>alineación</em><br>profesional</h2>
-  <ol class="jobs" data-jobs>
+  <h2 class="big career-title rvc" id="career-title">Mi <em>alineación</em><br>profesional</h2>
+  <ol class="jobs stg" data-jobs>
     <li class="job" data-logo="assets/img/logos/founderz.webp" data-mono="Founderz">
       <span class="job-yr">2026 — <span class="now">HOY</span></span>
       <div><h3>Guest Lecturer · IA</h3><span class="job-co">Founderz</span></div>
@@ -409,17 +499,17 @@ section{position:relative}
       <img class="job-logo" src="assets/img/logos/spreadit.webp" width="200" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
-    <li class="job" data-logo="" data-mono="AR Stars">
-      <span class="job-yr">2024 — <span class="now">HOY</span></span>
-      <div><h3>Director de Marketing y Comunicación</h3><span class="job-co">AR Stars Academy</span></div>
-      <p class="job-desc">Dirijo el marketing de la IBN Battuta Cup, que se disputará en Tánger en 2027.</p>
-      <span class="job-arrow" aria-hidden="true">→</span>
-    </li>
     <li class="job" data-logo="assets/img/logos/cobaltax.webp" data-mono="Cobaltax">
       <span class="job-yr">2025 — 2026</span>
       <div><h3>Marketing Digital y E-commerce</h3><span class="job-co">Cobaltax</span></div>
       <p class="job-desc">Transformación digital y e-commerce de la compañía.</p>
       <img class="job-logo" src="assets/img/logos/cobaltax.webp" width="426" height="200" alt="" loading="lazy" decoding="async">
+      <span class="job-arrow" aria-hidden="true">→</span>
+    </li>
+    <li class="job" data-logo="" data-mono="AR Stars">
+      <span class="job-yr">2024 — 2026</span>
+      <div><h3>Director de Marketing y Comunicación</h3><span class="job-co">AR Stars Academy</span></div>
+      <p class="job-desc">Dirigí el marketing de la IBN Battuta Cup, torneo que se disputará en Tánger en 2027.</p>
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
     <li class="job" data-logo="assets/img/logos/terrassa-fc.webp" data-mono="Terrassa FC">
@@ -449,7 +539,7 @@ section{position:relative}
     <h3>Escudos que<br>he defendido</h3>
     <p>Clubes, agencias y proyectos con los que he saltado al campo.</p>
   </div>
-  <ul class="wall" aria-label="Organizaciones con las que he trabajado">
+  <ul class="wall stg" aria-label="Organizaciones con las que he trabajado">
     <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="200" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spreadit</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/terrassa-fc.webp" width="174" height="200" alt="" loading="lazy" decoding="async"><figcaption>Terrassa FC</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/lleida.webp" width="169" height="200" alt="" loading="lazy" decoding="async"><figcaption>Lleida</figcaption></figure></li>
@@ -462,22 +552,22 @@ section{position:relative}
 </section>
 
 <section class="sec wrap" id="servicios" aria-labelledby="svc-title">
-  <svg class="pitch" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#f1efe8" stroke-width="2"><rect x="40" y="40" width="1120" height="720"/><line x1="600" y1="40" x2="600" y2="760"/><circle cx="600" cy="400" r="100"/><rect x="40" y="220" width="170" height="360"/><rect x="990" y="220" width="170" height="360"/><rect x="40" y="320" width="60" height="160"/><rect x="1100" y="320" width="60" height="160"/><path d="M210 330a90 90 0 0 1 0 140M990 330a90 90 0 0 0 0 140"/></svg>
-  <div class="sec-head"><span class="label">03 — Servicios</span><span>Mi juego</span></div>
-  <h2 class="big" id="svc-title" style="margin-bottom:clamp(40px,6vw,80px)">Cómo te<br>ayudo a crecer</h2>
-  <ul class="services">
-    <li class="svc rv"><span class="svc-n" aria-hidden="true">01</span><h3>Digital retail y <span style="white-space:nowrap">e-commerce</span></h3><p>Estrategia de tienda online y canal digital para marcas y clubes: catálogo, experiencia de compra y conversión.</p><ul><li>E-commerce</li><li>Retail</li><li>CRO</li></ul></li>
-    <li class="svc rv"><span class="svc-n" aria-hidden="true">02</span><h3>Shopper marketing con IA</h3><p>Uso la inteligencia artificial para entender al aficionado que compra y activarlo en el momento justo. También lo enseño en Founderz.</p><ul><li>IA</li><li>Prompting</li><li>Datos</li></ul></li>
-    <li class="svc rv"><span class="svc-n" aria-hidden="true">03</span><h3>Growth y marketing deportivo</h3><p>Branding, contenido y campañas que conectan con la afición y generan resultados medibles.</p><ul><li>Branding</li><li>SEO</li><li>SEM</li><li>Content</li></ul></li>
-    <li class="svc rv"><span class="svc-n" aria-hidden="true">04</span><h3>Automatización y proyectos</h3><p>Flujos que ahorran horas: CRM, email y procesos conectados, con gestión de proyectos de principio a fin.</p><ul><li>Make</li><li>Brevo</li><li>CRM</li></ul></li>
+  <svg class="pitch" data-pitch viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#f1efe8" stroke-width="2"><rect pathLength="1" x="40" y="40" width="1120" height="720"/><line pathLength="1" x1="600" y1="40" x2="600" y2="760"/><circle pathLength="1" cx="600" cy="400" r="100"/><rect pathLength="1" x="40" y="220" width="170" height="360"/><rect pathLength="1" x="990" y="220" width="170" height="360"/><rect pathLength="1" x="40" y="320" width="60" height="160"/><rect pathLength="1" x="1100" y="320" width="60" height="160"/><path pathLength="1" d="M210 330a90 90 0 0 1 0 140M990 330a90 90 0 0 0 0 140"/></svg>
+  <div class="sec-head"><span class="label">03 — Servicios</span><span>IA · Marketing deportivo · E-commerce</span></div>
+  <h2 class="big rvc" id="svc-title" style="margin-bottom:clamp(40px,6vw,80px)">Cómo te<br>ayudo a crecer</h2>
+  <ul class="services stg">
+    <li class="svc"><span class="svc-n" aria-hidden="true">01</span><h3>Digital retail y <span style="white-space:nowrap">e-commerce</span></h3><p>Estrategia de tienda online y canal digital para marcas y clubes: catálogo, experiencia de compra y conversión.</p><ul><li>E-commerce</li><li>Retail</li><li>CRO</li></ul></li>
+    <li class="svc"><span class="svc-n" aria-hidden="true">02</span><h3>Shopper marketing con IA</h3><p>Uso la inteligencia artificial para entender al aficionado que compra y activarlo en el momento justo. También lo enseño en Founderz.</p><ul><li>IA</li><li>Prompting</li><li>Datos</li></ul></li>
+    <li class="svc"><span class="svc-n" aria-hidden="true">03</span><h3>Growth y marketing deportivo</h3><p>Branding, contenido y campañas que conectan con la afición y generan resultados medibles.</p><ul><li>Branding</li><li>SEO</li><li>SEM</li><li>Content</li></ul></li>
+    <li class="svc"><span class="svc-n" aria-hidden="true">04</span><h3>Automatización y proyectos</h3><p>Flujos que ahorran horas: CRM, email y procesos conectados, con gestión de proyectos de principio a fin.</p><ul><li>Make</li><li>Brevo</li><li>CRM</li></ul></li>
   </ul>
 </section>
 
 <section class="sec wrap light" id="formacion" aria-labelledby="edu-title">
   <div class="sec-head"><span class="label">04 — Formación</span><span>Entrenamiento continuo</span></div>
-  <h2 class="big" id="edu-title" style="margin-bottom:clamp(40px,6vw,80px)">Pretemporada<br>permanente</h2>
+  <h2 class="big rvc" id="edu-title" style="margin-bottom:clamp(40px,6vw,80px)">Pretemporada<br>permanente</h2>
   <div class="edu-grid">
-    <ol class="edu">
+    <ol class="edu stg">
       <li><time>2026 — 27</time><div><h3>Máster en Dirección de Empresas Deportivas (MBA in Sports Management)</h3><p>Universitat de Barcelona</p></div></li>
       <li><time>2026</time><div><h3>Máster en Inteligencia Artificial Aplicada al Deporte</h3><p>Founderz</p></div></li>
       <li><time>2026</time><div><h3>Estrategias Eficaces en el Marketing Deportivo</h3><p>Universidad Europea</p></div></li>
@@ -487,11 +577,11 @@ section{position:relative}
     <div class="side">
       <div>
         <h3>Herramientas y habilidades</h3>
-        <ul class="chips"><li>Digital retail</li><li>E-commerce</li><li>Shopper marketing</li><li>IA y prompting</li><li>Make</li><li>Figma</li><li>Canva</li><li>WordPress</li><li>Brevo</li><li>CRM</li><li>SEO</li><li>SEM</li><li>Content Marketing</li><li>Branding</li><li>Project Management</li><li>Estrategia</li><li>Liderazgo</li><li>Creatividad</li><li>Trabajo en equipo</li></ul>
+        <ul class="chips stg"><li>Digital retail</li><li>E-commerce</li><li>Shopper marketing</li><li>IA y prompting</li><li>Make</li><li>Figma</li><li>Canva</li><li>WordPress</li><li>Brevo</li><li>CRM</li><li>SEO</li><li>SEM</li><li>Content Marketing</li><li>Branding</li><li>Project Management</li><li>Estrategia</li><li>Liderazgo</li><li>Creatividad</li><li>Trabajo en equipo</li></ul>
       </div>
       <div>
         <h3>Certificaciones</h3>
-        <ul class="certs">
+        <ul class="certs stg">
           <li><span>Licencia UEFA C<small>Real Federación Española de Fútbol</small></span></li>
           <li><span>IA Responsable y Prompt Engineering<small>Founderz + Microsoft</small></span></li>
           <li><span>First Certificate in English (B2)<small>Cambridge</small></span></li>
@@ -499,7 +589,7 @@ section{position:relative}
       </div>
       <div>
         <h3>Idiomas</h3>
-        <ul class="langs">
+        <ul class="langs stg">
           <li style="--l:100%">Castellano <span>Nativo</span></li>
           <li style="--l:100%">Catalán <span>Nativo</span></li>
           <li style="--l:72%">Inglés <span>B2 · Cambridge</span></li>
@@ -510,9 +600,20 @@ section{position:relative}
   </div>
 </section>
 
+<section class="sec wrap" id="preguntas" aria-labelledby="faq-title">
+  <div class="sec-head"><span class="label">05 — Preguntas</span><span>Lo que más me preguntan</span></div>
+  <h2 class="big rvc" id="faq-title" style="margin-bottom:clamp(40px,6vw,80px)">Preguntas<br>frecuentes</h2>
+  <div class="faq">
+    <details class="faq-i rv"><summary><h3>¿Qué hace un especialista en IA y marketing deportivo?</h3><i aria-hidden="true"></i></summary><p>Une el conocimiento del deporte con la inteligencia artificial para que clubes, atletas y marcas comuniquen mejor, automaticen tareas repetitivas y tomen decisiones con datos. En mi caso, combino marketing digital, contenido, automatización y formación en IA.</p></details>
+    <details class="faq-i rv"><summary><h3>¿Cómo puede la inteligencia artificial ayudar a un club o a una marca deportiva?</h3><i aria-hidden="true"></i></summary><p>Con contenido más rápido y personalizado, análisis del aficionado y del comprador, automatización de CRM y email, y asistentes que ahorran horas al equipo. Lo enseño en la masterclass «La IA en la gestión deportiva» de Founderz.</p></details>
+    <details class="faq-i rv"><summary><h3>¿Trabajas en digital retail y e-commerce para marcas deportivas?</h3><i aria-hidden="true"></i></summary><p>Sí. Diseño la estrategia de tienda online y canal digital: catálogo, experiencia de compra, shopper marketing y conversión, apoyándome en IA para entender y activar al cliente.</p></details>
+    <details class="faq-i rv"><summary><h3>¿Dónde trabajas y cómo puedo contactarte?</h3><i aria-hidden="true"></i></summary><p>Trabajo desde Barcelona y en remoto, en castellano, catalán e inglés. Escríbeme a byoriolhuguet@gmail.com o llámame al 611 41 64 74.</p></details>
+  </div>
+</section>
+
 <section class="contact wrap" id="contacto" aria-labelledby="contact-title">
-  <div class="sec-head"><span class="label">05 — Contacto</span><span>Barcelona · Remoto</span></div>
-  <h2 class="contact-big" id="contact-title"><span>¿Jugamos</span><span>juntos?</span></h2>
+  <div class="sec-head"><span class="label">06 — Contacto</span><span>Barcelona · Remoto</span></div>
+  <h2 class="contact-big rv" id="contact-title"><span>¿Jugamos</span><span>juntos?</span></h2>
   <div class="contact-row">
     <div>
       <a class="mail" href="mailto:byoriolhuguet@gmail.com">byoriolhuguet@gmail.com <span aria-hidden="true">↗</span></a><br>
