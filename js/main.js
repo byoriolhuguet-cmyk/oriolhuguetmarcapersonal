@@ -162,6 +162,21 @@
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   if (hero) onScroll();
 
+  // Menú móvil
+  const burger = d.querySelector('[data-burger]'), mm = d.querySelector('[data-mmenu]');
+  if (burger && mm) {
+    const set = open => {
+      burger.setAttribute('aria-expanded', open);
+      burger.querySelector('.sr').textContent = open ? 'Cerrar menú' : 'Abrir menú';
+      if (open) { mm.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => mm.classList.add('open'))); }
+      else { mm.classList.remove('open'); setTimeout(() => { if (!mm.classList.contains('open')) mm.hidden = true; }, 450); }
+      d.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    burger.addEventListener('click', () => set(burger.getAttribute('aria-expanded') !== 'true'));
+    mm.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') { set(false); burger.focus(); } });
+  }
+
   // Copiar email
   const copy = d.querySelector('[data-copy]');
   if (copy && navigator.clipboard) {
