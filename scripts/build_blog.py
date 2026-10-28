@@ -181,7 +181,7 @@ def build():
     posts = sorted((parse(p) for p in CONTENT.glob("*.md")), key=lambda p: p["date"], reverse=True)
     tmp = ROOT / "scripts" / ".archivo.ttf"
     f = TTFont(ROOT / "assets" / "fonts" / "archivo.woff2"); f.flavor = None; f.save(tmp)
-    sitemap = [f"{SITE}/", f"{SITE}/blog/"]
+    sitemap = [f"{SITE}/", f"{SITE}/cv/", f"{SITE}/blog/"]
     for i, p in enumerate(posts):
         body, toc, faqs, words = render(p)
         og_image(p, tmp)

@@ -162,6 +162,24 @@
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   if (hero) onScroll();
 
+  // La carga se puede saltar con un toque o una tecla
+  const loader = d.querySelector('.loader');
+  if (loader) {
+    const skip = () => d.documentElement.classList.add('ld-skipnow');
+    loader.addEventListener('click', skip);
+    addEventListener('keydown', skip, { once: true });
+  }
+
+  // Compartir el perfil (menú nativo en móvil, copiar enlace en escritorio)
+  const share = d.querySelector('[data-share]');
+  if (share) share.addEventListener('click', async () => {
+    const data = { title: 'Oriol Huguet', text: 'Especialista en IA, marketing deportivo, digital retail y e-commerce', url: location.origin + '/' };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else { await navigator.clipboard.writeText(data.url); share.firstChild.textContent = 'Enlace copiado '; setTimeout(() => (share.firstChild.textContent = 'Compartir perfil '), 2000); }
+    } catch (e) {}
+  });
+
   // Menú móvil
   const burger = d.querySelector('[data-burger]'), mm = d.querySelector('[data-mmenu]');
   if (burger && mm) {

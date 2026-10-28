@@ -50,7 +50,7 @@ body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f);font
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;padding:0}
-p{text-wrap:pretty}
+.about-sub,.quick-intro>p,.faq-i p,.tagline{text-wrap:pretty}
 ul,ol{list-style:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
@@ -99,6 +99,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .js .hero{--rev:100}
 .hero-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:clip;background:radial-gradient(55% 60% at 50% 62%,var(--brand-2) 0%,transparent 72%),var(--brand)}
 .hero-scroll{height:150svh}
+@media (max-width:700px){.hero-scroll{height:70svh}}
 .hero-stage::before,.hero-stage::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
 .hero-stage::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
 .hero-stage::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
@@ -116,10 +117,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .kicker,.badge,.scroll-hint{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
 .nav{animation:navin 1s calc(var(--d) + .3s) var(--ease) both}
 @keyframes fadeup{from{opacity:0;transform:translateY(24px)}}
-@keyframes navin{from{opacity:0;transform:translateY(-30px)}}
+@keyframes navin{from{transform:translateY(-90px)}}
 .hero-foot{position:relative;z-index:4;margin-top:-220px;height:220px;padding:0 var(--pad) clamp(52px,7vh,72px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none}
 .hero-foot>*{pointer-events:auto}
 .tagline{max-width:23ch;font-size:clamp(1rem,1.25vw,1.2rem);font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.tagline-wrap{display:grid;gap:16px;justify-items:start}
 .tagline strong{font-weight:800;color:var(--accent)}
 .status{display:grid;gap:8px;background:var(--ink);color:var(--paper);padding:14px 18px;border-radius:18px;font-size:.85rem;min-width:min(290px,100%)}
 .status p{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
@@ -323,7 +325,7 @@ section{position:relative}
 @property --pc{syntax:"<integer>";inherits:false;initial-value:0}
 @property --sec{syntax:"<integer>";inherits:false;initial-value:0}
 @property --cs{syntax:"<integer>";inherits:false;initial-value:0}
-.loader{--t:1s;position:fixed;inset:0;z-index:200;pointer-events:none;color:var(--paper);animation:ldhide 0s calc(var(--t) * 4.3) forwards}
+.loader{--t:1s;position:fixed;inset:0;z-index:200;cursor:pointer;color:var(--paper);animation:ldhide 0s calc(var(--t) * 4.3) forwards}
 .ld-y,.ld-n{position:absolute;inset:0;-webkit-mask:radial-gradient(circle at 50% 46%,transparent var(--h),#000 calc(var(--h) + 1px));mask:radial-gradient(circle at 50% 46%,transparent var(--h),#000 calc(var(--h) + 1px))}
 .ld-y{background:var(--accent);animation:hole calc(var(--t) * 1.05) calc(var(--t) * 3.25) cubic-bezier(.7,0,.2,1) forwards}
 .ld-n{background:radial-gradient(70% 60% at 50% 46%,#06296f 0%,var(--ink) 75%);animation:hole calc(var(--t) * 1) calc(var(--t) * 3.05) cubic-bezier(.7,0,.2,1) forwards}
@@ -368,7 +370,12 @@ section{position:relative}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes ldfade{from{opacity:0;transform:translateY(12px)}}
 @keyframes ldhide{to{visibility:hidden}}
-@media (max-width:700px){.ld-time{top:auto;bottom:clamp(60px,9vh,80px);right:auto;left:clamp(18px,3vw,44px);justify-items:start}.ld-bar span:last-child{display:none}.ld-words{bottom:clamp(120px,19vh,170px)}.ld-dial{width:min(62vw,260px);top:40%}}
+@media (max-width:700px),(pointer:coarse){.loader{--t:.8s}:root{--d:2.7s}}
+.ld-tap{display:none;font-weight:700;color:var(--accent);white-space:nowrap}
+@media (pointer:coarse){.ld-tap{display:inline}}
+.ld-skipnow{--d:.1s!important}
+.ld-skipnow .loader{display:none}
+@media (max-width:700px){.ld-time{top:auto;bottom:clamp(60px,9vh,80px);right:auto;left:clamp(18px,3vw,44px);justify-items:start}.ld-bar span:nth-of-type(2){display:none}.ld-words{bottom:clamp(120px,19vh,170px)}.ld-dial{width:min(62vw,260px);top:40%}}
 @keyframes word7{0.00%,10.29%{transform:translateY(-0%)}14.29%,24.57%{transform:translateY(-100%)}28.57%,38.86%{transform:translateY(-200%)}42.86%,53.14%{transform:translateY(-300%)}57.14%,67.43%{transform:translateY(-400%)}71.43%,81.71%{transform:translateY(-500%)}85.71%,96.00%{transform:translateY(-600%)}100%{transform:translateY(-600%)}}
 @keyframes sport7{0.00%,10.29%{transform:translateY(-0%)}14.29%,24.57%{transform:translateY(-100%)}28.57%,38.86%{transform:translateY(-200%)}42.86%,53.14%{transform:translateY(-300%)}57.14%,67.43%{transform:translateY(-400%)}71.43%,81.71%{transform:translateY(-500%)}85.71%,96.00%{transform:translateY(-600%)}100%{transform:translateY(-600%)}}
 
@@ -509,8 +516,31 @@ section{position:relative}
 @keyframes wap{70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 @keyframes wain{from{opacity:0;transform:translateY(30px) scale(.6)}}
 
+/* en 30 segundos */
+.quick{padding-block:clamp(70px,10vw,140px)}
+.quick-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(36px,6vw,100px);align-items:start}
+.quick-intro{position:sticky;top:110px}
+.quick-intro .big{font-size:clamp(2.6rem,6vw,6.2rem)}
+.quick-intro>p{margin-top:22px;max-width:40ch;color:var(--mute);font-size:1.08rem}
+.quick-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.quick-actions .btn small{font-weight:600;font-size:.72rem;opacity:.7;letter-spacing:.02em}
+button.btn{cursor:pointer;background:none;color:var(--paper)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.facts>div{padding:20px 22px;border-radius:22px;background:linear-gradient(180deg,#0a2160,var(--ink-2));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 0 6px rgba(243,245,250,.025),0 0 0 7px rgba(243,245,250,.07)}
+.facts>div:first-child,.facts .facts-cta{grid-column:1/-1}
+.facts dt{font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.facts dd{margin-top:8px;font-size:1.02rem;font-weight:600;line-height:1.35;text-wrap:pretty}
+.facts>div:first-child dd{font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:800;letter-spacing:-.02em}
+.facts .facts-cta{background:var(--accent);color:var(--ink);box-shadow:0 0 0 6px rgba(255,199,44,.08),0 0 0 7px rgba(255,199,44,.25)}
+.facts .facts-cta dt{color:var(--ink)}
+.facts-cta a{text-decoration-thickness:2px;text-underline-offset:3px}
+@media (max-width:560px){.facts-cta dd span{display:none}.facts-cta dd{display:grid;gap:6px;padding-right:56px}.facts-cta dd a{word-break:break-all}}
+@media (max-width:900px){.quick-grid{grid-template-columns:1fr}.quick-intro{position:static}}
+@media (max-width:560px){.facts{grid-template-columns:1fr}.quick-actions .btn{flex:1 1 100%;justify-content:space-between}}
+
 /* grano */
-body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;mix-blend-mode:overlay}
+body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.035}
+@media (max-width:700px),(pointer:coarse){body::after{display:none}.island{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,14,43,.92)}}
 
 /* reveal */
 .rv{transform:translateY(40px);opacity:0;transition:transform 1s var(--ease),opacity 1s var(--ease)}
@@ -562,7 +592,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     </div>
     <div class="ld-words"><span>Rendimiento</span><span>Estrategia</span><span>Datos</span><span>Inteligencia artificial</span><span>Marca</span><span>Crecimiento</span><span>Oriol Huguet</span></div>
     <div class="ld-time"><small>Tiempo</small><span class="ld-clock"><i class="ld-s"></i><i class="ld-cs"></i></span></div>
-    <div class="ld-bar"><span class="ld-pc"></span><i></i><span>Especialista en IA · Marketing deportivo · Digital retail</span></div>
+    <div class="ld-bar"><span class="ld-pc"></span><i></i><span>Especialista en IA · Marketing deportivo · Digital retail</span><b class="ld-tap">Toca para entrar</b></div>
   </div>
 </div>
 <div class="progress" aria-hidden="true" data-progress></div>
@@ -577,6 +607,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
         <li><a href="#trayectoria">Trayectoria</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#formacion">Formación</a></li>
+        <li><a href="#cv">CV</a></li>
         <li><a href="/blog/">Blog</a></li>
       </ul>
     </nav>
@@ -587,6 +618,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 <div class="mmenu" id="mmenu" hidden data-mmenu>
   <nav aria-label="Menú móvil">
     <ol>
+      <li><a href="#cv"><small>00</small>CV en 30 s</a></li>
       <li><a href="#sobre-mi"><small>01</small>Sobre mí</a></li>
       <li><a href="#trayectoria"><small>02</small>Trayectoria</a></li>
       <li><a href="#servicios"><small>03</small>Servicios</a></li>
@@ -618,7 +650,8 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
   </div>
   <div class="hero-scroll" aria-hidden="true"></div>
   <div class="hero-foot">
-    <p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
+    <div class="tagline-wrap"><p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
+    <a class="btn btn--accent hero-cv" href="cv/oriol-huguet-cv.pdf" download>CV en PDF <span aria-hidden="true">↓</span></a></div>
     <div class="status">
       <p><i aria-hidden="true"></i>En juego ahora</p>
       <ul>
@@ -636,6 +669,32 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     <p><span>Digital Retail</span><em>✺</em><span>E-commerce</span><em>✺</em><span>Shopper Marketing</span><em>✺</em><span>IA aplicada al deporte</span><em>✺</em><span>Growth</span><em>✺</em><span>Branding</span><em>✺</em></p>
   </div>
 </div>
+
+<section class="sec wrap quick" id="cv" aria-labelledby="cv-title">
+  <div class="sec-head"><span class="label">00 — En 30 segundos</span><span>Para quien tiene prisa</span></div>
+  <div class="quick-grid">
+    <div class="quick-intro">
+      <h2 class="big rvc" id="cv-title">Lo esencial,<br>en <em>30 segundos</em></h2>
+      <p>Sin adjuntos de varios megas: todo mi perfil cabe en esta pantalla y en un PDF de una página.</p>
+      <div class="quick-actions">
+        <a class="btn btn--accent" data-mag href="cv/oriol-huguet-cv.pdf" download>Descargar CV <small>PDF · 109 KB</small><span aria-hidden="true">↓</span></a>
+        <a class="btn" href="oriol-huguet.vcf" download>Guardar contacto <span aria-hidden="true">+</span></a>
+        <a class="btn" href="cv/">Ver CV en la web <span aria-hidden="true">→</span></a>
+        <button class="btn" type="button" data-share>Compartir perfil <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <dl class="facts stg">
+      <div><dt>Perfil</dt><dd>Especialista en IA, marketing deportivo, digital retail y e-commerce</dd></div>
+      <div><dt>Ahora</dt><dd>Project Manager en Spreadit · Guest Lecturer de IA en Founderz</dd></div>
+      <div><dt>Formación</dt><dd>MBA in Sports Management (UB, en curso) · Máster en IA aplicada al deporte</dd></div>
+      <div><dt>Deporte</dt><dd>Del fútbol base (UEFA C) a OneFootball, Terrassa FC y la IBN Battuta Cup</dd></div>
+      <div><dt>Herramientas</dt><dd>IA y prompting, Make, Brevo, CRM, SEO/SEM, Figma</dd></div>
+      <div><dt>Idiomas</dt><dd>Castellano y catalán nativos · Inglés B2 · Francés básico</dd></div>
+      <div><dt>Base</dt><dd>Barcelona · presencial, híbrido o remoto</dd></div>
+      <div class="facts-cta"><dt>Respuesta</dt><dd><a href="https://wa.me/34611416474?text=Hola%20Oriol%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20hablar%20contigo" target="_blank" rel="noopener">WhatsApp</a><span aria-hidden="true"> · </span><a href="mailto:byoriolhuguet@gmail.com">byoriolhuguet@gmail.com</a><span aria-hidden="true"> · </span><a href="tel:+34611416474">611 41 64 74</a></dd></div>
+    </dl>
+  </div>
+</section>
 
 <section class="sec wrap" id="sobre-mi" aria-labelledby="about-title">
   <div class="sec-head"><h2 class="label" id="about-title">01 — Sobre mí</h2><span>IA · Marketing deportivo · Retail</span></div>
