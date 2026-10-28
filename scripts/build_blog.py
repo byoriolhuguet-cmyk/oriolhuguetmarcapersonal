@@ -152,11 +152,11 @@ def head(title, desc, url, og, extra_ld, kind="website"):
 
 NAV = '''<a class="skip" href="#main">Saltar al contenido</a>
 <div class="progress" aria-hidden="true"></div>
-<header class="nav">
-  <a class="brand" href="/"><b>OH</b>Oriol Huguet</a>
-  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#trayectoria">Trayectoria</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/blog/"{cur}>Blog</a></li><li><a href="/#contacto">Contacto</a></li></ul></nav>
-  <a class="btn btn--ink" href="/#contacto">Hablemos</a>
-</header>'''
+<header class="nav"><div class="island">
+  <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
+  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/"{cur}>Blog</a></li></ul></nav>
+  <a class="cta-pill" href="/#contacto">Hablemos</a>
+</div></header>'''
 
 CTA = f'''<section class="cta" aria-labelledby="cta-t">
   <h2 id="cta-t">¿Jugamos<br>juntos?</h2>
@@ -222,7 +222,7 @@ def build():
 </div>
 </article>
 <section class="sec wrap" aria-labelledby="rel-t" style="background:#fff">
-  <h2 class="t" id="rel-t">Sigue<br>leyendo</h2>
+  <h2 class="t" id="rel-t">Sigue<br><em>leyendo</em></h2>
   <div class="cards">{"".join(card(q, posts.index(q) + 1) for q in related[:3])}</div>
 </section>
 {CTA}
@@ -250,7 +250,7 @@ def build():
 <header class="bhero">
   <ol class="crumbs"><li><a href="/">Inicio</a></li><li>Blog</li></ol>
   <span class="label">El blog</span>
-  <h1>Ideas desde el banquillo</h1>
+  <h1>Ideas desde el <em>banquillo</em></h1>
   <p class="lead">Guías prácticas sobre inteligencia artificial, marketing deportivo, digital retail y e-commerce para clubes, deportistas y marcas. Lo que aprendo en el campo, en clase y en cada proyecto.</p>
 </header>
 <section class="sec wrap" aria-labelledby="arts-t">

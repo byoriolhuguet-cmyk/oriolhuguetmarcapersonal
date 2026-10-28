@@ -25,6 +25,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen para modelos de lenguaje">
 <link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:"Archivo";src:url(/assets/fonts/archivo.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url(/assets/fonts/instrument-serif-italic.woff2) format("woff2");font-style:italic;font-weight:400;font-display:swap}
 @font-face{font-family:"Archivo Fallback";src:local("Arial");size-adjust:104%;ascent-override:88%;descent-override:22%}
 :root{--brand:#00215e;--brand-2:#0a3a9c;--accent:#ffc72c;--ink:#000e2b;--ink-2:#06194a;--paper:#f3f5fa;--mute:#8c97b3;--mute-2:#55617f;--line:rgba(243,245,250,.14);--line-ink:rgba(0,14,43,.15);--f:"Archivo","Archivo Fallback",system-ui,sans-serif;--pad:clamp(16px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
 *,*::before,*::after{box-sizing:border-box}
@@ -42,13 +43,17 @@ h1,h2,h3,p,ul,ol,figure{margin:0}
 .label::before{content:"";width:.55em;height:.55em;border-radius:50%;background:currentColor}
 
 /* nav */
-.nav{position:fixed;inset:12px 12px auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
-.nav>*{pointer-events:auto}
-.brand{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);text-decoration:none;padding:7px 16px 7px 7px;border-radius:999px;font-weight:700}
-.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:.82rem;font-stretch:115%;font-weight:900}
-.menu{display:flex;gap:2px;background:var(--ink);padding:6px;border-radius:999px;list-style:none;margin:0}
-.menu a{display:block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:500;color:var(--paper);transition:background .3s,color .3s}
-.menu a:hover,.menu a[aria-current]{background:var(--accent);color:var(--ink)}
+.nav{position:fixed;top:14px;left:50%;translate:-50% 0;z-index:50;width:max-content;max-width:calc(100vw - 24px)}
+.island{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(0,14,43,.9);border:1px solid rgba(243,245,250,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 48px -24px rgba(0,8,30,.7)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;padding:3px 14px 3px 3px;border-radius:999px;font-weight:700;font-size:.92rem}
+.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:.78rem;font-stretch:115%;font-weight:900}
+.menu{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:.86rem;font-weight:500;color:#c9d1e6;transition:background .35s var(--ease),color .35s var(--ease)}
+.menu a:hover{background:rgba(243,245,250,.1);color:var(--paper)}
+.menu a[aria-current]{background:rgba(255,199,44,.16);color:var(--accent)}
+.cta-pill{display:flex;align-items:center;background:var(--accent);color:var(--ink);padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.86rem;margin-left:4px;transition:background .35s var(--ease)}
+.cta-pill:hover{background:var(--paper)}
+@media (max-width:640px){.nav{left:12px;right:12px;translate:none;width:auto}.island{justify-content:space-between}.island nav{display:none}}
 .progress{position:fixed;left:0;top:0;z-index:60;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
 
 /* hero */
@@ -60,7 +65,9 @@ h1,h2,h3,p,ul,ol,figure{margin:0}
 .crumbs li+li::before{content:"/";margin-right:8px;opacity:.6}
 .crumbs a{text-decoration:none}.crumbs a:hover{color:var(--accent)}
 .bhero .label{color:var(--accent)}
-.bhero h1{margin-top:18px;max-width:22ch;font-size:clamp(2.1rem,5.6vw,5.4rem);font-weight:900;font-stretch:108%;line-height:.98;letter-spacing:-.035em;animation:up 1s var(--ease) both}
+.bhero h1 em,.sec h2.t em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-stretch:100%;letter-spacing:-.02em;color:var(--accent)}
+.sec h2.t em{color:var(--brand-2);text-transform:none}
+.bhero h1{text-wrap:balance;margin-top:18px;max-width:22ch;font-size:clamp(2.1rem,5.6vw,5.4rem);font-weight:900;font-stretch:108%;line-height:.98;letter-spacing:-.035em;animation:up 1s var(--ease) both}
 .bhero .lead{margin-top:22px;max-width:60ch;color:#c9d1e6;font-size:clamp(1.02rem,1.3vw,1.2rem);animation:up 1s .1s var(--ease) both}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:30px;font-size:.9rem;color:#c9d1e6;animation:up 1s .2s var(--ease) both}
 .meta img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent)}
@@ -161,7 +168,6 @@ aside.side{position:relative}
 .wa::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:wap 2.4s 1.5s infinite}
 @keyframes wap{70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 @keyframes wain{from{opacity:0;transform:translateY(30px) scale(.6)}}
-@media (max-width:900px){.menu{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","url":"https://www.oriolhuguet.com/","jobTitle":"Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail"]},{"@type":"BlogPosting","@id":"https://www.oriolhuguet.com/blog/patrocinio-deportivo-digital-medir-retorno/#post","headline":"Patrocinio deportivo digital: cómo medir el retorno real","description":"Patrocinio deportivo digital: qué activos puede ofrecer un club, ideas de activación y cómo medir el retorno con UTMs, códigos y un informe claro.","datePublished":"2026-09-16","dateModified":"2026-09-16","inLanguage":"es","mainEntityOfPage":"https://www.oriolhuguet.com/blog/patrocinio-deportivo-digital-medir-retorno/","author":{"@id":"https://www.oriolhuguet.com/#oriol"},"publisher":{"@id":"https://www.oriolhuguet.com/#oriol"},"keywords":"patrocinio deportivo digital","articleSection":"Marketing deportivo","wordCount":1187,"image":"https://www.oriolhuguet.com/assets/img/blog/patrocinio-deportivo-digital-medir-retorno.jpg"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.oriolhuguet.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.oriolhuguet.com/blog/"},{"@type":"ListItem","position":3,"name":"Patrocinio deportivo digital: cómo medir el retorno real","item":"https://www.oriolhuguet.com/blog/patrocinio-deportivo-digital-medir-retorno/"}]},{"@type":"FAQPage","@id":"https://www.oriolhuguet.com/blog/patrocinio-deportivo-digital-medir-retorno/#faq","mainEntity":[{"@type":"Question","name":"¿Qué puede ofrecer un club pequeño a un patrocinador digital?","acceptedAnswer":{"@type":"Answer","text":"Una comunidad local muy fiel, una newsletter con socios comprometidos y contenido cercano en redes. Para una marca de proximidad, eso puede valer más que un gran alcance poco segmentado. La clave es presentarlo con datos propios y acciones medibles."}},{"@type":"Question","name":"¿Cada cuánto hay que enviar el informe al patrocinador?","acceptedAnswer":{"@type":"Answer","text":"Depende de lo acordado en el contrato. Un informe mensual breve y otro más completo al final de la temporada suele ser un buen equilibrio. Lo importante es fijar la frecuencia y las métricas antes de empezar."}},{"@type":"Question","name":"¿Qué es un enlace con UTM y por qué importa en patrocinio?","acceptedAnswer":{"@type":"Answer","text":"Es un enlace normal al que se añaden parámetros que indican la fuente, el medio y la campaña. Permite al patrocinador ver en su analítica qué visitas y conversiones vienen de las acciones del club, y es la base para demostrar el retorno."}}]}]}</script>
@@ -169,11 +175,11 @@ aside.side{position:relative}
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <div class="progress" aria-hidden="true"></div>
-<header class="nav">
-  <a class="brand" href="/"><b>OH</b>Oriol Huguet</a>
-  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#trayectoria">Trayectoria</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/blog/">Blog</a></li><li><a href="/#contacto">Contacto</a></li></ul></nav>
-  <a class="btn btn--ink" href="/#contacto">Hablemos</a>
-</header>
+<header class="nav"><div class="island">
+  <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
+  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/">Blog</a></li></ul></nav>
+  <a class="cta-pill" href="/#contacto">Hablemos</a>
+</div></header>
 <main id="main">
 <article>
 <header class="bhero">
@@ -297,7 +303,7 @@ aside.side{position:relative}
 </div>
 </article>
 <section class="sec wrap" aria-labelledby="rel-t" style="background:#fff">
-  <h2 class="t" id="rel-t">Sigue<br>leyendo</h2>
+  <h2 class="t" id="rel-t">Sigue<br><em>leyendo</em></h2>
   <div class="cards"><a class="pcard rv" href="/blog/automatizar-marketing-club-make-crm-email/" data-cat="Marketing deportivo"><div class="cover c-md" aria-hidden="true"><span>Marketing deportivo</span><b>06</b></div><div class="pbody"><h3>Automatizar el marketing de un club con Make, CRM y email</h3><p>Renovaciones, recordatorios de partido, carritos abandonados e informes para patrocinadores. Cinco flujos para automatizar el marketing de un club sin perder el control.</p><small>24 de septiembre de 2026 · 6 min</small></div></a><a class="pcard rv" href="/blog/marketing-eventos-deportivos-torneos-internacionales/" data-cat="Marketing deportivo"><div class="cover c-md" aria-hidden="true"><span>Marketing deportivo</span><b>10</b></div><div class="pbody"><h3>Marketing de eventos deportivos: torneos internacionales</h3><p>Un torneo internacional se comunica por fases. Te explico cómo planificarlas, cómo hablar a públicos de varios países y cómo implicar a partners y comunidad local.</p><small>8 de septiembre de 2026 · 6 min</small></div></a><a class="pcard rv" href="/blog/seo-clubes-marcas-deportivas-google/" data-cat="Marketing deportivo"><div class="cover c-md" aria-hidden="true"><span>Marketing deportivo</span><b>11</b></div><div class="pbody"><h3>SEO para clubes deportivos: cómo aparecer en Google y en la IA</h3><p>Qué buscan los aficionados y las familias, cómo ordenar la web del club y qué hacer para aparecer en Google y en las respuestas de los asistentes de IA.</p><small>4 de septiembre de 2026 · 6 min</small></div></a></div>
 </section>
 <section class="cta" aria-labelledby="cta-t">

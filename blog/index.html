@@ -25,6 +25,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen para modelos de lenguaje">
 <link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:"Archivo";src:url(/assets/fonts/archivo.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url(/assets/fonts/instrument-serif-italic.woff2) format("woff2");font-style:italic;font-weight:400;font-display:swap}
 @font-face{font-family:"Archivo Fallback";src:local("Arial");size-adjust:104%;ascent-override:88%;descent-override:22%}
 :root{--brand:#00215e;--brand-2:#0a3a9c;--accent:#ffc72c;--ink:#000e2b;--ink-2:#06194a;--paper:#f3f5fa;--mute:#8c97b3;--mute-2:#55617f;--line:rgba(243,245,250,.14);--line-ink:rgba(0,14,43,.15);--f:"Archivo","Archivo Fallback",system-ui,sans-serif;--pad:clamp(16px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
 *,*::before,*::after{box-sizing:border-box}
@@ -42,13 +43,17 @@ h1,h2,h3,p,ul,ol,figure{margin:0}
 .label::before{content:"";width:.55em;height:.55em;border-radius:50%;background:currentColor}
 
 /* nav */
-.nav{position:fixed;inset:12px 12px auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
-.nav>*{pointer-events:auto}
-.brand{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);text-decoration:none;padding:7px 16px 7px 7px;border-radius:999px;font-weight:700}
-.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:.82rem;font-stretch:115%;font-weight:900}
-.menu{display:flex;gap:2px;background:var(--ink);padding:6px;border-radius:999px;list-style:none;margin:0}
-.menu a{display:block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:500;color:var(--paper);transition:background .3s,color .3s}
-.menu a:hover,.menu a[aria-current]{background:var(--accent);color:var(--ink)}
+.nav{position:fixed;top:14px;left:50%;translate:-50% 0;z-index:50;width:max-content;max-width:calc(100vw - 24px)}
+.island{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(0,14,43,.9);border:1px solid rgba(243,245,250,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 48px -24px rgba(0,8,30,.7)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;padding:3px 14px 3px 3px;border-radius:999px;font-weight:700;font-size:.92rem}
+.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:.78rem;font-stretch:115%;font-weight:900}
+.menu{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:.86rem;font-weight:500;color:#c9d1e6;transition:background .35s var(--ease),color .35s var(--ease)}
+.menu a:hover{background:rgba(243,245,250,.1);color:var(--paper)}
+.menu a[aria-current]{background:rgba(255,199,44,.16);color:var(--accent)}
+.cta-pill{display:flex;align-items:center;background:var(--accent);color:var(--ink);padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.86rem;margin-left:4px;transition:background .35s var(--ease)}
+.cta-pill:hover{background:var(--paper)}
+@media (max-width:640px){.nav{left:12px;right:12px;translate:none;width:auto}.island{justify-content:space-between}.island nav{display:none}}
 .progress{position:fixed;left:0;top:0;z-index:60;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
 
 /* hero */
@@ -60,7 +65,9 @@ h1,h2,h3,p,ul,ol,figure{margin:0}
 .crumbs li+li::before{content:"/";margin-right:8px;opacity:.6}
 .crumbs a{text-decoration:none}.crumbs a:hover{color:var(--accent)}
 .bhero .label{color:var(--accent)}
-.bhero h1{margin-top:18px;max-width:22ch;font-size:clamp(2.1rem,5.6vw,5.4rem);font-weight:900;font-stretch:108%;line-height:.98;letter-spacing:-.035em;animation:up 1s var(--ease) both}
+.bhero h1 em,.sec h2.t em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-stretch:100%;letter-spacing:-.02em;color:var(--accent)}
+.sec h2.t em{color:var(--brand-2);text-transform:none}
+.bhero h1{text-wrap:balance;margin-top:18px;max-width:22ch;font-size:clamp(2.1rem,5.6vw,5.4rem);font-weight:900;font-stretch:108%;line-height:.98;letter-spacing:-.035em;animation:up 1s var(--ease) both}
 .bhero .lead{margin-top:22px;max-width:60ch;color:#c9d1e6;font-size:clamp(1.02rem,1.3vw,1.2rem);animation:up 1s .1s var(--ease) both}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:30px;font-size:.9rem;color:#c9d1e6;animation:up 1s .2s var(--ease) both}
 .meta img{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent)}
@@ -161,7 +168,6 @@ aside.side{position:relative}
 .wa::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:wap 2.4s 1.5s infinite}
 @keyframes wap{70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 @keyframes wain{from{opacity:0;transform:translateY(30px) scale(.6)}}
-@media (max-width:900px){.menu{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","url":"https://www.oriolhuguet.com/","jobTitle":"Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail"]},{"@type":"Blog","@id":"https://www.oriolhuguet.com/blog/#blog","name":"Blog de Oriol Huguet","url":"https://www.oriolhuguet.com/blog/","inLanguage":"es","author":{"@id":"https://www.oriolhuguet.com/#oriol"},"blogPost":[{"@type":"BlogPosting","headline":"Inteligencia artificial en el marketing deportivo para clubes","url":"https://www.oriolhuguet.com/blog/ia-marketing-deportivo-guia-clubes/","datePublished":"2026-10-14"},{"@type":"BlogPosting","headline":"IA para redes sociales de un club: flujo para el día de partido","url":"https://www.oriolhuguet.com/blog/ia-contenido-redes-sociales-club-futbol/","datePublished":"2026-10-10"},{"@type":"BlogPosting","headline":"Digital retail en el deporte: guía para clubes y marcas","url":"https://www.oriolhuguet.com/blog/digital-retail-deporte-clubes-venta-online/","datePublished":"2026-10-06"},{"@type":"BlogPosting","headline":"Ecommerce para clubes deportivos: cómo vender más merchandising","url":"https://www.oriolhuguet.com/blog/ecommerce-club-deportivo-merchandising/","datePublished":"2026-10-02"},{"@type":"BlogPosting","headline":"Shopper marketing con IA: convertir al aficionado en cliente","url":"https://www.oriolhuguet.com/blog/shopper-marketing-ia-aficionado/","datePublished":"2026-09-28"},{"@type":"BlogPosting","headline":"Automatizar el marketing de un club con Make, CRM y email","url":"https://www.oriolhuguet.com/blog/automatizar-marketing-club-make-crm-email/","datePublished":"2026-09-24"},{"@type":"BlogPosting","headline":"Prompts de IA para marketing deportivo: 12 ejemplos listos","url":"https://www.oriolhuguet.com/blog/prompts-ia-marketing-deportivo-ejemplos/","datePublished":"2026-09-20"},{"@type":"BlogPosting","headline":"Patrocinio deportivo digital: cómo medir el retorno real","url":"https://www.oriolhuguet.com/blog/patrocinio-deportivo-digital-medir-retorno/","datePublished":"2026-09-16"},{"@type":"BlogPosting","headline":"Marca personal para deportistas: guía práctica paso a paso","url":"https://www.oriolhuguet.com/blog/marca-personal-deportistas-paso-a-paso/","datePublished":"2026-09-12"},{"@type":"BlogPosting","headline":"Marketing de eventos deportivos: torneos internacionales","url":"https://www.oriolhuguet.com/blog/marketing-eventos-deportivos-torneos-internacionales/","datePublished":"2026-09-08"},{"@type":"BlogPosting","headline":"SEO para clubes deportivos: cómo aparecer en Google y en la IA","url":"https://www.oriolhuguet.com/blog/seo-clubes-marcas-deportivas-google/","datePublished":"2026-09-04"},{"@type":"BlogPosting","headline":"Del banquillo al marketing deportivo en Barcelona: mi camino","url":"https://www.oriolhuguet.com/blog/del-banquillo-al-marketing-futbol-base-comunicar/","datePublished":"2026-08-31"}]}]}</script>
@@ -169,16 +175,16 @@ aside.side{position:relative}
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <div class="progress" aria-hidden="true"></div>
-<header class="nav">
-  <a class="brand" href="/"><b>OH</b>Oriol Huguet</a>
-  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#trayectoria">Trayectoria</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/blog/" aria-current="page">Blog</a></li><li><a href="/#contacto">Contacto</a></li></ul></nav>
-  <a class="btn btn--ink" href="/#contacto">Hablemos</a>
-</header>
+<header class="nav"><div class="island">
+  <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
+  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/" aria-current="page">Blog</a></li></ul></nav>
+  <a class="cta-pill" href="/#contacto">Hablemos</a>
+</div></header>
 <main id="main">
 <header class="bhero">
   <ol class="crumbs"><li><a href="/">Inicio</a></li><li>Blog</li></ol>
   <span class="label">El blog</span>
-  <h1>Ideas desde el banquillo</h1>
+  <h1>Ideas desde el <em>banquillo</em></h1>
   <p class="lead">Guías prácticas sobre inteligencia artificial, marketing deportivo, digital retail y e-commerce para clubes, deportistas y marcas. Lo que aprendo en el campo, en clase y en cada proyecto.</p>
 </header>
 <section class="sec wrap" aria-labelledby="arts-t">
