@@ -91,7 +91,7 @@ El shopper marketing con IA no se diseña una vez y se olvida. Se prueba, se mid
 4. **Un periodo razonable.** Un solo partido no basta; el calendario deportivo mete mucho ruido.
 5. **Documentar.** Apunta qué probaste y qué salió.
 
-En mi trabajo en Spreadit, con proyectos para marcas como Forty Love, he visto que la disciplina de probar con orden importa más que la herramienta concreta que uses.
+En mi trabajo en Spread It, con proyectos para marcas como Forty Love, he visto que la disciplina de probar con orden importa más que la herramienta concreta que uses.
 
 ## Privacidad y RGPD: la base de todo
 

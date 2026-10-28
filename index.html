@@ -78,6 +78,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .burger span:first-child{top:18px}.burger span:nth-child(2){top:25px}
 .burger[aria-expanded="true"] span:first-child{top:21.5px;transform:rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){top:21.5px;transform:rotate(-45deg)}
+.mmenu[hidden]{display:none}
 .mmenu{position:fixed;inset:0;z-index:48;display:flex;flex-direction:column;justify-content:space-between;padding:110px var(--pad) calc(28px + env(safe-area-inset-bottom));background:rgba(0,14,43,.94);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);opacity:0;transition:opacity .45s var(--ease)}
 .mmenu.open{opacity:1}
 .mmenu ol{list-style:none;display:grid;gap:2px}
@@ -563,8 +564,8 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","givenName":"Oriol","familyName":"Huguet","jobTitle":"Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","hasOccupation":[{"@type":"Occupation","name":"Especialista en inteligencia artificial aplicada al deporte"},{"@type":"Occupation","name":"Especialista en marketing deportivo"},{"@type":"Occupation","name":"Digital Retail & E-commerce Strategist"}],"description":"Especialista en IA, marketing deportivo, digital retail y e-commerce. Ayuda a clubes, atletas y marcas deportivas a vender y crecer con inteligencia artificial.","url":"https://www.oriolhuguet.com/","image":"https://www.oriolhuguet.com/assets/img/og-oriol-huguet.jpg","email":"mailto:byoriolhuguet@gmail.com","telephone":"+34611416474","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail"],
-"worksFor":[{"@type":"Organization","name":"Spreadit | Growth Partners"},{"@type":"EducationalOrganization","name":"Founderz"}],
+{"@type":"Person","@id":"https://www.oriolhuguet.com/#oriol","name":"Oriol Huguet","givenName":"Oriol","familyName":"Huguet","jobTitle":"Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce","hasOccupation":[{"@type":"Occupation","name":"Especialista en inteligencia artificial aplicada al deporte"},{"@type":"Occupation","name":"Especialista en marketing deportivo"},{"@type":"Occupation","name":"Digital Retail & E-commerce Strategist"}],"description":"Especialista en IA, marketing deportivo, digital retail y e-commerce. Ayuda a clubes, atletas y marcas deportivas a vender y crecer con inteligencia artificial.","url":"https://www.oriolhuguet.com/","image":"https://www.oriolhuguet.com/assets/img/og-oriol-huguet.jpg","email":"mailto:byoriolhuguet@gmail.com","telephone":"+34611416474","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"sameAs":["https://www.linkedin.com/in/oriol-huguet-digital-retail/"],
+"worksFor":[{"@type":"Organization","name":"Spread It | Growth Partners"},{"@type":"EducationalOrganization","name":"Founderz"}],
 "alumniOf":[{"@type":"CollegeOrUniversity","name":"Universitat de Barcelona"},{"@type":"EducationalOrganization","name":"Founderz"},{"@type":"CollegeOrUniversity","name":"Universidad Europea"},{"@type":"CollegeOrUniversity","name":"Universitat Autònoma de Barcelona"},{"@type":"EducationalOrganization","name":"Johan Cruyff Institute"},{"@type":"CollegeOrUniversity","name":"Euncet Business School"}],
 "knowsAbout":["Inteligencia artificial aplicada al deporte","Marketing deportivo","Digital retail","E-commerce","Shopper marketing","Growth marketing","Marketing digital","Patrocinio deportivo","Gestión deportiva","Branding","SEO","SEM","Content marketing","Automatización con Make","Prompt engineering","Project management","Fútbol formativo"],
 "knowsLanguage":[{"@type":"Language","name":"Español"},{"@type":"Language","name":"Catalán"},{"@type":"Language","name":"Inglés"},{"@type":"Language","name":"Francés"}],
@@ -655,7 +656,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     <div class="status">
       <p><i aria-hidden="true"></i>En juego ahora</p>
       <ul>
-        <li>Project Manager <span>@ Spreadit</span></li>
+        <li>Dir. Account Managers <span>@ Spread It</span></li>
         <li>Guest Lecturer IA <span>@ Founderz</span></li>
         <li>MBA Sports Management <span>@ UB</span></li>
       </ul>
@@ -677,7 +678,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
       <h2 class="big rvc" id="cv-title">Lo esencial,<br>en <em>30 segundos</em></h2>
       <p>Sin adjuntos de varios megas: todo mi perfil cabe en esta pantalla y en un PDF de una página.</p>
       <div class="quick-actions">
-        <a class="btn btn--accent" data-mag href="cv/oriol-huguet-cv.pdf" download>Descargar CV <small>PDF · 109 KB</small><span aria-hidden="true">↓</span></a>
+        <a class="btn btn--accent" data-mag href="cv/oriol-huguet-cv.pdf" download>Descargar CV <small>PDF · 4 KB</small><span aria-hidden="true">↓</span></a>
         <a class="btn" href="oriol-huguet.vcf" download>Guardar contacto <span aria-hidden="true">+</span></a>
         <a class="btn" href="cv/">Ver CV en la web <span aria-hidden="true">→</span></a>
         <button class="btn" type="button" data-share>Compartir perfil <span aria-hidden="true">↗</span></button>
@@ -685,7 +686,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     </div>
     <dl class="facts stg">
       <div><dt>Perfil</dt><dd>Especialista en IA, marketing deportivo, digital retail y e-commerce</dd></div>
-      <div><dt>Ahora</dt><dd>Project Manager en Spreadit · Guest Lecturer de IA en Founderz</dd></div>
+      <div><dt>Ahora</dt><dd>Director de Account Managers y Client Success en Spread It · Profesor invitado de IA en Founderz</dd></div>
       <div><dt>Formación</dt><dd>MBA in Sports Management (UB, en curso) · Máster en IA aplicada al deporte</dd></div>
       <div><dt>Deporte</dt><dd>Del fútbol base (UEFA C) a OneFootball, Terrassa FC y la IBN Battuta Cup</dd></div>
       <div><dt>Herramientas</dt><dd>IA y prompting, Make, Brevo, CRM, SEO/SEM, Figma</dd></div>
@@ -701,10 +702,10 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
   <div class="about-grid">
     <div>
       <p class="manifesto" data-words>Llevo desde 2019 viviendo el fútbol desde dentro: redactando para <em>OneFootball</em>, entrenando cantera con licencia <em>UEFA C</em> y creando contenido para el <em>Terrassa FC</em>. Hoy uno ese conocimiento del deporte con el <em>digital retail</em>, el <em>e-commerce</em> y la <em>inteligencia artificial</em> para que clubes, atletas y marcas vendan más, comuniquen con autenticidad y midan lo que importa.</p>
-      <p class="about-sub">Graduado en Marketing y Comunicación Digital, cursando el MBA en Dirección de Empresas Deportivas de la Universitat de Barcelona y formado en IA aplicada al deporte y patrocinio deportivo (Johan Cruyff Institute). Entre 2024 y 2026 dirigí el marketing y la comunicación de AR Stars Academy, incluida la IBN Battuta Cup de Tánger (2027).</p>
+      <p class="about-sub">Graduado en Marketing y Comunicación Digital, cursando el MBA en Dirección de Empresas Deportivas de la Universitat de Barcelona y formado en IA aplicada al deporte y patrocinio deportivo (Johan Cruyff Institute). Entre 2024 y 2026 dirigí el marketing digital de AR Stars Academy, incluida la IBN Battuta Cup de Tánger (2027).</p>
       <div class="about-links">
         <a class="btn btn--accent" data-mag href="#contacto">Trabajemos juntos <span aria-hidden="true">→</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/oriol-huguet-digital-retail" rel="me noopener" target="_blank">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/oriol-huguet-digital-retail/" rel="me noopener" target="_blank">LinkedIn <span aria-hidden="true">↗</span></a>
         <a class="btn" href="/blog/">Leer el blog <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -748,10 +749,10 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
       <img class="job-logo" src="assets/img/logos/founderz.webp" width="643" height="120" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
-    <li class="job" data-logo="assets/img/logos/spreadit.webp" data-mono="Spreadit">
+    <li class="job" data-logo="assets/img/logos/spreadit.webp" data-mono="Spread It">
       <span class="job-yr">2025 — <span class="now">HOY</span></span>
-      <div><h3>Project Manager</h3><span class="job-co">Spreadit · Growth Partners</span></div>
-      <p class="job-desc">Gestión de proyectos para Forty Love, Ron Cihuatán y Café El Salvador.</p>
+      <div><h3>Director de Account Managers y Client Success Manager</h3><span class="job-co">Spread It · Growth Partners</span></div>
+      <p class="job-desc">Dirijo el equipo de account managers y el éxito de cliente de la cartera de la agencia, con marcas como Forty Love, Ron Cihuatán y Café El Salvador. Promocionado desde Project Manager.</p>
       <img class="job-logo" src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
@@ -764,8 +765,8 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     </li>
     <li class="job" data-logo="assets/img/logos/ar-stars-academy.webp" data-mono="AR Stars">
       <span class="job-yr">2024 — 2026</span>
-      <div><h3>Director de Marketing y Comunicación</h3><span class="job-co">AR Stars Academy</span></div>
-      <p class="job-desc">Dirigí el marketing de la IBN Battuta Cup, torneo que se disputará en Tánger en 2027.</p>
+      <div><h3>Director de Marketing Digital</h3><span class="job-co">AR Stars Academy</span></div>
+      <p class="job-desc">Dirigí la estrategia de marketing digital de la IBN Battuta Cup, que se disputará en Tánger en 2027.</p>
       <img class="job-logo" src="assets/img/logos/ar-stars-academy.webp" width="199" height="200" alt="" loading="lazy" decoding="async">
       <span class="job-arrow" aria-hidden="true">→</span>
     </li>
@@ -797,7 +798,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     <p>Clubes, agencias, proyectos y escuelas con los que he saltado al campo.</p>
   </div>
   <ul class="wall stg" aria-label="Organizaciones con las que he trabajado y donde he estudiado">
-    <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spreadit</figcaption></figure></li>
+    <li><figure class="club"><img src="assets/img/logos/spreadit.webp" width="183" height="200" alt="" loading="lazy" decoding="async"><figcaption>Spread It</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/terrassa-fc.webp" width="174" height="200" alt="" loading="lazy" decoding="async"><figcaption>Terrassa FC</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/lleida.webp" width="169" height="200" alt="" loading="lazy" decoding="async"><figcaption>Lleida</figcaption></figure></li>
     <li><figure class="club"><img src="assets/img/logos/ar-stars-academy.webp" width="199" height="200" alt="" loading="lazy" decoding="async"><figcaption>AR Stars Academy</figcaption></figure></li>
@@ -842,7 +843,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     <div class="side">
       <div>
         <h3>Herramientas y habilidades</h3>
-        <ul class="chips stg"><li>Digital retail</li><li>E-commerce</li><li>Shopper marketing</li><li>IA y prompting</li><li>Make</li><li>Figma</li><li>Canva</li><li>WordPress</li><li>Brevo</li><li>CRM</li><li>SEO</li><li>SEM</li><li>Content Marketing</li><li>Branding</li><li>Project Management</li><li>Estrategia</li><li>Liderazgo</li><li>Creatividad</li><li>Trabajo en equipo</li></ul>
+        <ul class="chips stg"><li>Account management</li><li>Client success</li><li>Digital retail</li><li>E-commerce</li><li>Shopper marketing</li><li>IA y prompting</li><li>Make</li><li>Figma</li><li>Canva</li><li>WordPress</li><li>Brevo</li><li>CRM</li><li>SEO</li><li>SEM</li><li>Content Marketing</li><li>Branding</li><li>Project Management</li><li>Estrategia</li><li>Liderazgo</li><li>Creatividad</li><li>Trabajo en equipo</li></ul>
       </div>
       <div>
         <h3>Certificaciones</h3>
@@ -894,7 +895,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     </div>
     <address class="contact-list">
       <a href="tel:+34611416474">Teléfono <span>611 41 64 74</span></a>
-      <a href="https://www.linkedin.com/in/oriol-huguet-digital-retail" rel="me noopener" target="_blank">LinkedIn <span>/oriol-huguet ↗</span></a>
+      <a href="https://www.linkedin.com/in/oriol-huguet-digital-retail/" rel="me noopener" target="_blank">LinkedIn <span>/oriol-huguet ↗</span></a>
       <p>Ubicación <span>Barcelona, España</span></p>
     </address>
   </div>

@@ -46,7 +46,7 @@ Un patrocinio se nota cuando la marca aporta algo al aficionado, no cuando solo 
 - Descuentos exclusivos para socios con un código propio.
 - Productos cobranding en la tienda online del club.
 
-Cuando organizas un torneo, la lógica es parecida pero con un calendario más concentrado. En mi etapa como director de marketing y comunicación de AR Stars Academy, trabajando el marketing de la IBN Battuta Cup, el patrocinio era una pieza central del plan. Lo cuento con más detalle en [marketing de torneos y eventos deportivos internacionales](/blog/marketing-eventos-deportivos-torneos-internacionales/).
+Cuando organizas un torneo, la lógica es parecida pero con un calendario más concentrado. En mi etapa como director de marketing digital de AR Stars Academy, trabajando el marketing de la IBN Battuta Cup, el patrocinio era una pieza central del plan. Lo cuento con más detalle en [marketing de torneos y eventos deportivos internacionales](/blog/marketing-eventos-deportivos-torneos-internacionales/).
 
 ## Cómo medir el retorno
 

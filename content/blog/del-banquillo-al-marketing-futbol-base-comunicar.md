@@ -32,7 +32,7 @@ Esto también vale para escribir con IA. Las herramientas generan mucho texto co
 
 Con niños descubres rápido que gritar "¡muy mal!" no enseña nada. Lo que funciona es concretar: qué ha pasado, qué podías haber hecho y cómo lo vamos a entrenar. Y reconocer lo que sale bien, también con detalle.
 
-En marketing pasa algo parecido con los datos. Decir que una campaña "no ha funcionado" no ayuda. Ayuda mirar qué pieza falló, en qué punto se cayó la gente y qué vamos a probar la próxima vez. Hoy, en los proyectos que gestiono en Spreadit, intento que cada informe acabe con una o dos acciones concretas, igual que acababa una charla después de un partido.
+En marketing pasa algo parecido con los datos. Decir que una campaña "no ha funcionado" no ayuda. Ayuda mirar qué pieza falló, en qué punto se cayó la gente y qué vamos a probar la próxima vez. Hoy, en los proyectos que gestiono en Spread It, intento que cada informe acabe con una o dos acciones concretas, igual que acababa una charla después de un partido.
 
 ## La cultura de equipo se construye con detalles
 
@@ -52,9 +52,9 @@ Mi camino no ha sido lineal, pero tiene un hilo conductor: el deporte y la comun
 
 1. **Diario UF y OneFootball (2019–2022).** Escribí como redactor web. Ahí aprendí a escribir rápido, con titulares claros y pensando en lo que busca el lector. Es la base de lo que hoy explico sobre [SEO para clubes y marcas deportivas](/blog/seo-clubes-marcas-deportivas-google/).
 2. **Terrassa FC (2024–2025).** Prácticas como creador de contenido y redes sociales en un club con mucha historia.
-3. **AR Stars Academy (2024–2026).** Director de Marketing y Comunicación. Lideré el marketing de la IBN Battuta Cup, un torneo internacional que se jugará en Tánger en 2027.
+3. **AR Stars Academy (2024–2026).** Director de Marketing Digital. Dirigí la estrategia de marketing digital de la IBN Battuta Cup, un torneo internacional que se jugará en Tánger en 2027.
 4. **Cobaltax (2025–2026).** Prácticas en marketing digital y e-commerce, centradas en transformación digital.
-5. **Spreadit (desde 2025).** Project Manager en una agencia de growth, con proyectos para marcas como Forty Love, Ron Cihuatán y Café El Salvador.
+5. **Spread It (desde 2025).** Empecé como Project Manager y hoy dirijo el equipo de account managers y el éxito de cliente de la agencia, con marcas como Forty Love, Ron Cihuatán y Café El Salvador.
 6. **Founderz (desde 2026).** Profesor invitado de IA, con la masterclass «La IA en la gestión deportiva».
 
 En paralelo, la formación: el grado en Marketing y Comunicación Digital en Euncet Business School, el máster en IA aplicada al deporte de Founderz, cursos de marketing deportivo y patrocinio, y ahora el MBA en Gestión Deportiva de la Universitat de Barcelona.
@@ -73,7 +73,7 @@ Entrenar fútbol base me enseñó a planificar, a simplificar mensajes, a dar fe
 
 ### ¿Quién es Oriol Huguet?
 
-Soy un profesional del marketing digital de Barcelona especializado en IA, marketing deportivo, digital retail y e-commerce. Trabajo como Project Manager en Spreadit, soy profesor invitado de IA en Founderz y tengo la licencia de entrenador UEFA C.
+Soy un profesional del marketing digital de Barcelona especializado en IA, marketing deportivo, digital retail y e-commerce. Dirijo el equipo de account managers y client success en Spread It, soy profesor invitado de IA en Founderz y tengo la licencia de entrenador UEFA C.
 
 ### ¿Qué tiene que ver entrenar fútbol base con el marketing?
 
@@ -81,4 +81,4 @@ Mucho más de lo que parece. Planificar sesiones, dar instrucciones claras y med
 
 ### ¿Con qué tipo de proyectos trabajas?
 
-Con clubes, deportistas y marcas, sobre todo en estrategia digital, e-commerce, contenido y aplicación de la IA al marketing. También con proyectos fuera del deporte, como los que gestiono en Spreadit.
+Con clubes, deportistas y marcas, sobre todo en estrategia digital, e-commerce, contenido y aplicación de la IA al marketing. También con proyectos fuera del deporte, como los que gestiono en Spread It.

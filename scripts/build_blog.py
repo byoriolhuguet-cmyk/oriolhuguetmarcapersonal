@@ -174,7 +174,7 @@ const f=document.querySelectorAll('.filters button');f.forEach(b=>b.addEventList
 def person_ld():
     return {"@type": "Person", "@id": f"{SITE}/#oriol", "name": "Oriol Huguet", "url": f"{SITE}/",
             "jobTitle": "Especialista en IA, Marketing Deportivo, Digital Retail y E-commerce",
-            "sameAs": ["https://www.linkedin.com/in/oriol-huguet-digital-retail"]}
+            "sameAs": ["https://www.linkedin.com/in/oriol-huguet-digital-retail/"]}
 
 
 def build():
@@ -217,7 +217,7 @@ def build():
   <div class="prose">{body}</div>
   <aside class="side" aria-label="Índice y autor"><div class="side-in">
     <nav class="toc" aria-label="Índice del artículo"><p>En este artículo</p><ol>{toc_html}</ol></nav>
-    <div class="author"><img src="/assets/img/oriol-avatar.webp" width="160" height="160" alt="" loading="lazy"><h2>Oriol Huguet</h2><p>Especialista en IA, marketing deportivo, digital retail y e-commerce. Guest Lecturer en Founderz y Project Manager en Spreadit.</p><a class="btn btn--y" href="{WA_URL}" target="_blank" rel="noopener">Escríbeme</a></div>
+    <div class="author"><img src="/assets/img/oriol-avatar.webp" width="160" height="160" alt="" loading="lazy"><h2>Oriol Huguet</h2><p>Especialista en IA, marketing deportivo, digital retail y e-commerce. Profesor invitado de IA en Founderz y Director de Account Managers y Client Success en Spread It.</p><a class="btn btn--y" href="{WA_URL}" target="_blank" rel="noopener">Escríbeme</a></div>
   </div></aside>
 </div>
 </article>
