@@ -103,7 +103,7 @@ def page_head(title, desc, url, og, ld, extra_css=""):
     h = head(title, desc, url, og, ld)
     fonts = ('<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<style>@font-face{font-family:"Instrument Serif";src:url(/assets/fonts/instrument-serif-italic.woff2) format("woff2");'
-             'font-style:italic;font-weight:400;font-display:swap}' + extra_css + '</style>\n</head>')
+             'font-style:italic;font-weight:400;font-display:optional}' + extra_css + '</style>\n</head>')
     return h.replace("</head>", fonts, 1)
 
 
