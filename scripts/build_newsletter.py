@@ -20,17 +20,42 @@ SUB = "La inteligencia artificial está cambiando el deporte. Cada domingo te cu
 SCRIPTS = '<script src="/js/newsletter.js" defer></script>'
 
 PAGE_CSS = '''
-.nl-hero{position:relative;overflow:hidden;background:radial-gradient(60% 70% at 75% 30%,var(--brand-2) 0%,transparent 70%),var(--brand);color:var(--paper);padding:clamp(130px,16vw,190px) var(--pad) clamp(70px,9vw,120px)}
-.nl-hero::before{content:"";position:absolute;right:16vw;top:-20%;height:140%;width:clamp(12px,1.4vw,22px);background:var(--accent);transform:rotate(16deg)}
-.nl-hero::after{content:"";position:absolute;right:calc(16vw - clamp(26px,3vw,48px));top:-20%;height:140%;width:2px;background:var(--paper);opacity:.8;transform:rotate(16deg)}
-.nl-hero>*{position:relative;z-index:1}
-@media (max-width:700px){.nl-hero::before,.nl-hero::after{display:none}}
+.nl-split{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;background:var(--ink);color:var(--paper)}
+.nl-me{position:relative;overflow:hidden;min-height:100%;background:radial-gradient(70% 60% at 50% 70%,#2a63d8 0%,transparent 70%),var(--brand)}
+.nl-me::before{content:"";position:absolute;left:8%;top:-20%;height:140%;width:clamp(14px,1.6vw,26px);background:var(--accent);transform:rotate(16deg)}
+.nl-me::after{content:"";position:absolute;left:calc(8% + clamp(30px,3.4vw,56px));top:-20%;height:140%;width:2px;background:var(--paper);opacity:.8;transform:rotate(16deg)}
+.nl-me picture{position:absolute;z-index:1;left:50%;bottom:0;width:min(118%,calc(92svh * 1.05));translate:-50% 0}
+.nl-me img{width:100%;height:auto;animation:nlrise 1.2s .1s var(--ease) both}
+@keyframes nlrise{from{transform:translateY(8%) scale(1.06)}}
+.nl-me-tag{position:absolute;z-index:2;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,36px);display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:rgba(0,14,43,.78);border:1px solid rgba(243,245,250,.12);font-size:.88rem;font-weight:700}
+.nl-me-tag b{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:.76rem;font-weight:900;font-stretch:115%}
+.nl-me-tag small{display:block;color:#b8c2da;font-weight:500;font-size:.74rem}
+.nl-join{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(100px,12vh,140px) clamp(20px,5vw,72px) clamp(40px,6vh,72px);background:radial-gradient(60% 50% at 50% 30%,rgba(10,58,156,.45) 0%,transparent 70%),linear-gradient(rgba(243,245,250,.035) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(243,245,250,.035) 1px,transparent 1px) 0 0/56px 56px,var(--ink)}
+.nl-watch{width:clamp(74px,8vw,110px);height:auto;margin-bottom:22px;color:var(--accent);filter:drop-shadow(0 18px 30px rgba(255,199,44,.18))}
+.nl-watch .hand{transform-origin:50px 62px;transform-box:view-box;animation:nlhand 6s linear infinite}
+@keyframes nlhand{to{transform:rotate(360deg)}}
 .nl-eyebrow{display:inline-flex;align-items:center;gap:.6em;padding:7px 14px;border-radius:999px;border:1px solid currentColor;color:var(--accent);font-size:.68rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
 .nl-eyebrow::before{content:"";width:.55em;height:.55em;border-radius:50%;background:currentColor}
-.nl-hero h1{margin-top:22px;font-size:clamp(3.6rem,13vw,11rem);font-weight:900;font-stretch:118%;line-height:.82;letter-spacing:-.05em;text-transform:uppercase}
-.nl-hero h1 em{display:block;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-stretch:100%;text-transform:none;letter-spacing:-.03em;color:var(--accent);padding-left:.04em}
-.nl-sub{margin-top:26px;max-width:34ch;font-size:clamp(1.15rem,1.9vw,1.55rem);font-weight:600;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
-.nl-hero .nl-form{margin-top:34px}
+.nl-join h1{margin-top:18px;font-size:clamp(2.8rem,5.6vw,6rem);font-weight:900;font-stretch:112%;line-height:.9;letter-spacing:-.045em;text-transform:uppercase}
+.nl-join h1 em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-stretch:100%;text-transform:none;letter-spacing:-.03em;color:var(--accent);padding-right:.04em}
+.nl-sub{margin-top:18px;max-width:40ch;color:#c9d1e6;font-size:clamp(1.02rem,1.3vw,1.18rem);font-weight:500;line-height:1.5;text-wrap:balance}
+.nl-join .nl-form{margin:26px auto 0;width:100%;text-align:left}
+.nl-join .nl-btn{justify-self:stretch;justify-content:space-between}
+.nl-join .nl-micro{text-align:center}
+@media (max-width:900px){
+  .nl-split{grid-template-columns:1fr;min-height:0}
+  .nl-me{height:34svh;min-height:250px}
+  .nl-me picture{width:min(100vw,calc((max(34svh,250px) - 62px) * 1.05))}
+  .nl-me-tag{padding:6px 14px 6px 6px;font-size:.8rem}.nl-me-tag b{width:30px;height:30px}
+  .nl-join{padding-top:28px}
+  .nl-watch{display:none}
+  .nl-join h1{margin-top:14px}
+  .nl-sub{margin-top:12px}
+  .nl-join .nl-form{margin-top:18px}
+  .nl-join .nl-btn{margin-right:70px}
+  .nl-me-tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){.nl-me img,.nl-watch .hand{animation:none}}
 .nl-micro{margin-top:14px;color:#b8c2da;font-size:.9rem;font-weight:600}
 .nl-sec{padding:clamp(80px,11vw,150px) var(--pad)}
 .nl-sec h2{font-size:clamp(2.4rem,6vw,5.4rem);font-weight:800;line-height:.94;letter-spacing:-.05em;text-wrap:balance;margin-bottom:clamp(36px,5vw,64px)}
@@ -124,16 +149,28 @@ def newsletter_page():
              ("⚡", "Momento de la semana", "La acción deportiva de la que todos hablan.")]
     cards_html = "".join(f'<li class="rv"><span class="emo" aria-hidden="true">{e}</span><h3>{t}</h3><p>{p}</p></li>' for e, t, p in cards)
     html = page_head("Punto Muerto — Newsletter de IA y deporte | Oriol Huguet", SUB, url,
-                     f"{SITE}/assets/img/og-punto-muerto.jpg", ld, NL_CSS + PAGE_CSS) + f'''
+                     f"{SITE}/assets/img/og-punto-muerto.jpg", ld, NL_CSS + PAGE_CSS).replace(
+        "<style>", '<link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesrcset="/assets/img/oriol-560.avif 560w, /assets/img/oriol-860.avif 860w, /assets/img/oriol-1240.avif 1240w" imagesizes="(max-width: 900px) 100vw, 50vw">\n<style>', 1) + f'''
 <body>
 {NAV.format(cur="").replace('<li><a href="/newsletter/">Newsletter</a></li>', '<li><a href="/newsletter/" aria-current="page">Newsletter</a></li>')}
 <main id="main">
-<section class="nl-hero" aria-labelledby="nl-title">
-  <span class="nl-eyebrow">Newsletter · Cada domingo 17:00</span>
-  <h1 id="nl-title">Punto <em>Muerto</em></h1>
-  <p class="nl-sub">{SUB}</p>
-  {form_html("page", "top")}
-  <p class="nl-micro">Gratis. Sin spam. Te das de baja con un clic.</p>
+<section class="nl-split" aria-labelledby="nl-title">
+  <div class="nl-me">
+    <picture>
+      <source type="image/avif" srcset="/assets/img/oriol-560.avif 560w, /assets/img/oriol-860.avif 860w, /assets/img/oriol-1240.avif 1240w" sizes="(max-width: 900px) 100vw, 50vw">
+      <source type="image/webp" srcset="/assets/img/oriol-560.webp 560w, /assets/img/oriol-860.webp 860w, /assets/img/oriol-1240.webp 1240w" sizes="(max-width: 900px) 100vw, 50vw">
+      <img src="/assets/img/oriol-860.webp" width="1240" height="1181" alt="Oriol Huguet, autor de la newsletter Punto Muerto" fetchpriority="high" decoding="async">
+    </picture>
+    <p class="nl-me-tag"><b>OH</b><span>Oriol Huguet<small>Autor de Punto Muerto</small></span></p>
+  </div>
+  <div class="nl-join">
+    <svg class="nl-watch" viewBox="0 0 100 112" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M40 6h20M50 6v10M78 26l6-6"/><circle cx="50" cy="62" r="40"/><g class="hand"><path d="M50 62V36"/></g><circle cx="50" cy="62" r="4" fill="currentColor"/></svg>
+    <span class="nl-eyebrow">Newsletter · Cada domingo 17:00</span>
+    <h1 id="nl-title">Punto <em>Muerto</em></h1>
+    <p class="nl-sub">{SUB}</p>
+    {form_html("page", "top")}
+    <p class="nl-micro">Gratis. Sin spam. Te das de baja con un clic.</p>
+  </div>
 </section>
 
 <section class="nl-sec" aria-labelledby="nl-what">
