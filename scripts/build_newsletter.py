@@ -101,6 +101,8 @@ FOOT = '''<footer class="foot"><span>© 2026 Oriol Huguet</span><span><a href="/
 
 def page_head(title, desc, url, og, ld, extra_css=""):
     h = head(title, desc, url, og, ld)
+    # sin salto de diseño si la tipografía llega tarde (se precarga, así que casi siempre llega)
+    h = h.replace("font-stretch:62% 125%;font-display:swap}", "font-stretch:62% 125%;font-display:optional}", 1)
     fonts = ('<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<style>@font-face{font-family:"Instrument Serif";src:url(/assets/fonts/instrument-serif-italic.woff2) format("woff2");'
              'font-style:italic;font-weight:400;font-display:optional}' + extra_css + '</style>\n</head>')
