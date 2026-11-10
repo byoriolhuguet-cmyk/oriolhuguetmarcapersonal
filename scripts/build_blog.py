@@ -14,6 +14,7 @@ from datetime import date
 from pathlib import Path
 
 import markdown
+from newsletter_form import popup_template
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont
 
@@ -154,7 +155,7 @@ NAV = '''<a class="skip" href="#main">Saltar al contenido</a>
 <div class="progress" aria-hidden="true"></div>
 <header class="nav"><div class="island">
   <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
-  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/"{cur}>Blog</a></li></ul></nav>
+  <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/"{cur}>Blog</a></li><li><a href="/newsletter/">Newsletter</a></li></ul></nav>
   <a class="cta-pill" href="/#contacto">Hablemos</a>
 </div></header>'''
 
@@ -163,10 +164,12 @@ CTA = f'''<section class="cta" aria-labelledby="cta-t">
   <p>Si quieres aplicar la IA, el marketing deportivo o el e-commerce en tu club o tu marca, hablemos.</p>
   <div class="row"><a class="btn btn--ink" href="mailto:byoriolhuguet@gmail.com">byoriolhuguet@gmail.com</a><a class="btn btn--ink" href="{WA_URL}" target="_blank" rel="noopener">WhatsApp</a></div>
 </section>
-<footer class="foot"><span>© {date.today().year} Oriol Huguet</span><span>IA · Marketing deportivo · Digital retail · E-commerce</span><a href="/">Volver a la web ↑</a></footer>
+<footer class="foot"><span>© {date.today().year} Oriol Huguet</span><span><a href="/newsletter/">Newsletter Punto Muerto</a> · <a href="/privacidad/">Privacidad</a></span><a href="/">Volver a la web ↑</a></footer>
 {WA}'''
 
-JS = '''<script>(()=>{const p=document.querySelector('.progress'),io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+JS = popup_template() + '''
+<script src="/js/newsletter.js" defer></script>
+<script>(()=>{const p=document.querySelector('.progress'),io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 const toc=[...document.querySelectorAll('.toc a')],hs=toc.map(a=>document.getElementById(a.hash.slice(1)));let t=0;addEventListener('scroll',()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;const h=document.documentElement;p.style.transform=`scaleX(${scrollY/Math.max(1,h.scrollHeight-innerHeight)})`;let k=-1;hs.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<innerHeight*.3)k=i});toc.forEach((a,i)=>a.classList.toggle('on',i===k))})},{passive:true});
 const f=document.querySelectorAll('.filters button');f.forEach(b=>b.addEventListener('click',()=>{f.forEach(x=>x.setAttribute('aria-pressed',x===b));const c=b.dataset.cat;document.querySelectorAll('.cards .pcard').forEach(a=>{a.hidden=c!=='*'&&a.dataset.cat!==c;a.classList.add('in')})}))})()</script>'''
 
@@ -181,7 +184,7 @@ def build():
     posts = sorted((parse(p) for p in CONTENT.glob("*.md")), key=lambda p: p["date"], reverse=True)
     tmp = ROOT / "scripts" / ".archivo.ttf"
     f = TTFont(ROOT / "assets" / "fonts" / "archivo.woff2"); f.flavor = None; f.save(tmp)
-    sitemap = [f"{SITE}/", f"{SITE}/cv/", f"{SITE}/blog/"]
+    sitemap = [f"{SITE}/", f"{SITE}/cv/", f"{SITE}/newsletter/", f"{SITE}/privacidad/", f"{SITE}/blog/"]
     for i, p in enumerate(posts):
         body, toc, faqs, words = render(p)
         og_image(p, tmp)

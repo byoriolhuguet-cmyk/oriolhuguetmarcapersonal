@@ -19,6 +19,13 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
 - Para publicar uno nuevo: añade el `.md` y ejecuta `pip install markdown pillow fonttools brotli && python3 scripts/build_blog.py`. Genera `/blog/`, la página del artículo, su imagen para redes, los últimos artículos de la portada, `sitemap.xml` y la lista de `llms.txt`.
 - El blog no está en el menú de la portada: se llega desde «Leer el blog», el bloque «Últimos artículos» y el pie.
 
+## Newsletter Punto Muerto (Kit)
+- `/newsletter/`, bloque en la portada y pop-up en el resto de la web (no en `/newsletter/` ni `/privacidad/`). Los suscriptores van a Kit con su API v4.
+- Endpoint: `api/subscribe.js` (Vercel Function). Variables en Vercel → Settings → Environment Variables (Production y Preview): `KIT_API_KEY`, `KIT_FORM_PAGE=10171109` (página y portada) y `KIT_FORM_POPUP=10171137` (pop-up). Nunca en el repo.
+- Formulario: una sola fuente en `scripts/newsletter_form.py`; comportamiento en `js/newsletter.js`; estilos en `css/newsletter.css`.
+- Tras cambiar textos o el formulario: `python3 scripts/build_blog.py && python3 scripts/build_newsletter.py` (regenera blog, `/newsletter/`, `/privacidad/`, la portada y el pop-up de `/cv/`).
+- Pop-up: aparece con el 50 % de scroll, intención de salida (escritorio) o a los 25 s, nunca antes de 5 s; no vuelve a salir tras suscribirse ni en 30 días tras cerrarlo (`localStorage`).
+
 ## WhatsApp
 - Botón flotante en todas las páginas hacia wa.me/34611416474 con un mensaje inicial. Para cambiar el número, edita `WA_URL` en `scripts/build_blog.py` y el enlace `.wa` de `index.html`.
 

@@ -138,7 +138,29 @@ section+section{margin-top:24px}
       </section>
     </div>
   </div>
-  <p class="foot"><span>Versión web: oriolhuguet.com/cv</span><span>Actualizado en octubre de 2026</span></p>
+  <p class="foot"><span>Versión web: oriolhuguet.com/cv · <a href="/newsletter/">Newsletter Punto Muerto</a></span><span>Actualizado en octubre de 2026</span></p>
 </main>
+<!-- nl-popup:start -->
+<template id="nl-popup-tpl"><div class="nl-pop" hidden>
+  <div class="nl-pop-bg"></div>
+  <div class="nl-pop-card" role="dialog" aria-modal="true" aria-labelledby="nl-pop-t" aria-describedby="nl-pop-d">
+    <button class="nl-pop-x" type="button" aria-label="Cerrar">✕</button>
+    <span class="nl-pop-tag">Punto Muerto</span>
+    <h2 id="nl-pop-t">Cada domingo, la IA del deporte en <em>5 minutos</em></h2>
+    <p class="nl-pop-sub" id="nl-pop-d">Únete a Punto Muerto. Gratis.</p>
+    <form class="nl-form" data-nl-form data-source="popup" action="/api/subscribe" method="post" novalidate>
+  <div class="nl-fields">
+    <p class="nl-field"><label for="nl-name-pop">Nombre</label><input id="nl-name-pop" name="first_name" type="text" autocomplete="given-name" maxlength="60" required placeholder="Tu nombre"></p>
+    <p class="nl-field"><label for="nl-email-pop">Email</label><input id="nl-email-pop" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required placeholder="tu@email.com"></p>
+  </div>
+  <p class="nl-hp" aria-hidden="true"><label for="nl-web-pop">Deja este campo vacío</label><input id="nl-web-pop" name="website" type="text" tabindex="-1" autocomplete="off"></p>
+  <label class="nl-consent" for="nl-ok-pop"><input id="nl-ok-pop" name="consent" type="checkbox" required><span>Acepto recibir Punto Muerto cada domingo y la <a href="/privacidad/">política de privacidad</a>. Puedo darme de baja cuando quiera.</span></label>
+  <button class="nl-btn" type="submit"><span class="nl-btn-t">Quiero recibirla</span><span class="nl-btn-i" aria-hidden="true">→</span></button>
+  <p class="nl-msg" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</div></template>
+<script src="/js/newsletter.js" defer></script>
+<!-- nl-popup:end -->
 </body>
 </html>
