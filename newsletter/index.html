@@ -233,7 +233,7 @@ aside.side{position:relative}
 .nl-me{position:relative;overflow:hidden;min-height:100%;background:radial-gradient(70% 60% at 50% 70%,#2a63d8 0%,transparent 70%),var(--brand)}
 .nl-me::before{content:"";position:absolute;left:8%;top:-20%;height:140%;width:clamp(14px,1.6vw,26px);background:var(--accent);transform:rotate(16deg)}
 .nl-me::after{content:"";position:absolute;left:calc(8% + clamp(30px,3.4vw,56px));top:-20%;height:140%;width:2px;background:var(--paper);opacity:.8;transform:rotate(16deg)}
-.nl-me picture{position:absolute;z-index:1;left:50%;bottom:0;width:min(118%,calc(92svh * 1.05));translate:-50% 0}
+.nl-me picture{position:absolute;z-index:1;left:50%;bottom:0;width:min(66%,calc(58svh * 1.05));translate:-50% 0}
 .nl-me img{width:100%;height:auto;animation:nlrise 1.2s .1s var(--ease) both}
 @keyframes nlrise{from{transform:translateY(8%) scale(1.06)}}
 .nl-me-tag{position:absolute;z-index:2;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,36px);display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:rgba(0,14,43,.78);border:1px solid rgba(243,245,250,.12);font-size:.88rem;font-weight:700}
@@ -254,7 +254,7 @@ aside.side{position:relative}
 @media (max-width:900px){
   .nl-split{grid-template-columns:1fr;min-height:0}
   .nl-me{height:34svh;min-height:250px}
-  .nl-me picture{width:min(100vw,calc((max(34svh,250px) - 62px) * 1.05))}
+  .nl-me picture{width:min(62vw,calc((max(34svh,250px) - 100px) * 1.05))}
   .nl-me-tag{padding:6px 14px 6px 6px;font-size:.8rem}.nl-me-tag b{width:30px;height:30px}
   .nl-join{padding-top:28px}
   .nl-watch{display:none}
