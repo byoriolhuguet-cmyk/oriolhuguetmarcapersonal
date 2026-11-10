@@ -28,14 +28,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Revisa tu nombre y email' });
   }
 
-  const { KIT_API_KEY, KIT_FORM_PAGE, KIT_FORM_POPUP } = process.env;
-  const formId = source === 'popup' ? KIT_FORM_POPUP : KIT_FORM_PAGE;
-  if (!KIT_API_KEY || !formId) {
-    console.error('newsletter: faltan variables de entorno de Kit');
+  // Tolerante a valores pegados con comillas, espacios o comentarios («10171109  # formulario…»).
+  const clean = v => String(v || '').trim().replace(/^["']|["']$/g, '').trim();
+  const apiKey = clean(process.env.KIT_API_KEY).split(/\s/)[0];
+  const formId = (clean(source === 'popup' ? process.env.KIT_FORM_POPUP : process.env.KIT_FORM_PAGE).match(/\d+/) || [''])[0];
+  if (!apiKey || !formId) {
+    console.error(`newsletter: falta configuración (clave: ${apiKey ? 'sí' : 'no'}, formulario ${source}: ${formId ? 'sí' : 'no'})`);
     return res.status(500).json({ error: GENERIC });
   }
 
-  const headers = { 'X-Kit-Api-Key': KIT_API_KEY, 'Content-Type': 'application/json', Accept: 'application/json' };
+  const headers = { 'X-Kit-Api-Key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' };
   const path = source === 'page' ? '/newsletter/' : '/';
 
   try {
@@ -48,7 +50,7 @@ export default async function handler(req, res) {
     if (!r1.ok && r1.status !== 422) throw new Error(`subscribers ${r1.status}`);
 
     // 2. Añadirlo al formulario que corresponde a su origen.
-    const r2 = await fetch(`${KIT}/forms/${encodeURIComponent(formId)}/subscribers`, {
+    const r2 = await fetch(`${KIT}/forms/${formId}/subscribers`, {
       method: 'POST',
       headers,
       body: JSON.stringify({ email_address: mail, referrer: SITE + path }),
