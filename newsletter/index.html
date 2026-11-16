@@ -54,6 +54,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0}
 .menu a[aria-current]{background:rgba(255,199,44,.16);color:var(--accent)}
 .cta-pill{display:flex;align-items:center;background:var(--accent);color:var(--ink);padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.86rem;margin-left:4px;transition:background .35s var(--ease)}
 .cta-pill:hover{background:var(--paper)}
+@media (max-width:480px){.cta-x{display:none}}
 @media (max-width:640px){.nav{left:12px;right:12px;translate:none;width:auto}.island{justify-content:space-between}.island nav{display:none}}
 .progress{position:fixed;left:0;top:0;z-index:60;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
 
@@ -311,7 +312,7 @@ aside.side{position:relative}
 <header class="nav"><div class="island">
   <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
   <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/">Blog</a></li><li><a href="/newsletter/" aria-current="page">Newsletter</a></li></ul></nav>
-  <a class="cta-pill" href="/#contacto">Hablemos</a>
+  <a class="cta-pill" href="/reservar/">Reservar<span class="cta-x"> llamada</span></a>
 </div></header>
 <main id="main">
 <section class="nl-split" aria-labelledby="nl-title">

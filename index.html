@@ -552,6 +552,45 @@ button.btn{cursor:pointer;background:none;color:var(--paper)}
 .nl-home-micro{margin-top:12px;color:#b8c2da;font-size:.88rem;font-weight:600}
 @media (max-width:900px){.nl-home-card{grid-template-columns:1fr}.nl-home-card::before{display:none}}
 
+/* reservas */
+/* book-css:start */
+.bk-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bk-card{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 22px 20px;border-radius:24px;text-decoration:none;color:#f3f5fa;background:linear-gradient(180deg,#0a2160,#06194a);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 0 0 6px rgba(243,245,250,.03),0 0 0 7px rgba(243,245,250,.1);overflow:hidden;isolation:isolate;transition:transform .5s cubic-bezier(.2,.8,.2,1),color .4s}
+.bk-card::before{content:"";position:absolute;inset:0;z-index:-1;background:#ffc72c;clip-path:circle(0 at 100% 0);transition:clip-path .7s cubic-bezier(.2,.8,.2,1)}
+.bk-card:hover,.bk-card:focus-visible{color:#000e2b;transform:translateY(-6px)}
+.bk-card:hover::before,.bk-card:focus-visible::before{clip-path:circle(150% at 100% 0)}
+.bk-card:focus-visible{outline:3px solid #f3f5fa;outline-offset:3px}
+.bk-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bk-emo{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:rgba(243,245,250,.08);font-size:1.35rem}
+.bk-meta{font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ffc72c;transition:color .4s}
+.bk-card:hover .bk-meta,.bk-card:focus-visible .bk-meta{color:#000e2b}
+.bk-title{margin-top:10px;font-size:1.45rem;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.bk-who{font-size:.86rem;font-weight:700;opacity:.75}
+.bk-desc{font-size:.95rem;line-height:1.45;opacity:.85}
+.bk-cta{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.bk-arrow{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#ffc72c;color:#000e2b;transition:transform .5s cubic-bezier(.32,.72,0,1),background .4s}
+.bk-card:hover .bk-arrow,.bk-card:focus-visible .bk-arrow{background:#000e2b;color:#ffc72c;transform:translate(3px,-2px)}
+.bk-cards--compact .bk-card{padding:18px 18px 16px}
+.bk-cards--compact .bk-title{font-size:1.2rem;margin-top:6px}
+@media (max-width:860px){.bk-cards{grid-template-columns:1fr}.bk-card{min-height:0}}
+@media (prefers-reduced-motion:reduce){.bk-card,.bk-card::before,.bk-arrow{transition:none}}
+/* book-css:end */
+.hero-book{position:absolute;z-index:4;left:var(--pad);bottom:clamp(28px,6vh,60px);display:flex;align-items:center;gap:14px;padding:10px 10px 10px 10px;border-radius:22px;background:rgba(0,14,43,.72);border:1px solid rgba(243,245,250,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 48px -24px rgba(0,8,30,.8);color:var(--paper);text-decoration:none;opacity:calc((var(--rev) - 40) / 60);transition:transform .5s var(--ease),background .4s;animation:fadeup 1s calc(var(--d) + .7s) var(--ease) both}
+.hero-book:hover{transform:translateY(-4px);background:rgba(0,14,43,.9)}
+.hb-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:var(--accent);color:var(--ink)}
+.hb-ic svg{width:24px;height:24px}
+.hb-t{display:grid;gap:2px;line-height:1.2}
+.hb-t b{font-size:.98rem}
+.hb-t small{font-size:.76rem;color:#b8c2da;font-weight:600}
+.hb-go{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(243,245,250,.1);transition:transform .5s cubic-bezier(.32,.72,0,1)}
+.hero-book:hover .hb-go{transform:translateX(3px)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:480px){.cta-x{display:none}.cta-pill{padding:11px 16px}}
+@media (max-width:700px){.hero-book{left:16px;right:88px;bottom:22px}.hero-book .hb-go{margin-left:auto}.scroll-hint{display:none}}
+.book-home-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,70px);align-items:end;margin-bottom:clamp(30px,5vw,56px)}
+.book-home-head p{color:var(--mute);font-size:1.08rem;max-width:40ch}
+@media (max-width:900px){.book-home-head{grid-template-columns:1fr}}
+
 /* grano */
 body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.035}
 @media (max-width:700px),(pointer:coarse){body::after{display:none}.island{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,14,43,.92)}}
@@ -626,13 +665,14 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
         <li><a href="/newsletter/">Newsletter</a></li>
       </ul>
     </nav>
-    <a class="cta-pill" data-mag href="#contacto"><i aria-hidden="true"></i>Hablemos</a>
+    <a class="cta-pill" data-mag href="/reservar/"><i aria-hidden="true"></i>Reservar<span class="cta-x"> llamada</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mmenu" data-burger><span></span><span></span><b class="sr">Abrir menú</b></button>
   </div>
 </header>
 <div class="mmenu" id="mmenu" hidden data-mmenu>
   <nav aria-label="Menú móvil">
     <ol>
+      <li><a href="/reservar/"><small>★</small><em>Reservar llamada</em></a></li>
       <li><a href="#cv"><small>00</small>CV en 30 s</a></li>
       <li><a href="#sobre-mi"><small>01</small>Sobre mí</a></li>
       <li><a href="#trayectoria"><small>02</small>Trayectoria</a></li>
@@ -658,6 +698,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
     </picture>
     <div class="xray" aria-hidden="true" data-xray></div>
     <p class="hn hn--outline" aria-hidden="true" data-hn><span class="ln"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></p>
+    <a class="hero-book" href="/reservar/"><span class="hb-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg></span><span class="hb-t"><b>Llamada gratis · 30 min</b><small>Consultoría · Mentoría · Empleo</small></span><span class="hb-go" aria-hidden="true">→</span></a>
     <p class="scroll-hint" aria-hidden="true"><span>Desliza</span><i></i></p>
     <a class="badge" data-mag href="#sobre-mi" aria-label="Retail · IA · Sports · Growth: bajar a Sobre mí">
       <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text font-size="9.6" font-weight="800" fill="#f3f5fa"><textPath href="#c" textLength="236" lengthAdjust="spacing">RETAIL · IA · SPORTS · GROWTH · </textPath></text></svg>
@@ -667,7 +708,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
   <div class="hero-scroll" aria-hidden="true"></div>
   <div class="hero-foot">
     <div class="tagline-wrap"><p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
-    <a class="btn btn--accent hero-cv" href="cv/oriol-huguet-cv.pdf" download>CV en PDF <span aria-hidden="true">↓</span></a></div>
+    <div class="hero-ctas"><a class="btn btn--accent" href="/reservar/">Reservar llamada gratis <span aria-hidden="true">→</span></a><a class="btn hero-cv" href="cv/oriol-huguet-cv.pdf" download>CV en PDF <span aria-hidden="true">↓</span></a></div></div>
     <div class="status">
       <p><i aria-hidden="true"></i>En juego ahora</p>
       <ul>
@@ -921,6 +962,33 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 </form>
 <!-- nl-form:end --><p class="nl-home-micro">Gratis. Sin spam. Te das de baja con un clic.</p></div>
   </div>
+</section>
+
+<section class="sec wrap book-home" id="reservar" aria-labelledby="book-home-t">
+  <div class="sec-head"><span class="label">08 — Reserva</span><span>Gratis · Videollamada</span></div>
+  <div class="book-home-head">
+    <h2 class="big" id="book-home-t">Reserva <em>30 minutos</em><br>conmigo</h2>
+    <p>Consultorías, mentorías y reuniones para puestos de trabajo. Elige el tipo de sesión y te llevo a mi calendario para escoger la hora.</p>
+  </div>
+  <!-- book-end:start --><ul class="bk-cards"><li><a class="bk-card" href="https://calendly.com/oriolhuguet/sesion-gratuita?a1=Consultor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=consultoria" data-book="consultoria">
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">💡</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-title">Consultoría</span>
+  <span class="bk-who">Clubes, marcas y agencias</span>
+  <span class="bk-desc">IA aplicada, marketing deportivo, digital retail o e-commerce. Revisamos tu caso y te llevas los siguientes pasos.</span>
+  <span class="bk-cta">Reservar hora <span class="bk-arrow" aria-hidden="true">→</span></span>
+</a></li><li><a class="bk-card" href="https://calendly.com/oriolhuguet/sesion-gratuita?a1=Mentor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=mentoria" data-book="mentoria">
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🧭</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-title">Mentoría</span>
+  <span class="bk-who">Estudiantes y perfiles que empiezan</span>
+  <span class="bk-desc">Carrera en marketing deportivo o IA, formación, portfolio y marca personal. Te cuento lo que me habría ahorrado tiempo.</span>
+  <span class="bk-cta">Reservar hora <span class="bk-arrow" aria-hidden="true">→</span></span>
+</a></li><li><a class="bk-card" href="https://calendly.com/oriolhuguet/sesion-gratuita?a1=Reuni%C3%B3n+para+un+puesto&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=empleo" data-book="empleo">
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🤝</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-title">Reunión para un puesto</span>
+  <span class="bk-who">Empresas y reclutadores</span>
+  <span class="bk-desc">¿Tienes un puesto en el que encajo? Hablamos del rol, del equipo y de cómo puedo aportar desde el primer día.</span>
+  <span class="bk-cta">Reservar hora <span class="bk-arrow" aria-hidden="true">→</span></span>
+</a></li></ul><!-- book-end:end -->
 </section>
 
 <section class="contact wrap" id="contacto" aria-labelledby="contact-title">

@@ -156,7 +156,7 @@ NAV = '''<a class="skip" href="#main">Saltar al contenido</a>
 <header class="nav"><div class="island">
   <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
   <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/"{cur}>Blog</a></li><li><a href="/newsletter/">Newsletter</a></li></ul></nav>
-  <a class="cta-pill" href="/#contacto">Hablemos</a>
+  <a class="cta-pill" href="/reservar/">Reservar<span class="cta-x"> llamada</span></a>
 </div></header>'''
 
 CTA = f'''<section class="cta" aria-labelledby="cta-t">
@@ -184,7 +184,7 @@ def build():
     posts = sorted((parse(p) for p in CONTENT.glob("*.md")), key=lambda p: p["date"], reverse=True)
     tmp = ROOT / "scripts" / ".archivo.ttf"
     f = TTFont(ROOT / "assets" / "fonts" / "archivo.woff2"); f.flavor = None; f.save(tmp)
-    sitemap = [f"{SITE}/", f"{SITE}/cv/", f"{SITE}/newsletter/", f"{SITE}/privacidad/", f"{SITE}/blog/"]
+    sitemap = [f"{SITE}/", f"{SITE}/reservar/", f"{SITE}/cv/", f"{SITE}/newsletter/", f"{SITE}/privacidad/", f"{SITE}/blog/"]
     for i, p in enumerate(posts):
         body, toc, faqs, words = render(p)
         og_image(p, tmp)

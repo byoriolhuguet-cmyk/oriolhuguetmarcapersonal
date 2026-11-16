@@ -19,6 +19,11 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
 - Para publicar uno nuevo: añade el `.md` y ejecuta `pip install markdown pillow fonttools brotli && python3 scripts/build_blog.py`. Genera `/blog/`, la página del artículo, su imagen para redes, los últimos artículos de la portada, `sitemap.xml` y la lista de `llms.txt`.
 - El blog no está en el menú de la portada: se llega desde «Leer el blog», el bloque «Últimos artículos» y el pie.
 
+## Reservas (Calendly)
+- `/reservar/` con las tres sesiones gratuitas (consultoría, mentoría, reunión para un puesto), tarjeta de reserva en la primera pantalla de la portada, botón junto al CV, bloque «Reserva 30 minutos» antes del contacto y botón «Reservar llamada» en el menú.
+- El enlace de Calendly está en un solo sitio: `CALENDLY_URL` en `scripts/booking.py`. Con un único evento, cada tarjeta rellena la primera pregunta del formulario de Calendly (`a1`) con el tipo de sesión; con un evento por tipo, pon su enlace en `url`.
+- Tras cambiarlo: `python3 scripts/build_blog.py && python3 scripts/build_newsletter.py && python3 scripts/build_reservar.py`.
+
 ## Newsletter Punto Muerto (Kit)
 - `/newsletter/`, bloque en la portada y pop-up en el resto de la web (no en `/newsletter/` ni `/privacidad/`). Los suscriptores van a Kit con su API v4.
 - Endpoint: `api/subscribe.js` (Vercel Function). Variables en Vercel → Settings → Environment Variables (Production y Preview): `KIT_API_KEY`, `KIT_FORM_PAGE=10171109` (página y portada) y `KIT_FORM_POPUP=10171137` (pop-up). Nunca en el repo.
