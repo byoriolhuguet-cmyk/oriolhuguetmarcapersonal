@@ -117,6 +117,7 @@ def main():
     inject("index.html", "book-css", BOOK_CSS, css=True)
     inject("index.html", "book-hero", embed("home-hero"))
     inject("index.html", "book-end", cards("home-final"))
+    inject("index.html", "calm", (ROOT / "scripts" / "calm.css").read_text(), css=True)
     print("reservar y portada actualizados")
 
 

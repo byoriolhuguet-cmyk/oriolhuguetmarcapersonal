@@ -14,6 +14,11 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
    `<figure class="club"><img src="assets/img/logos/NOMBRE.webp" width="…" height="200" alt="" loading="lazy" decoding="async"><figcaption>Nombre</figcaption></figure>`.
 3. En la trayectoria, pon la ruta en `data-logo="…"` del puesto y añade `<img class="job-logo" …>` (es la versión móvil, copia la de Spread It).
 
+## Estilo «calma»
+- Capa de estilo minimalista (fondo claro, más aire, títulos más finos) en `scripts/calm.css`, que `build_reservar.py` inyecta en la portada; el blog y las demás páginas la tienen al final de `scripts/blog.css`.
+- Bajo la portada, «¿Qué te trae por aquí?» dirige a headhunters, a quien busca consultoría y a quien busca mentoría.
+- `robots.txt` permite expresamente los rastreadores de buscadores y asistentes de IA; `llms.txt` (resumen) y `llms-full.txt` (con todos los artículos, lo genera `build_blog.py`).
+
 ## Blog
 - Artículos en `content/blog/*.md` (front matter: title, slug, description, keyword, category, date, read, excerpt).
 - Para publicar uno nuevo: añade el `.md` y ejecuta `pip install markdown pillow fonttools brotli && python3 scripts/build_blog.py`. Genera `/blog/`, la página del artículo, su imagen para redes, los últimos artículos de la portada, `sitemap.xml` y la lista de `llms.txt`.

@@ -1,0 +1,119 @@
+/* ===== Calma: minimalismo, aire y lujo (estilo Apple). Se aplica sobre los estilos base. ===== */
+:root{--bg:#f5f5f7;--bg2:#fff;--text:#0b1430;--sub:#565c6e;--hair:rgba(0,14,43,.1);--pad:max(clamp(20px,5vw,64px),calc((100vw - 1180px) / 2))}
+body{background:var(--bg);color:var(--text)}
+body::after,.cursor,.marquee,.pitch{display:none!important}
+
+/* ritmo de secciones */
+.sec{padding-block:clamp(110px,14vw,210px)}
+section.sec{background:var(--bg);color:var(--text)}
+section.sec.light{background:var(--bg2)}
+.sec-head{border-top:0;padding-top:0;margin-bottom:clamp(22px,3vw,36px);color:var(--sub)}
+.sec-head .label,.light .sec-head .label{padding:0;border:0;background:none;color:var(--sub);font-size:.82rem;font-weight:600;letter-spacing:.01em;text-transform:none}
+.sec-head .label::before,.sec-head span:last-child{display:none}
+.big{font-size:clamp(2.4rem,5.2vw,4.6rem);font-weight:700;font-stretch:100%;line-height:1.04;letter-spacing:-.045em;translate:none!important}
+.big em,.light .big em,.wall-head h3 em{color:var(--brand-2)}
+.wall-head h3{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:700;font-stretch:100%;letter-spacing:-.035em}
+
+/* botones */
+.btn{border-color:var(--hair);color:var(--text);font-weight:600}
+.btn:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.btn span[aria-hidden]{background:rgba(0,14,43,.06)}
+.btn--accent,.btn--ink{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn--accent:hover,.btn--ink:hover{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+.btn--accent span[aria-hidden],.btn--ink span[aria-hidden]{background:rgba(255,255,255,.16);color:#fff}
+button.btn{color:var(--text)}
+.hero .btn{color:#fff;border-color:rgba(255,255,255,.3)}
+.hero .btn span[aria-hidden]{background:rgba(255,255,255,.14)}
+
+/* qué te trae por aquí */
+.router{padding-block:clamp(90px,11vw,160px)}
+.router-t{font-size:clamp(2rem,4vw,3.4rem);font-weight:700;letter-spacing:-.045em;line-height:1.05;margin-bottom:clamp(30px,4vw,56px)}
+.router-t em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--brand-2)}
+.doors{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.door{display:flex;flex-direction:column;gap:12px;padding:clamp(26px,3vw,40px);border-radius:28px;background:var(--bg2);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.door:hover{transform:translateY(-4px);box-shadow:0 30px 60px -40px rgba(0,33,94,.35)}
+.door-k{font-size:.8rem;font-weight:600;color:var(--sub)}
+.door h3{font-size:clamp(1.5rem,2.2vw,2rem);font-weight:700;letter-spacing:-.035em;line-height:1.05}
+.door p{color:var(--sub);line-height:1.55}
+.door-links{display:grid;gap:4px;margin-top:auto;padding-top:14px}
+.door-links a{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--hair);color:var(--brand-2);font-weight:600;text-decoration:none}
+.door-links a::after{content:"→";transition:transform .4s var(--ease)}
+.door-links a:hover::after{transform:translateX(4px)}
+@media (max-width:900px){.doors{grid-template-columns:1fr}}
+
+/* en 30 segundos */
+.quick-intro>p,.about-sub{color:var(--sub)}
+.facts>div{background:var(--bg2);box-shadow:none;border:0;color:var(--text)}
+.facts dt{color:var(--sub);letter-spacing:.06em;text-transform:none;font-size:.78rem;font-weight:600}
+.facts>div:first-child dd{font-weight:700}
+.facts .facts-cta{background:var(--brand);color:#fff;box-shadow:none}
+.facts .facts-cta dt{color:rgba(255,255,255,.7)}
+
+/* sobre mí */
+.manifesto{font-size:clamp(1.45rem,2.5vw,2.3rem);font-weight:600;line-height:1.25;letter-spacing:-.025em}
+.manifesto em,.manifesto .w.hl.on{color:var(--brand-2)}
+.manifesto .w{color:#6a6f80}
+.manifesto .w.on{color:var(--text)}
+.card-in{animation:none}
+.score{border-color:var(--hair)}
+.score li{border-color:var(--hair)}
+.score b{color:var(--text);font-weight:700;font-stretch:100%;font-size:clamp(2.6rem,4.4vw,4.2rem);letter-spacing:-.04em}
+.score span{color:var(--sub)}
+
+/* servicios */
+.svc{background:var(--bg2);box-shadow:none;border:0;color:var(--text)}
+.svc p{color:var(--sub)}
+.svc-n{color:var(--brand-2);font-weight:700;font-stretch:100%;font-size:2.4rem;letter-spacing:-.04em}
+.svc::before{background:var(--brand)}
+.svc:hover,.svc:hover h3{color:#fff}
+.svc:hover p{color:rgba(255,255,255,.8)}
+.svc:hover .svc-n{color:var(--accent)}
+.svc h3{font-weight:700;font-stretch:100%}
+.svc--cta,.svc--cta .svc-n,.svc--cta p{background:var(--brand);color:#fff}
+.svc--cta::before{background:var(--brand-2)}
+.hs-meter{color:var(--sub)}
+.hs-count b{color:var(--brand-2)}
+.hs-meter i{background:var(--hair)}
+.hs-meter i b{background:var(--brand)}
+
+/* blog */
+.pcard{box-shadow:none;border:0}
+.cover{background:var(--bg)!important;color:var(--text)!important}
+.cover::after{display:none}
+.cover b{color:var(--brand-2);font-weight:700;font-stretch:100%;font-size:clamp(3rem,6vw,4.4rem);letter-spacing:-.05em}
+.cover span{color:var(--sub);letter-spacing:.06em}
+section.sec.light .cover{background:var(--bg)!important}
+
+/* preguntas */
+.faq,.faq-i{border-color:var(--hair)}
+.faq-i summary:hover h3{color:var(--brand-2)}
+.faq-i h3{font-weight:600;letter-spacing:-.02em}
+.faq-i i{border-color:var(--hair)}
+.faq-i[open] i{background:var(--brand);color:#fff;border-color:var(--brand)}
+.faq-i p{color:var(--sub)}
+
+/* newsletter y reservas */
+.nl-home-card::before{display:none}
+.nl-home-card{box-shadow:none}
+.book-home-head p{color:var(--sub)}
+.book-home .bk-card{background:var(--bg2);color:var(--text);box-shadow:none}
+.book-home .bk-emo{background:var(--bg)}
+.book-home .bk-meta{color:var(--brand-2)}
+.book-home .bk-card::before{background:var(--brand)}
+.book-home .bk-card:hover,.book-home .bk-card:focus-visible{color:#fff}
+.book-home .bk-card:hover .bk-meta{color:var(--accent)}
+
+/* contacto: el único bloque oscuro además de la portada */
+.contact{background:var(--ink);color:#fff;padding-block:clamp(110px,14vw,200px) 0}
+.contact .sec-head,.contact .sec-head .label{color:rgba(255,255,255,.6)}
+.contact-big{font-size:clamp(2.6rem,7vw,6.4rem);font-weight:700;font-stretch:100%;line-height:1.02;letter-spacing:-.05em;text-transform:none}
+.contact-big span:nth-child(2){padding-left:0}
+.contact-big em{color:var(--accent)}
+.mail{font-weight:600;border-color:rgba(255,255,255,.25)}
+.mail:hover{background:none;color:var(--accent)}
+.contact-list a,.contact-list p{border-color:rgba(255,255,255,.12);font-weight:600}
+.contact-list span{color:rgba(255,255,255,.62)}
+.foot{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.giant{color:rgba(255,255,255,.07)}
+.nl-home .big{color:#fff}
+.nl-home .big em{color:var(--accent)}

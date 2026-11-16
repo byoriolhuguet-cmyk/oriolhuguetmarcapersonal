@@ -287,6 +287,12 @@ def build():
     t = llms.read_text().split("\n## Blog\n")[0].rstrip() + "\n\n## Blog\n" + "".join(
         f"- [{p['title']}]({SITE}/blog/{p['slug']}/): {p['excerpt']}\n" for p in posts)
     llms.write_text(t)
+
+    # llms-full.txt: el resumen más el texto completo de cada artículo, para asistentes de IA
+    full = t + "\n\n# Artículos completos\n"
+    for p in posts:
+        full += f"\n\n---\n\n## {p['title']}\nURL: {SITE}/blog/{p['slug']}/\nFecha: {p['date']} · Tema: {p['category']}\n\n{p['body_md']}\n"
+    (ROOT / "llms-full.txt").write_text(full)
     print(f"{len(posts)} artículos generados")
 
 
