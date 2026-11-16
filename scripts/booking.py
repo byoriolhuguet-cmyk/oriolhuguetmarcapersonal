@@ -4,10 +4,10 @@ Para cambiar el enlace de Calendly solo hay que tocar CALENDLY_URL (y, si
 creas un evento distinto para cada tipo, el campo `url` de cada uno) y
 volver a ejecutar: python3 scripts/build_reservar.py
 """
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 
 # Enlace del evento de Calendly (lo copias en Calendly → tu evento → «Copiar enlace»).
-CALENDLY_URL = "https://calendly.com/oriolhuguet/sesion-gratuita"
+CALENDLY_URL = "https://calendly.com/byoriolhuguet/30min"
 
 # Los tres tipos de sesión. Con un solo evento en Calendly (plan gratuito), cada
 # botón rellena la primera pregunta del formulario («¿Qué tipo de sesión
@@ -36,7 +36,7 @@ def link(t, placement):
     params = {"utm_source": "oriolhuguet.com", "utm_medium": "web", "utm_campaign": placement, "utm_content": t["key"]}
     if not t["url"]:
         params = {"a1": t["title"], **params}
-    return f"{base}?{urlencode(params)}"
+    return f"{base}?{urlencode(params, quote_via=quote)}"
 
 
 def cards(placement, compact=False):
