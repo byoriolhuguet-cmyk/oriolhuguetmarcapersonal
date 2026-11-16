@@ -92,7 +92,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .mm-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--mute);font-size:.9rem;font-weight:600}
 .mm-foot a{color:var(--paper);word-break:break-all}
 @media (max-width:900px){.nav{left:12px;right:12px;translate:none;width:auto}.island{justify-content:space-between}.island nav{display:none}.burger{display:block}.cta-pill{margin-left:auto}}
-.cta-pill i,.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,199,44,.7);animation:ping 2s infinite}
+.cta-pill i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,199,44,.7);animation:ping 2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 9px rgba(255,199,44,0)}100%{box-shadow:0 0 0 0 rgba(255,199,44,0)}}
 @media (max-width:600px){.sec-head span:last-child{display:none}.big{font-size:9.2vw;font-stretch:100%}.wall-head{flex-direction:column;align-items:start}}
 
@@ -100,8 +100,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .hero{position:relative;background:var(--brand);color:var(--paper);isolation:isolate;--rev:0}
 .js .hero{--rev:100}
 .hero-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:clip;background:radial-gradient(55% 60% at 50% 62%,var(--brand-2) 0%,transparent 72%),var(--brand)}
-.hero-scroll{height:150svh}
-@media (max-width:700px){.hero-scroll{height:70svh}}
 .hero-stage::before,.hero-stage::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
 .hero-stage::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
 .hero-stage::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
@@ -116,34 +114,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .hero-photo img{width:100%}
 @keyframes rise{from{transform:translate3d(-50%,14%,0) scale(1.12)}}
 .hero-photo,.hn{translate:var(--mx,0) var(--my,0);transition:translate .6s var(--ease)}
-.kicker,.badge,.scroll-hint{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
+.kicker{animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
 .nav{animation:navin 1s calc(var(--d) + .3s) var(--ease) both}
 @keyframes fadeup{from{opacity:0;transform:translateY(24px)}}
 @keyframes navin{from{transform:translateY(-90px)}}
-.hero-foot{position:relative;z-index:4;margin-top:-220px;height:220px;padding:0 var(--pad) clamp(52px,7vh,72px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none}
-.hero-foot>*{pointer-events:auto}
 .tagline{max-width:23ch;font-size:clamp(1rem,1.25vw,1.2rem);font-weight:600;line-height:1.25;letter-spacing:-.01em}
 .tagline-wrap{display:grid;gap:16px;justify-items:start}
 .tagline strong{font-weight:800;color:var(--accent)}
-.status{display:grid;gap:8px;background:var(--ink);color:var(--paper);padding:14px 18px;border-radius:18px;font-size:.85rem;min-width:min(290px,100%)}
-.status p{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
-.status ul{display:grid;gap:4px}
-.status li span{color:var(--accent)}
-.scroll-hint{position:absolute;z-index:4;left:50%;bottom:clamp(28px,6vh,60px);translate:-50% 0;display:grid;justify-items:center;gap:10px;font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;opacity:calc(1 - (100 - var(--rev)) / 25)}
-.scroll-hint i{width:1px;height:46px;background:linear-gradient(var(--accent) 50%,rgba(255,199,44,.15) 50%);background-size:100% 200%;animation:hint 1.6s cubic-bezier(.65,0,.35,1) infinite}
-@keyframes hint{from{background-position:0 100%}to{background-position:0 -100%}}
 .kicker{position:absolute;z-index:4;left:var(--pad);right:var(--pad);top:clamp(70px,9.5vh,100px);display:none;justify-content:space-between;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
-.badge{position:absolute;z-index:4;right:var(--pad);top:44%;width:132px;height:132px;display:grid;place-items:center;text-decoration:none}
-.badge svg{position:absolute;inset:0;animation:spin 16s linear infinite}
-.badge span{width:54px;height:54px;border-radius:50%;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-size:1.4rem}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (min-width:701px){.kicker{display:flex}}
 @media (max-width:700px){
   .hn{inset:96px 0 auto;animation:none}
   .hero-photo{width:128vw}
-  .hero-foot{margin-top:0;height:auto;flex-direction:column;align-items:stretch;padding:22px var(--pad) 28px;background:var(--brand)}
   .tagline{max-width:none;font-size:1.25rem}
-  .badge{top:auto;bottom:calc(34% + 40px);width:104px;height:104px;right:12px}
 }
 
 /* ---------- MARQUEE ---------- */
@@ -416,7 +400,6 @@ section{position:relative}
 .card.rv:not(.in){transform:translateY(90px) rotate(-8deg) scale(.88)}
 .card.rv{transition:transform 1.4s var(--ease),opacity 1s var(--ease)}
 @keyframes float{50%{translate:0 -12px}}
-.badge:hover svg{animation-duration:4s}
 [data-mag]{transition:translate .4s var(--ease)}
 .marquee p{transition:transform .3s}
 
@@ -554,6 +537,30 @@ button.btn{cursor:pointer;background:none;color:var(--paper)}
 
 /* reservas */
 /* book-css:start */
+.bk-embed{display:grid;gap:12px}
+.bk-types{display:flex;flex-wrap:wrap;gap:8px}
+.bk-type{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(243,245,250,.18);background:rgba(243,245,250,.06);color:#f3f5fa;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.bk-type:hover{background:rgba(243,245,250,.14)}
+.bk-type[aria-checked="true"]{background:#ffc72c;color:#000e2b;border-color:#ffc72c}
+.bk-type:focus-visible{outline:3px solid #f3f5fa;outline-offset:2px}
+.bk-frame{position:relative;height:var(--bk-h,640px);border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 0 0 6px rgba(243,245,250,.04),0 0 0 7px rgba(243,245,250,.14),0 40px 80px -40px rgba(0,8,40,.8)}
+.bk-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .5s}
+.bk-frame.ready iframe{opacity:1}
+.bk-skel{position:absolute;inset:0;display:grid;align-content:start;gap:18px;padding:28px;background:#fff;color:#55617f}
+.bk-frame.ready .bk-skel{display:none}
+.bk-skel-h{width:55%;height:22px;border-radius:8px;background:#e9edf6}
+.bk-skel-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.bk-skel-grid i{aspect-ratio:1;border-radius:50%;background:#eef1f8;animation:bksk 1.4s ease-in-out infinite}
+.bk-skel-grid i:nth-child(3n){animation-delay:.2s}.bk-skel-grid i:nth-child(4n){animation-delay:.4s}
+@keyframes bksk{50%{opacity:.45}}
+.bk-skel-t{font-size:.9rem;font-weight:600}
+.bk-show{position:absolute;left:50%;bottom:28px;translate:-50% 0;padding:13px 22px;border:0;border-radius:999px;background:#00215e;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.bk-frame.ready .bk-show{display:none}
+.bk-show:focus-visible{outline:3px solid #ffc72c;outline-offset:3px}
+.bk-open{position:absolute;inset:auto 20px 20px;display:block;padding:14px;border-radius:999px;background:#ffc72c;color:#000e2b;text-align:center;font-weight:800}
+.bk-note{font-size:.84rem;color:#b8c2da}
+.bk-note a{color:#f3f5fa;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.bk-skel-grid i{animation:none}}
 .bk-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .bk-card{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:22px 22px 20px;border-radius:24px;text-decoration:none;color:#f3f5fa;background:linear-gradient(180deg,#0a2160,#06194a);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 0 0 6px rgba(243,245,250,.03),0 0 0 7px rgba(243,245,250,.1);overflow:hidden;isolation:isolate;transition:transform .5s cubic-bezier(.2,.8,.2,1),color .4s}
 .bk-card::before{content:"";position:absolute;inset:0;z-index:-1;background:#ffc72c;clip-path:circle(0 at 100% 0);transition:clip-path .7s cubic-bezier(.2,.8,.2,1)}
@@ -575,18 +582,7 @@ button.btn{cursor:pointer;background:none;color:var(--paper)}
 @media (max-width:860px){.bk-cards{grid-template-columns:1fr}.bk-card{min-height:0}}
 @media (prefers-reduced-motion:reduce){.bk-card,.bk-card::before,.bk-arrow{transition:none}}
 /* book-css:end */
-.hero-book{position:absolute;z-index:4;left:var(--pad);bottom:clamp(28px,6vh,60px);display:flex;align-items:center;gap:14px;padding:10px 10px 10px 10px;border-radius:22px;background:rgba(0,14,43,.72);border:1px solid rgba(243,245,250,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 48px -24px rgba(0,8,30,.8);color:var(--paper);text-decoration:none;opacity:calc((var(--rev) - 40) / 60);transition:transform .5s var(--ease),background .4s;animation:fadeup 1s calc(var(--d) + .7s) var(--ease) both}
-.hero-book:hover{transform:translateY(-4px);background:rgba(0,14,43,.9)}
-.hb-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:var(--accent);color:var(--ink)}
-.hb-ic svg{width:24px;height:24px}
-.hb-t{display:grid;gap:2px;line-height:1.2}
-.hb-t b{font-size:.98rem}
-.hb-t small{font-size:.76rem;color:#b8c2da;font-weight:600}
-.hb-go{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(243,245,250,.1);transition:transform .5s cubic-bezier(.32,.72,0,1)}
-.hero-book:hover .hb-go{transform:translateX(3px)}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:10px}
 @media (max-width:480px){.cta-x{display:none}.cta-pill{padding:11px 16px}}
-@media (max-width:700px){.hero-book{left:16px;right:88px;bottom:22px}.hero-book .hb-go{margin-left:auto}.scroll-hint{display:none}}
 .book-home-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,70px);align-items:end;margin-bottom:clamp(30px,5vw,56px)}
 .book-home-head p{color:var(--mute);font-size:1.08rem;max-width:40ch}
 @media (max-width:900px){.book-home-head{grid-template-columns:1fr}}
@@ -594,6 +590,41 @@ button.btn{cursor:pointer;background:none;color:var(--paper)}
 /* grano */
 body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.035}
 @media (max-width:700px),(pointer:coarse){body::after{display:none}.island{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,14,43,.92)}}
+
+/* hero: Oriol a la izquierda, calendario a la derecha */
+.js .hero{--rev:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);min-height:100svh}
+.hero-me{position:relative;overflow:clip;min-height:100svh;background:radial-gradient(60% 55% at 55% 70%,var(--brand-2) 0%,transparent 72%),var(--brand)}
+.hero-me::before,.hero-me::after{content:"";position:absolute;z-index:0;top:-20%;height:140%;transform:rotate(16deg);pointer-events:none}
+.hero-me::before{left:3vw;width:clamp(14px,1.6vw,26px);background:var(--accent)}
+.hero-me::after{left:calc(3vw + clamp(30px,3.4vw,56px));width:2px;background:var(--paper);opacity:.85}
+.hero-me .kicker{display:flex;flex-direction:column;gap:4px;top:clamp(92px,12vh,120px);font-size:.68rem}
+.hero-me .hn{inset:clamp(130px,19vh,190px) 0 auto;font-size:clamp(48px,8.4vw,180px)}
+.hero-fig{position:absolute;z-index:2;right:2%;bottom:0;width:min(66%,calc(60svh * 1.05));aspect-ratio:1240/1181}
+.hero-fig .hero-photo,.hero-fig .xray{left:0;top:0;bottom:auto;width:100%;transform:none}
+.hero-fig .hero-photo{animation:herophoto 1.3s calc(var(--d) - .1s) var(--ease) both}
+@keyframes herophoto{from{transform:translateY(10%) scale(1.06)}}
+.hero-copy{position:absolute;z-index:4;left:var(--pad);bottom:clamp(28px,5vh,52px);display:grid;gap:14px;justify-items:start;max-width:min(34%,290px);animation:fadeup 1s calc(var(--d) + .5s) var(--ease) both}
+.hero-copy .tagline{font-size:clamp(.95rem,1.1vw,1.08rem)}
+.hero-cal{position:relative;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:clamp(96px,12vh,120px) clamp(20px,3.2vw,52px) clamp(22px,4vh,40px);color:var(--paper);background:radial-gradient(60% 50% at 70% 10%,rgba(10,58,156,.5) 0%,transparent 70%),linear-gradient(rgba(243,245,250,.035) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(243,245,250,.035) 1px,transparent 1px) 0 0/56px 56px,var(--ink)}
+.hc-eyebrow{align-self:flex-start;display:inline-flex;align-items:center;gap:.6em;padding:7px 14px;border-radius:999px;border:1px solid currentColor;color:var(--accent);font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.hc-eyebrow::before{content:"";width:.55em;height:.55em;border-radius:50%;background:currentColor}
+.hero-cal h2{font-size:clamp(2rem,3.4vw,3.4rem);font-weight:900;font-stretch:108%;line-height:.95;letter-spacing:-.045em}
+.hero-cal h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-stretch:100%;color:var(--accent);letter-spacing:-.03em}
+.hc-lead{color:#c9d1e6;font-size:.98rem;max-width:46ch;margin-bottom:4px}
+.hero-cal .bk-frame{--bk-h:clamp(380px,calc(100svh - 350px),700px)}
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-me{min-height:0;height:clamp(330px,46svh,520px)}
+  .hero-me .kicker{display:none}
+  .hero-me .hn{inset:84px 0 auto;font-size:clamp(46px,14vw,130px)}
+  .hero-fig{right:50%;translate:50% 0;width:min(70vw,calc(28svh * 1.05))}
+  .hero-copy{display:none}
+  .hero-cal{padding:24px var(--pad) 40px}
+  .hero-cal h2{font-size:2rem}
+  .hc-lead{font-size:.92rem}
+  .hero-cal .bk-frame{--bk-h:660px}
+}
 
 /* reveal */
 .rv{transform:translateY(40px);opacity:0;transition:transform 1s var(--ease),opacity 1s var(--ease)}
@@ -606,7 +637,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 @media (pointer:fine){.cursor{display:block}}
 
 @media (prefers-reduced-motion:reduce){
-  .js .hero{--rev:0}.hero-scroll{height:0}.scroll-hint{display:none}
+  .js .hero{--rev:0}
   .split .wi,.giant span{transform:none!important}
   .loader{display:none}.rvc,.stg.stg>*{clip-path:none!important;opacity:1!important;transform:none!important}.langs.stg>li{--lv:var(--l)}.pitch *{stroke-dashoffset:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -665,7 +696,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
         <li><a href="/newsletter/">Newsletter</a></li>
       </ul>
     </nav>
-    <a class="cta-pill" data-mag href="/reservar/"><i aria-hidden="true"></i>Reservar<span class="cta-x"> llamada</span></a>
+    <a class="cta-pill" data-mag href="/reservar/"><i aria-hidden="true"></i><span>Reservar<span class="cta-x"> llamada</span></span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mmenu" data-burger><span></span><span></span><b class="sr">Abrir menú</b></button>
   </div>
 </header>
@@ -688,35 +719,36 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="hero-stage">
+  <div class="hero-grid">
+  <div class="hero-me">
     <p class="kicker" aria-hidden="true"><span>IA · Marketing deportivo · Digital retail · E-commerce</span><span>Barcelona — <span data-clock>BCN</span></span></p>
     <h1 class="hn" id="hero-title" data-hn><span class="sr">Oriol Huguet, especialista en IA, marketing deportivo, digital retail y e-commerce</span><span class="ln" aria-hidden="true"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln" aria-hidden="true"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></h1>
-    <picture class="hero-photo" data-photo>
-      <source type="image/avif" srcset="assets/img/oriol-560.avif 560w, assets/img/oriol-860.avif 860w, assets/img/oriol-1240.avif 1240w" sizes="(max-width: 700px) 118vw, 62vw">
-      <source type="image/webp" srcset="assets/img/oriol-560.webp 560w, assets/img/oriol-860.webp 860w, assets/img/oriol-1240.webp 1240w" sizes="(max-width: 700px) 118vw, 62vw">
-      <img src="assets/img/oriol-860.webp" width="1240" height="1181" alt="Oriol Huguet, especialista en IA y marketing deportivo, sonriendo con toga negra, camisa blanca y corbata" fetchpriority="high" decoding="async">
-    </picture>
-    <div class="xray" aria-hidden="true" data-xray></div>
-    <p class="hn hn--outline" aria-hidden="true" data-hn><span class="ln"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></p>
-    <a class="hero-book" href="/reservar/"><span class="hb-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg></span><span class="hb-t"><b>Llamada gratis · 30 min</b><small>Consultoría · Mentoría · Empleo</small></span><span class="hb-go" aria-hidden="true">→</span></a>
-    <p class="scroll-hint" aria-hidden="true"><span>Desliza</span><i></i></p>
-    <a class="badge" data-mag href="#sobre-mi" aria-label="Retail · IA · Sports · Growth: bajar a Sobre mí">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text font-size="9.6" font-weight="800" fill="#f3f5fa"><textPath href="#c" textLength="236" lengthAdjust="spacing">RETAIL · IA · SPORTS · GROWTH · </textPath></text></svg>
-      <span aria-hidden="true">↓</span>
-    </a>
-  </div>
-  <div class="hero-scroll" aria-hidden="true"></div>
-  <div class="hero-foot">
-    <div class="tagline-wrap"><p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p>
-    <div class="hero-ctas"><a class="btn btn--accent" href="/reservar/">Reservar llamada gratis <span aria-hidden="true">→</span></a><a class="btn hero-cv" href="cv/oriol-huguet-cv.pdf" download>CV en PDF <span aria-hidden="true">↓</span></a></div></div>
-    <div class="status">
-      <p><i aria-hidden="true"></i>En juego ahora</p>
-      <ul>
-        <li>Dir. Account Managers <span>@ Spread It</span></li>
-        <li>Guest Lecturer IA <span>@ Founderz</span></li>
-        <li>MBA Sports Management <span>@ UB</span></li>
-      </ul>
+    <div class="hero-fig">
+      <picture class="hero-photo" data-photo>
+        <source type="image/avif" srcset="assets/img/oriol-560.avif 560w, assets/img/oriol-860.avif 860w, assets/img/oriol-1240.avif 1240w" sizes="(max-width: 1000px) 80vw, 34vw">
+        <source type="image/webp" srcset="assets/img/oriol-560.webp 560w, assets/img/oriol-860.webp 860w, assets/img/oriol-1240.webp 1240w" sizes="(max-width: 1000px) 80vw, 34vw">
+        <img src="assets/img/oriol-860.webp" width="1240" height="1181" alt="Oriol Huguet, especialista en IA y marketing deportivo, sonriendo con toga negra, camisa blanca y corbata" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="xray" aria-hidden="true" data-xray></div>
     </div>
+    <p class="hn hn--outline" aria-hidden="true" data-hn><span class="ln"><span class="ch" style="--i:0">O</span><span class="ch" style="--i:1">r</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">l</span></span><span class="ln"><span class="ch" style="--i:0">H</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">g</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">t</span></span></p>
+    <div class="hero-copy"><p class="tagline">Especialista en <strong>IA y marketing deportivo</strong>, <strong>digital retail y <span style="white-space:nowrap">e-commerce</span></strong>. Ayudo a clubes, atletas y marcas a vender y crecer.</p><a class="btn hero-cv" href="cv/oriol-huguet-cv.pdf" download>CV en PDF <span aria-hidden="true">↓</span></a></div>
+  </div>
+  <div class="hero-cal" aria-labelledby="hero-cal-t">
+    <span class="hc-eyebrow">Agenda abierta · 1 h · Gratis</span>
+    <h2 id="hero-cal-t">Reserva <em>1 hora</em> conmigo</h2>
+    <p class="hc-lead">Consultoría, mentoría o reunión para un puesto de trabajo. Elige el tipo de sesión, el día y la hora.</p>
+    <!-- book-hero:start --><div class="bk-embed" data-cal data-base="https://calendly.com/byoriolhuguet/30min" data-placement="home-hero" id="agenda">
+  <div class="bk-types" role="radiogroup" aria-label="Tipo de sesión"><button type="button" class="bk-type" role="radio" aria-checked="true" data-type="Consultoría" data-key="consultoria"><span aria-hidden="true">💡</span>Consultoría</button><button type="button" class="bk-type" role="radio" aria-checked="false" data-type="Mentoría" data-key="mentoria"><span aria-hidden="true">🧭</span>Mentoría</button><button type="button" class="bk-type" role="radio" aria-checked="false" data-type="Reunión para un puesto" data-key="empleo"><span aria-hidden="true">🤝</span>Reunión para un puesto</button></div>
+  <div class="bk-frame">
+    <div class="bk-skel" aria-hidden="true"><span class="bk-skel-h"></span><span class="bk-skel-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="bk-skel-t">Cargando el calendario…</span></div>
+    <button type="button" class="bk-show" data-cal-show>Ver horas disponibles</button>
+    <iframe title="Calendario de reservas de Oriol Huguet (Calendly)" data-src="https://calendly.com/byoriolhuguet/30min" allow="payment"></iframe>
+    <noscript><a class="bk-open" href="https://calendly.com/byoriolhuguet/30min?a1=Consultor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-hero&utm_content=consultoria">Abrir el calendario de reservas</a></noscript>
+  </div>
+  <p class="bk-note">¿No ves el calendario? <a href="https://calendly.com/byoriolhuguet/30min?a1=Consultor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-hero&utm_content=consultoria" data-cal-direct target="_blank" rel="noopener">Ábrelo en Calendly ↗</a></p>
+</div><!-- book-hero:end -->
+  </div>
   </div>
 </section>
 
@@ -967,23 +999,23 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 <section class="sec wrap book-home" id="reservar" aria-labelledby="book-home-t">
   <div class="sec-head"><span class="label">08 — Reserva</span><span>Gratis · Videollamada</span></div>
   <div class="book-home-head">
-    <h2 class="big" id="book-home-t">Reserva <em>30 minutos</em><br>conmigo</h2>
-    <p>Consultorías, mentorías y reuniones para puestos de trabajo. Elige el tipo de sesión y te llevo a mi calendario para escoger la hora.</p>
+    <h2 class="big" id="book-home-t">Reserva <em>1 hora</em><br>conmigo</h2>
+    <p>Consultorías, mentorías y reuniones para puestos de trabajo. Elige el tipo de sesión y escoge día y hora en el calendario de arriba.</p>
   </div>
   <!-- book-end:start --><ul class="bk-cards"><li><a class="bk-card" href="https://calendly.com/byoriolhuguet/30min?a1=Consultor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=consultoria" data-book="consultoria">
-  <span class="bk-top"><span class="bk-emo" aria-hidden="true">💡</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">💡</span><span class="bk-meta">1 h · Gratis</span></span>
   <span class="bk-title">Consultoría</span>
   <span class="bk-who">Clubes, marcas y agencias</span>
   <span class="bk-desc">IA aplicada, marketing deportivo, digital retail o e-commerce. Revisamos tu caso y te llevas los siguientes pasos.</span>
   <span class="bk-cta">Reservar hora <span class="bk-arrow" aria-hidden="true">→</span></span>
 </a></li><li><a class="bk-card" href="https://calendly.com/byoriolhuguet/30min?a1=Mentor%C3%ADa&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=mentoria" data-book="mentoria">
-  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🧭</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🧭</span><span class="bk-meta">1 h · Gratis</span></span>
   <span class="bk-title">Mentoría</span>
   <span class="bk-who">Estudiantes y perfiles que empiezan</span>
   <span class="bk-desc">Carrera en marketing deportivo o IA, formación, portfolio y marca personal. Te cuento lo que me habría ahorrado tiempo.</span>
   <span class="bk-cta">Reservar hora <span class="bk-arrow" aria-hidden="true">→</span></span>
 </a></li><li><a class="bk-card" href="https://calendly.com/byoriolhuguet/30min?a1=Reuni%C3%B3n%20para%20un%20puesto&utm_source=oriolhuguet.com&utm_medium=web&utm_campaign=home-final&utm_content=empleo" data-book="empleo">
-  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🤝</span><span class="bk-meta">30 min · Gratis</span></span>
+  <span class="bk-top"><span class="bk-emo" aria-hidden="true">🤝</span><span class="bk-meta">1 h · Gratis</span></span>
   <span class="bk-title">Reunión para un puesto</span>
   <span class="bk-who">Empresas y reclutadores</span>
   <span class="bk-desc">¿Tienes un puesto en el que encajo? Hablamos del rol, del equipo y de cómo puedo aportar desde el primer día.</span>
@@ -1021,6 +1053,7 @@ body::after{content:"";position:fixed;inset:0;z-index:45;pointer-events:none;bac
 <div class="follow" aria-hidden="true" data-follow></div>
 <div class="cursor" aria-hidden="true" data-cursor></div>
 <script src="js/main.js" defer></script>
+<script src="/js/booking.js" defer></script>
 <!-- nl-popup:start -->
 <template id="nl-popup-tpl"><div class="nl-pop" hidden>
   <div class="nl-pop-bg"></div>

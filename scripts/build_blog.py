@@ -156,7 +156,7 @@ NAV = '''<a class="skip" href="#main">Saltar al contenido</a>
 <header class="nav"><div class="island">
   <a class="brand" href="/"><b>OH</b><span>Oriol Huguet</span></a>
   <nav aria-label="Principal"><ul class="menu"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/cv/">CV</a></li><li><a href="/blog/"{cur}>Blog</a></li><li><a href="/newsletter/">Newsletter</a></li></ul></nav>
-  <a class="cta-pill" href="/reservar/">Reservar<span class="cta-x"> llamada</span></a>
+  <a class="cta-pill" href="/reservar/"><span>Reservar<span class="cta-x"> llamada</span></span></a>
 </div></header>'''
 
 CTA = f'''<section class="cta" aria-labelledby="cta-t">

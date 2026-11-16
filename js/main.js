@@ -93,6 +93,8 @@
   const photo = d.querySelector('[data-photo]');
   const names = $$('[data-hn]');
   const hero = d.querySelector('.hero');
+  // zona de la foto (los efectos de ratón no se aplican sobre el calendario)
+  const heroMe = d.querySelector('.hero-me') || hero;
   const prog = d.querySelector('[data-progress]');
   const marq = $$('.marquee p');
   const hs = d.querySelector('[data-hs]'), hsTrack = hs && hs.querySelector('.services');
@@ -143,15 +145,6 @@
       onScroll.t = setTimeout(() => marq.forEach(m => (m.style.transform = '')), 120);
     }
     lastY = y;
-    if (!reduce && hero) {
-      // la foto sube desde abajo mientras el escenario está fijado; luego se queda quieta
-      const p = Math.min(1, y / (vh * 0.65)), e = 1 - Math.pow(1 - p, 3);
-      hero.style.setProperty('--rev', ((1 - e) * 100).toFixed(2));
-      names.forEach(n => {
-        n.style.transform = `translate3d(0,${-e * 4}vh,0) scale(${1 - e * 0.06})`;
-        if (innerWidth > 700) n.style.fontStretch = 125 - e * 30 + '%';
-      });
-    }
     if (words.length) {
       const r = man.getBoundingClientRect();
       const p = (vh * 0.85 - r.top) / (r.height + vh * 0.25);
@@ -241,13 +234,13 @@
       xray.style.setProperty('--sx', x - r.left + 'px'); xray.style.setProperty('--sy', y - r.top + 'px');
       xray.classList.add('on');
     };
-    hero.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') spot(e.clientX, e.clientY); });
-    hero.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') xray.classList.remove('on'); });
+    heroMe.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') spot(e.clientX, e.clientY); });
+    heroMe.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') xray.classList.remove('on'); });
     let off;
     const touch = e => { const t = e.touches[0]; if (!t) return; clearTimeout(off); spot(t.clientX, t.clientY); };
-    hero.addEventListener('touchstart', touch, { passive: true });
-    hero.addEventListener('touchmove', touch, { passive: true });
-    hero.addEventListener('touchend', () => { off = setTimeout(() => xray.classList.remove('on'), 900); }, { passive: true });
+    heroMe.addEventListener('touchstart', touch, { passive: true });
+    heroMe.addEventListener('touchmove', touch, { passive: true });
+    heroMe.addEventListener('touchend', () => { off = setTimeout(() => xray.classList.remove('on'), 900); }, { passive: true });
   }
 
   if (!fine || reduce) return;
@@ -280,7 +273,7 @@
   });
 
   // Parallax del hero con el ratón
-  if (hero) hero.addEventListener('pointermove', e => {
+  if (heroMe) heroMe.addEventListener('pointermove', e => {
     const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
     photo.style.setProperty('--mx', x * 18 + 'px'); photo.style.setProperty('--my', y * 10 + 'px');
     if (xray) { xray.style.setProperty('--mx', x * 18 + 'px'); xray.style.setProperty('--my', y * 10 + 'px'); }

@@ -21,6 +21,7 @@ Web estática de una sola página: HTML con el CSS crítico incluido, un JS de 5
 
 ## Reservas (Calendly)
 - `/reservar/` con las tres sesiones gratuitas (consultoría, mentoría, reunión para un puesto), tarjeta de reserva en la primera pantalla de la portada, botón junto al CV, bloque «Reserva 30 minutos» antes del contacto y botón «Reservar llamada» en el menú.
+- Calendly va incrustado en el hero de la portada y en `/reservar/` (`js/booking.js`), con selector de tipo de sesión; se carga con el primer gesto del visitante (o con «Ver horas disponibles») para no penalizar la carga inicial. Las tarjetas de reserva de la página seleccionan el tipo y suben al calendario.
 - El enlace de Calendly está en un solo sitio: `CALENDLY_URL` en `scripts/booking.py`. Con un único evento, cada tarjeta rellena la primera pregunta del formulario de Calendly (`a1`) con el tipo de sesión; con un evento por tipo, pon su enlace en `url`.
 - Tras cambiarlo: `python3 scripts/build_blog.py && python3 scripts/build_newsletter.py && python3 scripts/build_reservar.py`.
 
